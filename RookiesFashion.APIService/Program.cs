@@ -1,11 +1,23 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
+using RookiesFashion.APIService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .ConfigureApiBehaviorOptions(options => {
+            //options.SuppressModelStateInvalidFilter = true;
+            options.InvalidModelStateResponseFactory = actionContext =>
+            {
+                var firstErr = actionContext.ModelState.FirstOrDefault();
+                var field = firstErr.Key;
+                var errorMessage = firstErr.Value.Errors.FirstOrDefault().ErrorMessage;
+                return new BadRequestObjectResult(new {Field = field, Message = errorMessage});
+            };
+        });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -13,6 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RookiesFashionContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("RookiesFashion_Connection_String")).UseLazyLoadingProxies(), ServiceLifetime.Scoped);
 
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
