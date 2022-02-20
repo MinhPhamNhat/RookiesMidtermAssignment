@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RookiesFashion.APIService.Models
 {
     [Table("Category")]
-    public class Category
+    public class Category: IValidatableObject
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,5 +22,15 @@ namespace RookiesFashion.APIService.Models
 
         public int? ParentCategoryId { get; set; }
         public virtual Category? Parent { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrEmpty(Name)){
+                yield return new ValidationResult("Category name cannot be null or empty", new[]{nameof(Name)});
+            }
+            if (string.IsNullOrEmpty(Description)){
+                yield return new ValidationResult("Category description cannot be null or empty", new[]{nameof(Description)});
+            }
+        }
     }
 }

@@ -8,14 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers()
-        .ConfigureApiBehaviorOptions(options => {
+        .ConfigureApiBehaviorOptions(options =>
+        {
             //options.SuppressModelStateInvalidFilter = true;
             options.InvalidModelStateResponseFactory = actionContext =>
             {
-                var firstErr = actionContext.ModelState.FirstOrDefault();
-                var field = firstErr.Key;
-                var errorMessage = firstErr.Value.Errors.FirstOrDefault().ErrorMessage;
-                return new BadRequestObjectResult(new {Field = field, Message = errorMessage});
+                return new BadRequestObjectResult(new { Message = "Invalid Params", Errors = actionContext.ModelState });
             };
         });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -54,7 +54,7 @@ namespace RookiesFashion.APIService.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id,Category category)
+        public async Task<IActionResult> PutCategory(string id, Category category)
         {
             if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
@@ -71,10 +71,11 @@ namespace RookiesFashion.APIService.Controllers
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult> PostCategory(Category category)
+        public async Task<ActionResult> PostCategory([FromForm] Category category)
         {
-            ServiceResponse serResp = await _categoryService.InsertCategory(category);
-            return GetRequestServiceResult(serResp);
+            // ServiceResponse serResp = await _categoryService.InsertCategory(category);
+            // return GetRequestServiceResult(serResp);
+            return ResponseMessage(HttpStatusCode.BadRequest, "Invalid param");
         }
 
         // DELETE: api/Categories/5
