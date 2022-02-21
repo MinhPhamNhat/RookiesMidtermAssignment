@@ -2,12 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Data.Context;
+using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -17,93 +23,97 @@ namespace RookiesFashion.APIService.Controllers
     {
         private readonly RookiesFashionContext _context;
 
-        public CategoriesController(RookiesFashionContext context)
+        private readonly ICategoryService _categoryService;
+
+        public CategoriesController(RookiesFashionContext context, ICategoryService categoryService)
         {
             _context = context;
+            _categoryService = categoryService;
         }
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            ServiceResponse serResp = await _categoryService.GetCategories();
+            return GetRequestServiceResult(serResp);
         }
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult> GetCategory(string id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
+            if (int.TryParse(id, out int categoryId))
             {
-                return NotFound();
+                ServiceResponse serResp = await _categoryService.GetCategoriesById(categoryId);
+                return GetRequestServiceResult(serResp);
             }
-
-            return category;
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutCategory(string id, [FromForm] Category category)
         {
-            if (id != category.CategoryId)
+            if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
-                return BadRequest();
-            }
-
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
+                if (_categoryService.IsExist(categoryId))
                 {
-                    return NotFound();
+                    ServiceResponse serResp = await _categoryService.UpdateCategory(category);
+                    return GetRequestServiceResult(serResp);
                 }
-                else
-                {
-                    throw;
-                }
+                return ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
             }
-
-            return NoContent();
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult> PostCategory([FromForm] Category category)
         {
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+            ServiceResponse serResp = await _categoryService.InsertCategory(category);
+            return GetRequestServiceResult(serResp);
         }
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategory(string id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            if (int.TryParse(id, out int categoryId))
             {
-                return NotFound();
+                if (_categoryService.IsExist(categoryId))
+                {
+                    ServiceResponse serResp = await _categoryService.DeleteCategory(categoryId);
+                    return GetRequestServiceResult(serResp);
+                }
+                return ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
             }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
-        private bool CategoryExists(int id)
+        private JsonResult ResponseMessage(HttpStatusCode statusCode, object resultObj)
         {
-            return _context.Categories.Any(e => e.CategoryId == id);
+            HttpContext.Response.StatusCode = (int)statusCode;
+            return new JsonResult(resultObj);
+        }
+
+        private JsonResult GetRequestServiceResult(ServiceResponse serResp)
+        {
+            switch (serResp.Code)
+            {
+                case ServiceResponseStatus.SUCCESS:
+                    return ResponseMessage(HttpStatusCode.OK, new { Message = serResp.Message, Data = serResp.Data });
+                case ServiceResponseStatus.ERROR:
+                    return ResponseMessage(HttpStatusCode.InternalServerError, new { Message = serResp.Message, Data = serResp.Data });
+                case ServiceResponseStatus.OBJECT_NOT_FOUND:
+                    return ResponseMessage(HttpStatusCode.NotFound, new { Message = serResp.Message, Data = serResp.Data });
+                case ServiceResponseStatus.DATA_CREATED:
+                    return ResponseMessage(HttpStatusCode.Created, new { Message = serResp.Message, Data = serResp.Data });
+                default:
+                    return ResponseMessage(HttpStatusCode.BadRequest, new { Message = "Bad request" });
+            }
         }
     }
 }

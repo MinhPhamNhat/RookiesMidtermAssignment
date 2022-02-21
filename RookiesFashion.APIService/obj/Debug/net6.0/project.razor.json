@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
+  "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,33 +16298,33 @@
   "RootNamespace": "RookiesFashion.APIService",
   "Documents": [
     {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Create.cshtml",
-      "TargetPath": "Views\\Accounts\\Create.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Edit.cshtml",
+      "TargetPath": "Views\\Accounts\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Details.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Details.cshtml",
       "TargetPath": "Views\\Accounts\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Create.cshtml",
+      "TargetPath": "Views\\Accounts\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Index.cshtml",
-      "TargetPath": "Views\\Accounts\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Delete.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Delete.cshtml",
       "TargetPath": "Views\\Accounts\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Edit.cshtml",
-      "TargetPath": "Views\\Accounts\\Edit.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\Views\\Accounts\\Index.cshtml",
+      "TargetPath": "Views\\Accounts\\Index.cshtml",
       "FileKind": "mvc"
     }
   ],

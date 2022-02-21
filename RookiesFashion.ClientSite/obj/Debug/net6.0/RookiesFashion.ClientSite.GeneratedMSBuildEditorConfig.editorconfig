@@ -8,37 +8,37 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RookiesFashion.ClientSite
 build_property.RootNamespace = RookiesFashion.ClientSite
-build_property.ProjectDir = d:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.ClientSite\
+build_property.ProjectDir = d:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.ClientSite
+build_property.MSBuildProjectDirectory = d:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Index.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Privacy.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/Error.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/_ValidationScriptsPartial.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/_ViewImports.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/_ViewStart.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/_Layout.cshtml]
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cnnwhwfptq
