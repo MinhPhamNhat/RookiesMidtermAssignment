@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Services;
+using RookiesFashion.APIService.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +15,10 @@ builder.Services.AddControllers()
             //options.SuppressModelStateInvalidFilter = true;
             options.InvalidModelStateResponseFactory = actionContext =>
             {
-                return new BadRequestObjectResult(new { Message = "Invalid Params", Errors = actionContext.ModelState });
+                return new BadRequestObjectResult(new ValidationResultModel(actionContext.ModelState));
             };
-        });
+        }).AddNewtonsoftJson(options => 
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

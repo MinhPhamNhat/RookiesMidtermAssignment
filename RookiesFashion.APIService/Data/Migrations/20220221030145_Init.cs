@@ -28,6 +28,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsParent = table.Column<bool>(type: "bit", nullable: false),
                     ParentCategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -191,6 +192,50 @@ namespace RookiesFashion.APIService.Data.Migrations
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "ProductId");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Account",
+                columns: new[] { "Username", "Password" },
+                values: new object[,]
+                {
+                    { "ADMIN", "ADMIN" },
+                    { "User1", "rookies_user1" },
+                    { "User2", "rookies_user2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "CategoryId", "Description", "IsParent", "Name", "ParentCategoryId" },
+                values: new object[] { 1, "Áo", true, "Áo", null });
+
+            migrationBuilder.InsertData(
+                table: "Role",
+                columns: new[] { "RoleId", "Description" },
+                values: new object[,]
+                {
+                    { 0, "Administrator" },
+                    { 1, "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "CategoryId", "Description", "IsParent", "Name", "ParentCategoryId" },
+                values: new object[,]
+                {
+                    { 2, "Áo khoác", false, "Áo khoác", 1 },
+                    { 3, "Áo Hoodie", false, "Áo Hoodie", 1 },
+                    { 4, "Áo Thun", false, "Áo Hoodie", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "UserId", "IdentityUsername", "Name", "RoleId" },
+                values: new object[,]
+                {
+                    { 1, "ADMIN", "ADMIN", 0 },
+                    { 2, "User1", "Rookies User 1", 1 },
+                    { 3, "User2", "Rookies User 2", 1 }
                 });
 
             migrationBuilder.CreateIndex(

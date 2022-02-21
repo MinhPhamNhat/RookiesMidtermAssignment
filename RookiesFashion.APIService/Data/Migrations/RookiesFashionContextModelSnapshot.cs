@@ -66,6 +66,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsParent")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -84,12 +87,14 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 1,
                             Description = "Áo",
+                            IsParent = true,
                             Name = "Áo"
                         },
                         new
                         {
                             CategoryId = 2,
                             Description = "Áo khoác",
+                            IsParent = false,
                             Name = "Áo khoác",
                             ParentCategoryId = 1
                         },
@@ -97,6 +102,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 3,
                             Description = "Áo Hoodie",
+                            IsParent = false,
                             Name = "Áo Hoodie",
                             ParentCategoryId = 1
                         },
@@ -104,6 +110,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 4,
                             Description = "Áo Thun",
+                            IsParent = false,
                             Name = "Áo Hoodie",
                             ParentCategoryId = 1
                         });
@@ -319,7 +326,7 @@ namespace RookiesFashion.APIService.Data.Migrations
             modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>
                 {
                     b.HasOne("RookiesFashion.APIService.Models.Category", "Parent")
-                        .WithMany()
+                        .WithMany("Children")
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("Parent");
@@ -401,6 +408,11 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Navigation("Identity");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>
+                {
+                    b.Navigation("Children");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>

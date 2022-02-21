@@ -48,13 +48,13 @@ namespace RookiesFashion.APIService.Controllers
                 ServiceResponse serResp = await _categoryService.GetCategoriesById(categoryId);
                 return GetRequestServiceResult(serResp);
             }
-            return ResponseMessage(HttpStatusCode.BadRequest, "Invalid param");
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id, Category category)
+        public async Task<IActionResult> PutCategory(string id, [FromForm] Category category)
         {
             if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
@@ -65,7 +65,7 @@ namespace RookiesFashion.APIService.Controllers
                 }
                 return ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
             }
-            return ResponseMessage(HttpStatusCode.BadRequest, "Invalid param");
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
         // POST: api/Categories
@@ -73,9 +73,8 @@ namespace RookiesFashion.APIService.Controllers
         [HttpPost]
         public async Task<ActionResult> PostCategory([FromForm] Category category)
         {
-            // ServiceResponse serResp = await _categoryService.InsertCategory(category);
-            // return GetRequestServiceResult(serResp);
-            return ResponseMessage(HttpStatusCode.BadRequest, "Invalid param");
+            ServiceResponse serResp = await _categoryService.InsertCategory(category);
+            return GetRequestServiceResult(serResp);
         }
 
         // DELETE: api/Categories/5
@@ -91,17 +90,13 @@ namespace RookiesFashion.APIService.Controllers
                 }
                 return ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
             }
-            return ResponseMessage(HttpStatusCode.BadRequest, "Invalid param");
+            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
         }
 
-        private JsonResult ResponseMessage(HttpStatusCode statusCode, string message, object data = null)
+        private JsonResult ResponseMessage(HttpStatusCode statusCode, object resultObj)
         {
             HttpContext.Response.StatusCode = (int)statusCode;
-            return new JsonResult(new
-            {
-                Message = message,
-                Data = data
-            });
+            return new JsonResult(resultObj);
         }
 
         private JsonResult GetRequestServiceResult(ServiceResponse serResp)
@@ -109,15 +104,15 @@ namespace RookiesFashion.APIService.Controllers
             switch (serResp.Code)
             {
                 case ServiceResponseStatus.SUCCESS:
-                    return ResponseMessage(HttpStatusCode.OK, serResp.Message, serResp.Data);
+                    return ResponseMessage(HttpStatusCode.OK, new { Message = serResp.Message, Data = serResp.Data });
                 case ServiceResponseStatus.ERROR:
-                    return ResponseMessage(HttpStatusCode.InternalServerError, serResp.Message, serResp.Data);
+                    return ResponseMessage(HttpStatusCode.InternalServerError, new { Message = serResp.Message, Data = serResp.Data });
                 case ServiceResponseStatus.OBJECT_NOT_FOUND:
-                    return ResponseMessage(HttpStatusCode.NotFound, serResp.Message, serResp.Data);
+                    return ResponseMessage(HttpStatusCode.NotFound, new { Message = serResp.Message, Data = serResp.Data });
                 case ServiceResponseStatus.DATA_CREATED:
-                    return ResponseMessage(HttpStatusCode.Created, serResp.Message, serResp.Data);
+                    return ResponseMessage(HttpStatusCode.Created, new { Message = serResp.Message, Data = serResp.Data });
                 default:
-                    return ResponseMessage(HttpStatusCode.BadRequest, "Bad request");
+                    return ResponseMessage(HttpStatusCode.BadRequest, new { Message = "Bad request" });
             }
         }
     }

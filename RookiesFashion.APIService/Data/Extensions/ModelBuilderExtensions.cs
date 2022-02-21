@@ -57,7 +57,8 @@ public static class ModelBuilderExtensions{
             new Category(){
                 CategoryId = 1,
                 Name = "Áo",
-                Description = "Áo"
+                Description = "Áo",
+                IsParent = true
             },
             new Category(){
                 CategoryId = 2,

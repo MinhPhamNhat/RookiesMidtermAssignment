@@ -51,7 +51,8 @@ namespace RookiesFashion.APIService.Services
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseStatus.SUCCESS,
-                        Data = category
+                        Data = category,
+                        Message = $"Succesfully Get Category {categoryId}"
                     };
                 else
                     return new ServiceResponse()
