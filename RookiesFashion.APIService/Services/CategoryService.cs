@@ -41,7 +41,7 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public async Task<ServiceResponse> GetCategoriesById(int categoryId)
+        public async Task<ServiceResponse> GetCategoryById(int categoryId)
         {
             try
             {

@@ -45,7 +45,7 @@ namespace RookiesFashion.APIService.Controllers
         {
             if (int.TryParse(id, out int categoryId))
             {
-                ServiceResponse serResp = await _categoryService.GetCategoriesById(categoryId);
+                ServiceResponse serResp = await _categoryService.GetCategoryById(categoryId);
                 return GetRequestServiceResult(serResp);
             }
             return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
@@ -54,7 +54,7 @@ namespace RookiesFashion.APIService.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id, [FromForm] Category category)
+        public async Task<ActionResult> PutCategory(string id, [FromForm] Category category)
         {
             if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
