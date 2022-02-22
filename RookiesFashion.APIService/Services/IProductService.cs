@@ -11,6 +11,6 @@ namespace RookiesFashion.APIService.Services
         Task<ServiceResponse> InsertProduct(Product product);
         Task<ServiceResponse> UpdateProduct(Product product);
         Task<ServiceResponse> DeleteProduct(int productId);
-        bool IsExist(int productId);
+        bool IsExist(int productId, out Product product);
     }
 }

@@ -6,6 +6,9 @@ html {
   html {
     font-size: 16px;
   }
+  body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
 }
 
 html {
@@ -15,4 +18,8 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.navbar-nav .dropdown *{
+  color: black;
 }

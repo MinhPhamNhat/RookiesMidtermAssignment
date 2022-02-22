@@ -10,14 +10,8 @@ namespace RookiesFashion.APIService.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ImageId { get; set; }
 
-        [Required]
-        public string Path { get; set; }
+        public string? ImageName { get; set; }
 
-        [Required]
-        public string ImageName { get; set; }
-
-        [Required]
-        public string Extension { get; set; }
-
+        public string? Extension { get; set; }
     }
 }

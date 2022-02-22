@@ -45,7 +45,8 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.Find(productId);
+                var product = _context.Products
+                .FirstOrDefault(p=>p.ProductId == productId);
 
                 if (product != null)
                     return new ServiceResponse()
@@ -155,9 +156,10 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public bool IsExist(int productId)
+        public bool IsExist(int productId, out Product product)
         {
-            return _context.Products.Any(e => e.ProductId == productId);
+            product = _context.Products.Find(productId); 
+            return product != null;
         }
 
         protected virtual void Dispose(bool disposing)

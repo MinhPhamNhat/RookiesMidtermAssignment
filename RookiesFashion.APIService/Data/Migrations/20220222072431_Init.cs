@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -54,14 +55,29 @@ namespace RookiesFashion.APIService.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Size",
+                columns: table => new
+                {
+                    SizeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Size", x => x.SizeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,8 +86,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         name: "FK_Product_Category_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Category",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CategoryId");
                 });
 
             migrationBuilder.CreateTable(
@@ -107,9 +122,8 @@ namespace RookiesFashion.APIService.Data.Migrations
                 {
                     ImageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Path = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Extension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -123,19 +137,43 @@ namespace RookiesFashion.APIService.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Size",
+                name: "ProductSize",
                 columns: table => new
                 {
-                    SizeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true)
+                    ProductsProductId = table.Column<int>(type: "int", nullable: false),
+                    SizesSizeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Size", x => x.SizeId);
+                    table.PrimaryKey("PK_ProductSize", x => new { x.ProductsProductId, x.SizesSizeId });
                     table.ForeignKey(
-                        name: "FK_Size_Product_ProductId",
+                        name: "FK_ProductSize_Product_ProductsProductId",
+                        column: x => x.ProductsProductId,
+                        principalTable: "Product",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductSize_Size_SizesSizeId",
+                        column: x => x.SizesSizeId,
+                        principalTable: "Size",
+                        principalColumn: "SizeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UpdatedDate",
+                columns: table => new
+                {
+                    UpdatedDateId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UpdatedDate", x => x.UpdatedDateId);
+                    table.ForeignKey(
+                        name: "FK_UpdatedDate_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "ProductId");
@@ -148,18 +186,19 @@ namespace RookiesFashion.APIService.Data.Migrations
                     RatingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RatingVal = table.Column<int>(type: "int", nullable: false),
-                    RatedProductProductId = table.Column<int>(type: "int", nullable: false),
+                    RatingProductId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    RatingUserId = table.Column<int>(type: "int", nullable: false),
                     UserRatingUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rating", x => x.RatingId);
                     table.ForeignKey(
-                        name: "FK_Rating_Product_RatedProductProductId",
-                        column: x => x.RatedProductProductId,
+                        name: "FK_Rating_Product_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Product",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ProductId");
                     table.ForeignKey(
                         name: "FK_Rating_User_UserRatingUserId",
                         column: x => x.UserRatingUserId,
@@ -174,9 +213,8 @@ namespace RookiesFashion.APIService.Data.Migrations
                 {
                     ColorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ThumbnailImageId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ThumbnailImageId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -187,11 +225,30 @@ namespace RookiesFashion.APIService.Data.Migrations
                         principalTable: "Image",
                         principalColumn: "ImageId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ColorProduct",
+                columns: table => new
+                {
+                    ColorsColorId = table.Column<int>(type: "int", nullable: false),
+                    ProductsProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ColorProduct", x => new { x.ColorsColorId, x.ProductsProductId });
                     table.ForeignKey(
-                        name: "FK_Color_Product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_ColorProduct_Color_ColorsColorId",
+                        column: x => x.ColorsColorId,
+                        principalTable: "Color",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ColorProduct_Product_ProductsProductId",
+                        column: x => x.ProductsProductId,
                         principalTable: "Product",
-                        principalColumn: "ProductId");
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -210,12 +267,32 @@ namespace RookiesFashion.APIService.Data.Migrations
                 values: new object[] { 1, "Áo", true, "Áo", null });
 
             migrationBuilder.InsertData(
+                table: "Image",
+                columns: new[] { "ImageId", "Extension", "ImageName", "ProductId" },
+                values: new object[,]
+                {
+                    { 1, "png", "black_ecjeap", null },
+                    { 2, "png", "red_e8saf2", null },
+                    { 3, "png", "white_s8f0yl", null }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Role",
                 columns: new[] { "RoleId", "Description" },
                 values: new object[,]
                 {
                     { 0, "Administrator" },
                     { 1, "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Size",
+                columns: new[] { "SizeId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "XL" },
+                    { 2, "XXL" },
+                    { 3, "L" }
                 });
 
             migrationBuilder.InsertData(
@@ -226,6 +303,16 @@ namespace RookiesFashion.APIService.Data.Migrations
                     { 2, "Áo khoác", false, "Áo khoác", 1 },
                     { 3, "Áo Hoodie", false, "Áo Hoodie", 1 },
                     { 4, "Áo Thun", false, "Áo Hoodie", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Color",
+                columns: new[] { "ColorId", "Name", "ThumbnailImageId" },
+                values: new object[,]
+                {
+                    { 1, "Black", 1 },
+                    { 2, "Red", 2 },
+                    { 3, "White", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -244,14 +331,14 @@ namespace RookiesFashion.APIService.Data.Migrations
                 column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Color_ProductId",
-                table: "Color",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Color_ThumbnailImageId",
                 table: "Color",
                 column: "ThumbnailImageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ColorProduct_ProductsProductId",
+                table: "ColorProduct",
+                column: "ProductsProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Image_ProductId",
@@ -264,9 +351,14 @@ namespace RookiesFashion.APIService.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rating_RatedProductProductId",
+                name: "IX_ProductSize_SizesSizeId",
+                table: "ProductSize",
+                column: "SizesSizeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rating_ProductId",
                 table: "Rating",
-                column: "RatedProductProductId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rating_UserRatingUserId",
@@ -274,8 +366,8 @@ namespace RookiesFashion.APIService.Data.Migrations
                 column: "UserRatingUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Size_ProductId",
-                table: "Size",
+                name: "IX_UpdatedDate_ProductId",
+                table: "UpdatedDate",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -292,28 +384,37 @@ namespace RookiesFashion.APIService.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Color");
+                name: "ColorProduct");
+
+            migrationBuilder.DropTable(
+                name: "ProductSize");
 
             migrationBuilder.DropTable(
                 name: "Rating");
 
             migrationBuilder.DropTable(
-                name: "Size");
+                name: "UpdatedDate");
 
             migrationBuilder.DropTable(
-                name: "Image");
+                name: "Color");
+
+            migrationBuilder.DropTable(
+                name: "Size");
 
             migrationBuilder.DropTable(
                 name: "User");
 
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Image");
 
             migrationBuilder.DropTable(
                 name: "Account");
 
             migrationBuilder.DropTable(
                 name: "Role");
+
+            migrationBuilder.DropTable(
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Category");

@@ -8,56 +8,52 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Models;
-using RookiesFashion.APIService.Services;
 
 namespace RookiesFashion.APIService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ColorsController : ControllerBase
     {
         private readonly RookiesFashionContext _context;
 
-        private readonly IProductService _productService;
-
-        public ProductController(RookiesFashionContext context, IProductService productService)
+        public ColorsController(RookiesFashionContext context)
         {
             _context = context;
-            _productService = productService;
         }
 
-        // GET: api/Product
+        // GET: api/Colors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Color>>> GetColors()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Colors.ToListAsync();
         }
 
-        // GET: api/Product/5
+        // GET: api/Colors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Color>> GetColor(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var color = await _context.Colors.FindAsync(id);
 
-            if (product == null)
+            if (color == null)
             {
                 return NotFound();
             }
 
-            return product;
+            return color;
         }
 
-        // PUT: api/Product/5
+        // PUT: api/Colors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutColor(int id, Color color)
         {
-            if (id != product.ProductId)
+            if (id != color.ColorId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(color).State = EntityState.Modified;
 
             try
             {
@@ -65,7 +61,7 @@ namespace RookiesFashion.APIService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!ColorExists(id))
                 {
                     return NotFound();
                 }
@@ -78,36 +74,36 @@ namespace RookiesFashion.APIService.Controllers
             return NoContent();
         }
 
-        // POST: api/Product
+        // POST: api/Colors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Color>> PostColor(Color color)
         {
-            _context.Products.Add(product);
+            _context.Colors.Add(color);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
+            return CreatedAtAction("GetColor", new { id = color.ColorId }, color);
         }
 
-        // DELETE: api/Product/5
+        // DELETE: api/Colors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteColor(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var color = await _context.Colors.FindAsync(id);
+            if (color == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
+            _context.Colors.Remove(color);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProductExists(int id)
+        private bool ColorExists(int id)
         {
-            return _context.Products.Any(e => e.ProductId == id);
+            return _context.Colors.Any(e => e.ColorId == id);
         }
     }
 }

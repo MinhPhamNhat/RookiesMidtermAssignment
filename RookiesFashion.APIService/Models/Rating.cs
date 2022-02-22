@@ -15,8 +15,11 @@ namespace RookiesFashion.APIService.Models
         public int RatingVal { get; set; }
 
         [Required]
-        public virtual Product RatedProduct { get; set; }
+        public int RatingProductId { get; set; }
+        public virtual Product? Product { get; set; }
         [Required]
+
+        public int RatingUserId { get; set; }
         public virtual User UserRating { get; set; }
     }
 }

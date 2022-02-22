@@ -12,7 +12,7 @@ using RookiesFashion.APIService.Data.Context;
 namespace RookiesFashion.APIService.Data.Migrations
 {
     [DbContext(typeof(RookiesFashionContext))]
-    [Migration("20220221030145_Init")]
+    [Migration("20220222072431_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,36 @@ namespace RookiesFashion.APIService.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("ColorProduct", b =>
+                {
+                    b.Property<int>("ColorsColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ColorsColorId", "ProductsProductId");
+
+                    b.HasIndex("ProductsProductId");
+
+                    b.ToTable("ColorProduct");
+                });
+
+            modelBuilder.Entity("ProductSize", b =>
+                {
+                    b.Property<int>("ProductsProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizesSizeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductsProductId", "SizesSizeId");
+
+                    b.HasIndex("SizesSizeId");
+
+                    b.ToTable("ProductSize");
+                });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Account", b =>
                 {
@@ -127,22 +157,36 @@ namespace RookiesFashion.APIService.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ColorId"), 1L, 1);
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
 
                     b.Property<int>("ThumbnailImageId")
                         .HasColumnType("int");
 
                     b.HasKey("ColorId");
 
-                    b.HasIndex("ProductId");
-
                     b.HasIndex("ThumbnailImageId");
 
                     b.ToTable("Color");
+
+                    b.HasData(
+                        new
+                        {
+                            ColorId = 1,
+                            Name = "Black",
+                            ThumbnailImageId = 1
+                        },
+                        new
+                        {
+                            ColorId = 2,
+                            Name = "Red",
+                            ThumbnailImageId = 2
+                        },
+                        new
+                        {
+                            ColorId = 3,
+                            Name = "White",
+                            ThumbnailImageId = 3
+                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Image", b =>
@@ -154,15 +198,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"), 1L, 1);
 
                     b.Property<string>("Extension")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Path")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProductId")
@@ -173,6 +211,26 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Image");
+
+                    b.HasData(
+                        new
+                        {
+                            ImageId = 1,
+                            Extension = "png",
+                            ImageName = "black_ecjeap"
+                        },
+                        new
+                        {
+                            ImageId = 2,
+                            Extension = "png",
+                            ImageName = "red_e8saf2"
+                        },
+                        new
+                        {
+                            ImageId = 3,
+                            Extension = "png",
+                            ImageName = "white_s8f0yl"
+                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>
@@ -183,14 +241,19 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Price")
                         .HasColumnType("float");
 
                     b.HasKey("ProductId");
@@ -208,7 +271,13 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RatingId"), 1L, 1);
 
-                    b.Property<int>("RatedProductProductId")
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingUserId")
                         .HasColumnType("int");
 
                     b.Property<int>("RatingVal")
@@ -219,7 +288,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasKey("RatingId");
 
-                    b.HasIndex("RatedProductProductId");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("UserRatingUserId");
 
@@ -264,14 +333,47 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("SizeId");
+
+                    b.ToTable("Size");
+
+                    b.HasData(
+                        new
+                        {
+                            SizeId = 1,
+                            Name = "XL"
+                        },
+                        new
+                        {
+                            SizeId = 2,
+                            Name = "XXL"
+                        },
+                        new
+                        {
+                            SizeId = 3,
+                            Name = "L"
+                        });
+                });
+
+            modelBuilder.Entity("RookiesFashion.APIService.Models.UpdatedDate", b =>
+                {
+                    b.Property<int>("UpdatedDateId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UpdatedDateId"), 1L, 1);
+
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("SizeId");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UpdatedDateId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Size");
+                    b.ToTable("UpdatedDate");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.User", b =>
@@ -325,6 +427,36 @@ namespace RookiesFashion.APIService.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ColorProduct", b =>
+                {
+                    b.HasOne("RookiesFashion.APIService.Models.Color", null)
+                        .WithMany()
+                        .HasForeignKey("ColorsColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RookiesFashion.APIService.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProductSize", b =>
+                {
+                    b.HasOne("RookiesFashion.APIService.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RookiesFashion.APIService.Models.Size", null)
+                        .WithMany()
+                        .HasForeignKey("SizesSizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>
                 {
                     b.HasOne("RookiesFashion.APIService.Models.Category", "Parent")
@@ -336,10 +468,6 @@ namespace RookiesFashion.APIService.Data.Migrations
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Color", b =>
                 {
-                    b.HasOne("RookiesFashion.APIService.Models.Product", null)
-                        .WithMany("Color")
-                        .HasForeignKey("ProductId");
-
                     b.HasOne("RookiesFashion.APIService.Models.Image", "Thumbnail")
                         .WithMany()
                         .HasForeignKey("ThumbnailImageId")
@@ -359,21 +487,17 @@ namespace RookiesFashion.APIService.Data.Migrations
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>
                 {
                     b.HasOne("RookiesFashion.APIService.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Rating", b =>
                 {
-                    b.HasOne("RookiesFashion.APIService.Models.Product", "RatedProduct")
+                    b.HasOne("RookiesFashion.APIService.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("RatedProductProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
 
                     b.HasOne("RookiesFashion.APIService.Models.User", "UserRating")
                         .WithMany()
@@ -381,16 +505,18 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("RatedProduct");
+                    b.Navigation("Product");
 
                     b.Navigation("UserRating");
                 });
 
-            modelBuilder.Entity("RookiesFashion.APIService.Models.Size", b =>
+            modelBuilder.Entity("RookiesFashion.APIService.Models.UpdatedDate", b =>
                 {
-                    b.HasOne("RookiesFashion.APIService.Models.Product", null)
-                        .WithMany("Size")
+                    b.HasOne("RookiesFashion.APIService.Models.Product", "Product")
+                        .WithMany("UpdatedDates")
                         .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.User", b =>
@@ -415,15 +541,15 @@ namespace RookiesFashion.APIService.Data.Migrations
             modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>
                 {
                     b.Navigation("Children");
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>
                 {
-                    b.Navigation("Color");
-
-                    b.Navigation("Size");
-
                     b.Navigation("Thumbnail");
+
+                    b.Navigation("UpdatedDates");
                 });
 #pragma warning restore 612, 618
         }

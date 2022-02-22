@@ -21,7 +21,9 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories.ToList();
+                var categories = _context.Categories
+                .Include(c=>c.Products).ThenInclude(p=>p.Thumbnail)
+                .Include(c=>c.Parent).ToList();
 
                 return new ServiceResponse()
                 {
