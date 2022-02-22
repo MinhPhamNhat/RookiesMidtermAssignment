@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Data.Context;
+using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services;
@@ -22,13 +23,13 @@ namespace RookiesFashion.APIService.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly RookiesFashionContext _context;
-
         private readonly ICategoryService _categoryService;
-
-        public CategoriesController(RookiesFashionContext context, ICategoryService categoryService)
+        private readonly ICloudinaryService _cloudinaryService;
+        public CategoriesController(RookiesFashionContext context, ICategoryService categoryService, ICloudinaryService cloudinaryService)
         {
             _context = context;
             _categoryService = categoryService;
+            _cloudinaryService = cloudinaryService;
         }
 
         // GET: api/Categories
@@ -45,7 +46,7 @@ namespace RookiesFashion.APIService.Controllers
         {
             if (int.TryParse(id, out int categoryId))
             {
-                ServiceResponse serResp = await _categoryService.GetCategoriesById(categoryId);
+                ServiceResponse serResp = await _categoryService.GetCategoryById(categoryId);
                 return GetRequestServiceResult(serResp);
             }
             return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
@@ -54,7 +55,7 @@ namespace RookiesFashion.APIService.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(string id, [FromForm] Category category)
+        public async Task<ActionResult> PutCategory(string id, [FromForm] Category category)
         {
             if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
@@ -79,7 +80,7 @@ namespace RookiesFashion.APIService.Controllers
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(string id)
+        public async Task<ActionResult> DeleteCategory(string id)
         {
             if (int.TryParse(id, out int categoryId))
             {

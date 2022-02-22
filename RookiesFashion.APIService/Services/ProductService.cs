@@ -6,30 +6,28 @@ using RookiesFashion.APIService.Models;
 
 namespace RookiesFashion.APIService.Services
 {
-    public class CategoryService : ICategoryService, IDisposable
+    public class ProductService : IProductService, IDisposable
     {
         private readonly RookiesFashionContext _context;
 
         private bool disposed = false;
 
-        public CategoryService(RookiesFashionContext context)
+        public ProductService(RookiesFashionContext context)
         {
             _context = context;
         }
 
-        public async Task<ServiceResponse> GetCategories()
+        public async Task<ServiceResponse> GetProducts()
         {
             try
             {
-                var categories = _context.Categories
-                .Include(c=>c.Products).ThenInclude(p=>p.Thumbnail)
-                .Include(c=>c.Parent).ToList();
+                var products = _context.Products.ToList();
 
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseStatus.SUCCESS,
-                    Message = "Successfully Get Categories",
-                    Data = categories
+                    Message = "Successfully Get Products",
+                    Data = products
                 };
             }
             catch (Exception ex)
@@ -43,24 +41,25 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public async Task<ServiceResponse> GetCategoryById(int categoryId)
+        public async Task<ServiceResponse> GetProductById(int productId)
         {
             try
             {
-                var category = _context.Categories.Find(categoryId);
+                var product = _context.Products
+                .FirstOrDefault(p=>p.ProductId == productId);
 
-                if (category != null)
+                if (product != null)
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseStatus.SUCCESS,
-                        Data = category,
-                        Message = $"Succesfully Get Category {categoryId}"
+                        Data = product,
+                        Message = $"Succesfully Get Product {productId}"
                     };
                 else
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
-                        Message = "Category not found"
+                        Message = "Product not found"
                     };
 
             }
@@ -75,18 +74,18 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public async Task<ServiceResponse> InsertCategory(Category category)
+        public async Task<ServiceResponse> InsertProduct(Product product)
         {
             try
             {
-                _context.Categories.Add(category);
+                _context.Products.Add(product);
                 _context.SaveChanges();
                 
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseStatus.DATA_CREATED,
-                    Message = "Category Created",
-                    Data = category
+                    Message = "Product Created",
+                    Data = product
                 };
 
             }
@@ -101,18 +100,18 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public async Task<ServiceResponse> UpdateCategory(Category category)
+        public async Task<ServiceResponse> UpdateProduct(Product product)
         {
             try
             {
-                _context.Entry(category).State = EntityState.Modified;
+                _context.Entry(product).State = EntityState.Modified;
                 _context.SaveChanges();
                 
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseStatus.SUCCESS,
-                    Message = "Category Updated",
-                    Data = category
+                    Message = "Product Updated",
+                    Data = product
                 };
 
             }
@@ -127,13 +126,13 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public async Task<ServiceResponse> DeleteCategory(int categoryId)
+        public async Task<ServiceResponse> DeleteProduct(int productId)
         {
             try
             {
-                var category = _context.Categories.Find(categoryId);
+                var product = _context.Products.Find(productId);
                 
-                if (category != null)
+                if (product != null)
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseStatus.SUCCESS,
@@ -142,7 +141,7 @@ namespace RookiesFashion.APIService.Services
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
-                        Message = "Category not found"
+                        Message = "Product not found"
                     };
 
             }
@@ -157,9 +156,10 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public bool IsExist(int categoryId)
+        public bool IsExist(int productId, out Product product)
         {
-            return _context.Categories.Any(e => e.CategoryId == categoryId);
+            product = _context.Products.Find(productId); 
+            return product != null;
         }
 
         protected virtual void Dispose(bool disposing)

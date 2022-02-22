@@ -8,6 +8,8 @@ namespace RookiesFashion.APIService.Data.Context
             Console.WriteLine("Context Initiated");
          }
 
+         public RookiesFashionContext(){}
+
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
@@ -17,7 +19,7 @@ namespace RookiesFashion.APIService.Data.Context
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
+        protected override async void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Seed();
         }
     }
