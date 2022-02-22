@@ -1,4 +1,4 @@
-namespace RookiesFashion.APIService.Helpers
+namespace RookiesFashion.APIService.Ex
 {
     public class ValidationError
     {

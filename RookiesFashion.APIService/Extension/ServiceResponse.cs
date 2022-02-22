@@ -2,7 +2,7 @@ using System.Net;
 using System.Text;
 using RookiesFashion.APIService.Constants;
 
-namespace RookiesFashion.APIService.Helpers
+namespace RookiesFashion.APIService.Extension
 {
     public class ServiceResponse
     {

@@ -1,4 +1,5 @@
 using CloudinaryDotNet.Actions;
+using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 

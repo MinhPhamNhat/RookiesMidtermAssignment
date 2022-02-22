@@ -20,6 +20,6 @@ namespace RookiesFashion.APIService.Models
         [Required]
 
         public int RatingUserId { get; set; }
-        public virtual User UserRating { get; set; }
+        public virtual User? UserRating { get; set; }
     }
 }

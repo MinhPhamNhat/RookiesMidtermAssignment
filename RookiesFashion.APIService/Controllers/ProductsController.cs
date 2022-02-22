@@ -34,8 +34,7 @@ namespace RookiesFashion.APIService.Controllers
         private readonly IColorService _colorService;
         private readonly ISizeService _sizeService;
         private readonly ICategoryService _categoryService;
-        private Function func;
-
+        private MyApiHelper apiHelper;
         public ProductsController(
             IImageService imageService,
             RookiesFashionContext context,
@@ -54,27 +53,28 @@ namespace RookiesFashion.APIService.Controllers
             _sizeService = sizeService;
             _categoryService = categoryService;
             _imageUploadHelper = imageUploadHelper;
-            func = new Function();
         }
 
         // GET: api/Product
         [HttpGet]
         public async Task<ActionResult> GetProducts()
         {
+            apiHelper = new MyApiHelper(HttpContext);
             ServiceResponse serResp = await _productService.GetProducts();
-            return GetRequestServiceResult(serResp);
+            return apiHelper.GetRequestServiceResult(serResp);
         }
 
         // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult> GetProduct(string id)
         {
+            apiHelper = new MyApiHelper(HttpContext);
             if (int.TryParse(id, out int productId))
             {
                 ServiceResponse serResp = await _productService.GetProductById(productId);
-                return GetRequestServiceResult(serResp);
+                return apiHelper.GetRequestServiceResult(serResp);
             }
-            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
+            return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
         }
 
         // PUT: api/Product/5
@@ -82,61 +82,62 @@ namespace RookiesFashion.APIService.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutProduct(string id, [FromForm] string data, [FromForm] List<IFormFile> Files)
         {
+            apiHelper = new MyApiHelper(HttpContext);
             dynamic body = JsonConvert.DeserializeObject(data);
 
             if (!int.TryParse(id, out int productId))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
+                return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
             }
 
             if (!_productService.IsExist(productId, out Product product))
             {
-                return ResponseMessage(HttpStatusCode.NotFound, new { Message = "Product not found " });
+                return apiHelper.ResponseMessage(HttpStatusCode.NotFound, new { Message = "Product not found " });
             }
 
-            if (func.DynamicHasProperty(body, "Name"))
+            if (Function.DynamicHasProperty(body, "Name"))
             {
                 product.Name = Convert.ToString(body.Name);
             }
 
-            if (func.DynamicHasProperty(body, "Description"))
+            if (Function.DynamicHasProperty(body, "Description"))
             {
                 product.Description = Convert.ToString(body.Description);
             }
 
-            if (func.DynamicHasProperty(body, "CategoryId"))
+            if (Function.DynamicHasProperty(body, "CategoryId"))
             {
                 // Validate if ProductCategoryId is number
                 string stringCategoryId = Convert.ToString(body.CategoryId);
                 if (!int.TryParse(stringCategoryId, out int CategoryId))
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("CategoryId", body.CategoryId, $"CategoryId is invalid")));
+                    return apiHelper.ValidationResponseMessage("CategoryId", body.CategoryId, $"CategoryId is invalid");
                 }
                 if (!_categoryService.IsExist(CategoryId))
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("CategoryId", body.CategoryId, $"Category not found")));
+                    return apiHelper.ValidationResponseMessage("CategoryId", body.CategoryId, $"Category not found");
                 }
                 product.CategoryId = CategoryId;
             }
 
-            if (func.DynamicHasProperty(body, "Price"))
+            if (Function.DynamicHasProperty(body, "Price"))
             {
                 string stringPrice = Convert.ToString(body.Price);
                 if (!int.TryParse(stringPrice, out int Price))
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Price", stringPrice, $"Price is invalid")));
+                    return apiHelper.ValidationResponseMessage("Price", stringPrice, $"Price is invalid");
                 }
                 product.Price = Price;
             }
 
-            if (func.DynamicHasProperty(body, "Colors"))
+            if (Function.DynamicHasProperty(body, "Colors"))
             {
                 List<int> ColorIdList = new List<int>();
                 List<Color> finalColorList = new List<Color>();
                 // Validate if all colorid is number
                 if (((JArray)body.Colors).Any(c => !int.TryParse(c.ToString(), out _)))
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Colors", body.Colors, "Color id is invalid")));
+                    return apiHelper.ValidationResponseMessage("Colors", body.Colors, "Color id is invalid");
                 }
                 else
                 {
@@ -151,18 +152,18 @@ namespace RookiesFashion.APIService.Controllers
                     }
                     else
                     {
-                        return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Colors", body.Colors, $"ColorId {colorId} not found")));
+                        return apiHelper.ValidationResponseMessage("Colors", body.Colors, $"ColorId {colorId} not found");
                     }
                 }
             }
-            if (func.DynamicHasProperty(body, "Sizes"))
+            if (Function.DynamicHasProperty(body, "Sizes"))
             {
                 List<int> SizeIdList = new List<int>();
                 List<Size> finalSizeList = new List<Size>();
                 // Validate if all sizeid is number
                 if (((JArray)body.Sizes).Any(s => !int.TryParse(s.ToString(), out _)))
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Sizes", body.Sizes, "Size id is invalid")));
+                    return apiHelper.ValidationResponseMessage("Sizes", body.Sizes, "Size id is invalid");
                 }
                 else
                 {
@@ -177,26 +178,26 @@ namespace RookiesFashion.APIService.Controllers
                     }
                     else
                     {
-                        return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Sizes", body.Sizes, $"SizeId {sizeId} not found")));
+                        return apiHelper.ValidationResponseMessage("Sizes", body.Sizes, $"SizeId {sizeId} not found");
                     }
                 }
             }
             if (!TryValidateModel(product))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(ModelState));
+                return apiHelper.ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(ModelState));
             }
             if (Files.Count > 0)
             {
                 if (Files.Count > (int)SystemRequirements.IMAGE_MAX_COUNT)
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Files", Files, "Images must be less than 3 and larger than 0")));
+                    return apiHelper.ValidationResponseMessage("Files", Files, "Images must be less than 3 and larger than 0");
                 }
                 var images = await _imageUploadHelper.ImageUpload(Files);
                 product.Thumbnail = images;
             }
 
             ServiceResponse serResp = await _productService.UpdateProduct(product);
-            return GetRequestServiceResult(serResp);
+            return apiHelper.GetRequestServiceResult(serResp);
         }
 
         // POST: api/Product
@@ -204,6 +205,7 @@ namespace RookiesFashion.APIService.Controllers
         [HttpPost]
         public async Task<ActionResult> PostProduct([FromForm] string data, [FromForm] List<IFormFile> Files)
         {
+            apiHelper = new MyApiHelper(HttpContext);
             dynamic body = JsonConvert.DeserializeObject(data);
 
             List<int> ColorIdList = new List<int>();
@@ -219,17 +221,17 @@ namespace RookiesFashion.APIService.Controllers
             // Validate number of files ( must <= 2 )
             if (Files.Count > (int)SystemRequirements.IMAGE_MAX_COUNT || Files.Count < 1)
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Files", Files, "Images must be less than 3 and larger than 0")));
+                return apiHelper.ValidationResponseMessage("Files", Files, "Images must be less than 3 and larger than 0");
             }
             // Validate if all files are image
-            if (!Files.All(f => f.ContentType.Contains(func.GetDescription(SystemRequirements.IMAGE_TYPE))))
+            if (!Files.All(f => f.ContentType.Contains(Function.GetDescription(SystemRequirements.IMAGE_TYPE))))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Files", Files, "Not all file is image")));
+                return apiHelper.ValidationResponseMessage("Files", Files, "Not all file is image");
             }
             // Validate if all colorid is number
             if (((JArray)body.Colors).Any(c => !int.TryParse(c.ToString(), out _)))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Colors", body.Colors, "Color id is invalid")));
+                return apiHelper.ValidationResponseMessage("Colors", body.Colors, "Color id is invalid");
             }
             else
             {
@@ -244,13 +246,13 @@ namespace RookiesFashion.APIService.Controllers
                 }
                 else
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Colors", body.Colors, $"ColorId {colorId} not found")));
+                    return apiHelper.ValidationResponseMessage("Colors", body.Colors, $"ColorId {colorId} not found");
                 }
             }
             // Validate if all sizeid is number
             if (((JArray)body.Sizes).Any(s => !int.TryParse(s.ToString(), out _)))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Sizes", body.Sizes, "Size id is invalid")));
+                return apiHelper.ValidationResponseMessage("Sizes", body.Sizes, "Size id is invalid");
             }
             else
             {
@@ -265,22 +267,22 @@ namespace RookiesFashion.APIService.Controllers
                 }
                 else
                 {
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Sizes", body.Sizes, $"SizeId {sizeId} not found")));
+                    return apiHelper.ValidationResponseMessage("Sizes", body.Sizes, $"SizeId {sizeId} not found");
                 }
             }
             // Validate if ProductCategoryId is number
             if (!int.TryParse(ProductCategoryId, out int productCategoryId))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("CategoryId", body.CategoryId, $"CategoryId is invalid")));
+                return apiHelper.ValidationResponseMessage("CategoryId", body.CategoryId, $"CategoryId is invalid");
             }
             if (!_categoryService.IsExist(productCategoryId))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("CategoryId", body.CategoryId, $"Category not found")));
+                return apiHelper.ValidationResponseMessage("CategoryId", body.CategoryId, $"Category not found");
             }
             // Validate if Price is number
             if (!int.TryParse(Price, out int productPrice))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Price", Price, $"Price is invalid")));
+                return apiHelper.ValidationResponseMessage("Price", Price, $"Price is invalid");
             }
             Product product = new Product()
             {
@@ -294,58 +296,29 @@ namespace RookiesFashion.APIService.Controllers
 
             if (!TryValidateModel(product))
             {
-                return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(ModelState));
+                return apiHelper.ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(ModelState));
             }
             var images = await _imageUploadHelper.ImageUpload(Files);
             product.Thumbnail = images;
             ServiceResponse serResp = await _productService.InsertProduct(product);
-            return GetRequestServiceResult(serResp);
+            return apiHelper.GetRequestServiceResult(serResp);
         }
 
         // DELETE: api/Product/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(string id)
         {
+            apiHelper = new MyApiHelper(HttpContext);
             if (int.TryParse(id, out int categoryId))
             {
                 if (_productService.IsExist(categoryId, out _))
                 {
                     ServiceResponse serResp = await _productService.DeleteProduct(categoryId);
-                    return GetRequestServiceResult(serResp);
+                    return apiHelper.GetRequestServiceResult(serResp);
                 }
-                return ResponseMessage(HttpStatusCode.NotFound, new { Message = "Product Not Found" });
+                return apiHelper.ResponseMessage(HttpStatusCode.NotFound, new { Message = "Product Not Found" });
             }
-            return ResponseMessage(HttpStatusCode.BadRequest, new ValidationResultModel(new ValidationError("Id", id, "Invalid param")));
-
+            return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
         }
-
-        private JsonResult ResponseMessage(HttpStatusCode statusCode, object resultObj)
-        {
-            HttpContext.Response.StatusCode = (int)statusCode;
-            return new JsonResult(resultObj);
-        }
-
-        private JsonResult GetRequestServiceResult(ServiceResponse serResp)
-        {
-            switch (serResp.Code)
-            {
-                case ServiceResponseStatus.SUCCESS:
-                    return ResponseMessage(HttpStatusCode.OK, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.ERROR:
-                    return ResponseMessage(HttpStatusCode.InternalServerError, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.OBJECT_NOT_FOUND:
-                    return ResponseMessage(HttpStatusCode.NotFound, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.DATA_CREATED:
-                    return ResponseMessage(HttpStatusCode.Created, new { Message = serResp.Message, Data = serResp.Data });
-                default:
-                    return ResponseMessage(HttpStatusCode.BadRequest, new { Message = "Bad request" });
-            }
-        }
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.ProductId == id);
-        }
-
-
     }
 }

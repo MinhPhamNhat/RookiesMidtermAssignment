@@ -21,7 +21,7 @@ public class ImageUploadHelper{
         images = new List<Image>();  
         foreach (var f in files)
         {
-            var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + new Function().GetDescription(SystemRequirements.DEFAULT_IMAGE_EXTENSION);
+            var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + Function.GetDescription(SystemRequirements.DEFAULT_IMAGE_EXTENSION);
             using (var stream = System.IO.File.Create(filePath))
             {
                 await f.CopyToAsync(stream);

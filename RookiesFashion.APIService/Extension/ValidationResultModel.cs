@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
+using RookiesFashion.APIService.Ex;
 // https://docs.microsoft.com/en-us/answers/questions/620570/net-core-web-api-model-validation-error-response-t.html
-namespace RookiesFashion.APIService.Helpers
+namespace RookiesFashion.APIService.Extension
 {
      public class ValidationResultModel
      {
