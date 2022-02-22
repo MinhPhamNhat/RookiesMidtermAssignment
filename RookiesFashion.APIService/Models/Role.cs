@@ -10,7 +10,7 @@ namespace RookiesFashion.APIService.Models
         [Key]
         public RoleConstants RoleId { get; set; }
         [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Data.Context;
+using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 

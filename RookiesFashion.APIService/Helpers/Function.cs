@@ -4,10 +4,10 @@ using System.Reflection;
 
 namespace RookiesFashion.APIService.Helpers;
 
-public class Function
+public static class Function
 {
 
-    public string GetDescription(Enum en)
+    public static string GetDescription(Enum en)
     {
         Type type = en.GetType();
 
@@ -25,7 +25,7 @@ public class Function
 
         return en.ToString();
     }
-    public bool DynamicHasProperty(dynamic item, string propertyName)
+    public static bool DynamicHasProperty(dynamic item, string propertyName)
     {
         if (item is ExpandoObject eo)
         {

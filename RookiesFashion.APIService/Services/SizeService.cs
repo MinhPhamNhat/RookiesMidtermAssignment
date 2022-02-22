@@ -1,6 +1,7 @@
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Helpers;
+using RookiesFashion.APIService.Extension;
 
 namespace RookiesFashion.APIService.Services
 {
