@@ -37,7 +37,7 @@ public class ImageService : IImageService
 
             return new ServiceResponse()
             {
-                Code = ServiceResponseStatus.DATA_CREATED,
+                Code = ServiceResponseConstants.DATA_CREATED,
                 Message = "Category Created",
                 Data = image
             };
@@ -48,7 +48,7 @@ public class ImageService : IImageService
             Console.WriteLine(ex.StackTrace);
             return new ServiceResponse()
             {
-                Code = ServiceResponseStatus.ERROR,
+                Code = ServiceResponseConstants.ERROR,
                 Message = ex.Message,
                 RespException = ex.InnerException
             };

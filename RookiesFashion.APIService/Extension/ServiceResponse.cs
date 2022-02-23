@@ -6,7 +6,7 @@ namespace RookiesFashion.APIService.Extension
 {
     public class ServiceResponse
     {
-        public ServiceResponseStatus Code { get; set; }
+        public ServiceResponseConstants Code { get; set; }
         public string Message { get; set; }
         public Exception RespException { get; set; }
         public object Data { get; set; }

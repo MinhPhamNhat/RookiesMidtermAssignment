@@ -95,17 +95,17 @@ namespace RookiesFashion.APIService.Controllers
                 return apiHelper.ResponseMessage(HttpStatusCode.NotFound, new { Message = "Product not found " });
             }
 
-            if (Function.DynamicHasProperty(body, "Name"))
+            if (FunctionsHelper.DynamicHasProperty(body, "Name"))
             {
                 product.Name = Convert.ToString(body.Name);
             }
 
-            if (Function.DynamicHasProperty(body, "Description"))
+            if (FunctionsHelper.DynamicHasProperty(body, "Description"))
             {
                 product.Description = Convert.ToString(body.Description);
             }
 
-            if (Function.DynamicHasProperty(body, "CategoryId"))
+            if (FunctionsHelper.DynamicHasProperty(body, "CategoryId"))
             {
                 // Validate if ProductCategoryId is number
                 string stringCategoryId = Convert.ToString(body.CategoryId);
@@ -120,7 +120,7 @@ namespace RookiesFashion.APIService.Controllers
                 product.CategoryId = CategoryId;
             }
 
-            if (Function.DynamicHasProperty(body, "Price"))
+            if (FunctionsHelper.DynamicHasProperty(body, "Price"))
             {
                 string stringPrice = Convert.ToString(body.Price);
                 if (!int.TryParse(stringPrice, out int Price))
@@ -130,7 +130,7 @@ namespace RookiesFashion.APIService.Controllers
                 product.Price = Price;
             }
 
-            if (Function.DynamicHasProperty(body, "Colors"))
+            if (FunctionsHelper.DynamicHasProperty(body, "Colors"))
             {
                 List<int> ColorIdList = new List<int>();
                 List<Color> finalColorList = new List<Color>();
@@ -156,7 +156,7 @@ namespace RookiesFashion.APIService.Controllers
                     }
                 }
             }
-            if (Function.DynamicHasProperty(body, "Sizes"))
+            if (FunctionsHelper.DynamicHasProperty(body, "Sizes"))
             {
                 List<int> SizeIdList = new List<int>();
                 List<Size> finalSizeList = new List<Size>();
@@ -188,7 +188,7 @@ namespace RookiesFashion.APIService.Controllers
             }
             if (Files.Count > 0)
             {
-                if (Files.Count > (int)SystemRequirements.IMAGE_MAX_COUNT)
+                if (Files.Count > (int)RequirementConstants.IMAGE_MAX_COUNT)
                 {
                     return apiHelper.ValidationResponseMessage("Files", Files, "Images must be less than 3 and larger than 0");
                 }
@@ -219,12 +219,12 @@ namespace RookiesFashion.APIService.Controllers
             string ProductCategoryId = Convert.ToString(body.CategoryId);
 
             // Validate number of files ( must <= 2 )
-            if (Files.Count > (int)SystemRequirements.IMAGE_MAX_COUNT || Files.Count < 1)
+            if (Files.Count > (int)RequirementConstants.IMAGE_MAX_COUNT || Files.Count < 1)
             {
                 return apiHelper.ValidationResponseMessage("Files", Files, "Images must be less than 3 and larger than 0");
             }
             // Validate if all files are image
-            if (!Files.All(f => f.ContentType.Contains(Function.GetDescription(SystemRequirements.IMAGE_TYPE))))
+            if (!Files.All(f => f.ContentType.Contains(FunctionsHelper.GetDescription(RequirementConstants.IMAGE_TYPE))))
             {
                 return apiHelper.ValidationResponseMessage("Files", Files, "Not all file is image");
             }

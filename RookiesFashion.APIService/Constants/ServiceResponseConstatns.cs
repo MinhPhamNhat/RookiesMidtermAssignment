@@ -1,6 +1,6 @@
 namespace RookiesFashion.APIService.Constants
 {
-    public enum ServiceResponseStatus
+    public enum ServiceResponseConstants
     {
         ERROR = -1,
         OBJECT_NOT_FOUND = 0,

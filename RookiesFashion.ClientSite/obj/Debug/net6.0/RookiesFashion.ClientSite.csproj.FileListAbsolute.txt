@@ -24,29 +24,3 @@ D:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidterm
 D:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.pdb
 D:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.genruntimeconfig.cache
 D:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\ref\RookiesFashion.ClientSite.dll
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\appsettings.Development.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\appsettings.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.staticwebassets.runtime.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.exe
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.deps.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.runtimeconfig.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.dll
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\bin\Debug\net6.0\RookiesFashion.ClientSite.pdb
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.csproj.AssemblyReference.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.GeneratedMSBuildEditorConfig.editorconfig
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.AssemblyInfoInputs.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.AssemblyInfo.cs
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.csproj.CoreCompileInputs.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.MvcApplicationPartsAssemblyInfo.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.RazorAssemblyInfo.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.RazorAssemblyInfo.cs
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\staticwebassets.build.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\staticwebassets.development.json
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\scopedcss\bundle\RookiesFashion.ClientSite.styles.css
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\scopedcss\projectbundle\RookiesFashion.ClientSite.bundle.scp.css
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.dll
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\refint\RookiesFashion.ClientSite.dll
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.pdb
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\RookiesFashion.ClientSite.genruntimeconfig.cache
-D:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite\obj\Debug\net6.0\ref\RookiesFashion.ClientSite.dll

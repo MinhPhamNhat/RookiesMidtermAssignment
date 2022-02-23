@@ -25,13 +25,13 @@ namespace RookiesFashion.APIService.Helpers
         {
             switch (serResp.Code)
             {
-                case ServiceResponseStatus.SUCCESS:
+                case ServiceResponseConstants.SUCCESS:
                     return ResponseMessage(HttpStatusCode.OK, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.ERROR:
+                case ServiceResponseConstants.ERROR:
                     return ResponseMessage(HttpStatusCode.InternalServerError, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.OBJECT_NOT_FOUND:
+                case ServiceResponseConstants.OBJECT_NOT_FOUND:
                     return ResponseMessage(HttpStatusCode.NotFound, new { Message = serResp.Message, Data = serResp.Data });
-                case ServiceResponseStatus.DATA_CREATED:
+                case ServiceResponseConstants.DATA_CREATED:
                     return ResponseMessage(HttpStatusCode.Created, new { Message = serResp.Message, Data = serResp.Data });
                 default:
                     return ResponseMessage(HttpStatusCode.BadRequest, new { Message = "Bad request" });

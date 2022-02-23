@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace RookiesFashion.APIService.Helpers;
 
-public static class Function
+public static class FunctionsHelper
 {
 
     public static string GetDescription(Enum en)

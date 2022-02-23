@@ -28,7 +28,7 @@ namespace RookiesFashion.APIService.Services
 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.SUCCESS,
+                    Code = ServiceResponseConstants.SUCCESS,
                     Message = "Successfully Get Categories",
                     Data = categories
                 };
@@ -37,7 +37,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -53,14 +53,14 @@ namespace RookiesFashion.APIService.Services
                 if (category != null)
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.SUCCESS,
+                        Code = ServiceResponseConstants.SUCCESS,
                         Data = category,
                         Message = $"Succesfully Get Category {categoryId}"
                     };
                 else
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
+                        Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Category not found"
                     };
 
@@ -69,7 +69,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -85,7 +85,7 @@ namespace RookiesFashion.APIService.Services
                 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.DATA_CREATED,
+                    Code = ServiceResponseConstants.DATA_CREATED,
                     Message = "Category Created",
                     Data = category
                 };
@@ -95,7 +95,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -111,7 +111,7 @@ namespace RookiesFashion.APIService.Services
                 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.SUCCESS,
+                    Code = ServiceResponseConstants.SUCCESS,
                     Message = "Category Updated",
                     Data = category
                 };
@@ -121,7 +121,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -137,12 +137,12 @@ namespace RookiesFashion.APIService.Services
                 if (category != null)
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.SUCCESS,
+                        Code = ServiceResponseConstants.SUCCESS,
                     };
                 else
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
+                        Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Category not found"
                     };
 
@@ -151,7 +151,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };

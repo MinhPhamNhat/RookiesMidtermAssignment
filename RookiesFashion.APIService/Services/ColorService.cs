@@ -27,14 +27,14 @@ namespace RookiesFashion.APIService.Services
                 if (color != null)
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.SUCCESS,
+                        Code = ServiceResponseConstants.SUCCESS,
                         Data = color,
                         Message = $"Succesfully Get Color {colorId}"
                     };
                 else
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
+                        Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Category not found"
                     };
 
@@ -43,7 +43,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
