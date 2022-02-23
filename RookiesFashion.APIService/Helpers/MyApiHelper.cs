@@ -1,9 +1,10 @@
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Ex;
 using RookiesFashion.APIService.Extension;
+using RookiesFashion.SharedRepo.Constants;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Helpers
 {

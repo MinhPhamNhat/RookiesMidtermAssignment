@@ -1,8 +1,8 @@
 
 using System.ComponentModel;
 
-namespace RookiesFashion.APIService.Constants;
-public enum SystemRequirements
+namespace RookiesFashion.SharedRepo.Constants;
+public enum RequirementConstants
 {
     IMAGE_MAX_COUNT = 2,
     [Description("image")]

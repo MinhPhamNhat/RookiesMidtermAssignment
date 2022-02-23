@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
-using RookiesFashion.APIService.Services;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -24,14 +24,12 @@ namespace RookiesFashion.APIService.Controllers
     {
         private readonly RookiesFashionContext _context;
         private readonly ICategoryService _categoryService;
-        private readonly ICloudinaryService _cloudinaryService;
 
         private MyApiHelper apiHelper;
         public CategoriesController(RookiesFashionContext context, ICategoryService categoryService, ICloudinaryService cloudinaryService)
         {
             _context = context;
             _categoryService = categoryService;
-            _cloudinaryService = cloudinaryService;
         }
 
         // GET: api/Categories

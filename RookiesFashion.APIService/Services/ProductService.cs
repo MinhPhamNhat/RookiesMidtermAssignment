@@ -1,17 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-using RookiesFashion.APIService.Constants;
+using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Services
 {
-    public class ProductService : IProductService, IDisposable
+    public class ProductService : IProductService
     {
         private readonly RookiesFashionContext _context;
 
-        private bool disposed = false;
 
         public ProductService(RookiesFashionContext context)
         {
@@ -161,24 +162,6 @@ namespace RookiesFashion.APIService.Services
         {
             product = _context.Products.Find(productId); 
             return product != null;
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
     }

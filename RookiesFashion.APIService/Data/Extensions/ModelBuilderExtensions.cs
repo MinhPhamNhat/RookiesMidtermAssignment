@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Models;
-using RookiesFashion.APIService.Constants;
+using RookiesFashion.SharedRepo.Constants;
+
 namespace RookiesFashion.APIService.Data;
 
 public static class ModelBuilderExtensions

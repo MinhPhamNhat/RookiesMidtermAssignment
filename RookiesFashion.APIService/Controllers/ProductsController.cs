@@ -1,23 +1,15 @@
 #nullable disable
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Dynamic;
-using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
-using RookiesFashion.APIService.Services;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Constants;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Controllers
 {

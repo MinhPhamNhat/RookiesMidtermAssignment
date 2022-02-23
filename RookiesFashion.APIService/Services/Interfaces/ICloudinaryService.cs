@@ -1,10 +1,9 @@
 using CloudinaryDotNet.Actions;
 
-namespace RookiesFashion.APIService.Extension;
-
+namespace RookiesFashion.APIService.Services.Interfaces;
 public interface ICloudinaryService
 {
     Task<ImageUploadResult> Upload(string imagePath);
     Task<ImageUploadResult> Remove(string imageId);
-    string BuildImageUrl();
+    string BuildImageUrl(string imageName);
 }

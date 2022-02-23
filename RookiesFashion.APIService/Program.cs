@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Services;
+using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Extension;
 
