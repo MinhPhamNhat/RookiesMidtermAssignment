@@ -1,17 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-using RookiesFashion.APIService.Constants;
+using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Services
 {
-    public class ProductService : IProductService, IDisposable
+    public class ProductService : IProductService
     {
         private readonly RookiesFashionContext _context;
 
-        private bool disposed = false;
 
         public ProductService(RookiesFashionContext context)
         {
@@ -26,7 +27,7 @@ namespace RookiesFashion.APIService.Services
 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.SUCCESS,
+                    Code = ServiceResponseConstants.SUCCESS,
                     Message = "Successfully Get Products",
                     Data = products
                 };
@@ -35,7 +36,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -52,14 +53,14 @@ namespace RookiesFashion.APIService.Services
                 if (product != null)
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.SUCCESS,
+                        Code = ServiceResponseConstants.SUCCESS,
                         Data = product,
                         Message = $"Succesfully Get Product {productId}"
                     };
                 else
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
+                        Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Product not found"
                     };
 
@@ -68,7 +69,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -84,7 +85,7 @@ namespace RookiesFashion.APIService.Services
                 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.DATA_CREATED,
+                    Code = ServiceResponseConstants.DATA_CREATED,
                     Message = "Product Created",
                     Data = product
                 };
@@ -94,7 +95,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -110,7 +111,7 @@ namespace RookiesFashion.APIService.Services
                 
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.SUCCESS,
+                    Code = ServiceResponseConstants.SUCCESS,
                     Message = "Product Updated",
                     Data = product
                 };
@@ -120,7 +121,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -136,12 +137,12 @@ namespace RookiesFashion.APIService.Services
                 if (product != null)
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.SUCCESS,
+                        Code = ServiceResponseConstants.SUCCESS,
                     };
                 else
                     return new ServiceResponse()
                     {
-                        Code = ServiceResponseStatus.OBJECT_NOT_FOUND,
+                        Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Product not found"
                     };
 
@@ -150,7 +151,7 @@ namespace RookiesFashion.APIService.Services
             {
                 return new ServiceResponse()
                 {
-                    Code = ServiceResponseStatus.ERROR,
+                    Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
                     RespException = ex.InnerException
                 };
@@ -161,24 +162,6 @@ namespace RookiesFashion.APIService.Services
         {
             product = _context.Products.Find(productId); 
             return product != null;
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
     }

@@ -1,8 +1,9 @@
 using System.ComponentModel;
 using System.Reflection;
-using RookiesFashion.APIService.Constants;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Constants;
 
 namespace RookiesFashion.APIService.Helpers;
 
@@ -21,7 +22,7 @@ public class ImageUploadHelper{
         images = new List<Image>();  
         foreach (var f in files)
         {
-            var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + Function.GetDescription(SystemRequirements.DEFAULT_IMAGE_EXTENSION);
+            var filePath = Path.GetTempPath() + Guid.NewGuid().ToString() + FunctionsHelper.GetDescription(RequirementConstants.DEFAULT_IMAGE_EXTENSION);
             using (var stream = System.IO.File.Create(filePath))
             {
                 await f.CopyToAsync(stream);
@@ -35,7 +36,7 @@ public class ImageUploadHelper{
             };
 
             var imageSerResp = await _imageService.InsertImage(image);
-            if (imageSerResp.Code == ServiceResponseStatus.DATA_CREATED)
+            if (imageSerResp.Code == ServiceResponseConstants.DATA_CREATED)
             {
                 images.Add((Image)imageSerResp.Data);
             }else{

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using RookiesFashion.APIService.Constants;
+using RookiesFashion.SharedRepo.Constants;
 
 namespace RookiesFashion.APIService.Models
 {

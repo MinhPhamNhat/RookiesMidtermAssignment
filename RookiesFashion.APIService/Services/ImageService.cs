@@ -1,8 +1,10 @@
-using RookiesFashion.APIService.Constants;
+using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Services;
 
@@ -37,7 +39,7 @@ public class ImageService : IImageService
 
             return new ServiceResponse()
             {
-                Code = ServiceResponseStatus.DATA_CREATED,
+                Code = ServiceResponseConstants.DATA_CREATED,
                 Message = "Category Created",
                 Data = image
             };
@@ -48,7 +50,7 @@ public class ImageService : IImageService
             Console.WriteLine(ex.StackTrace);
             return new ServiceResponse()
             {
-                Code = ServiceResponseStatus.ERROR,
+                Code = ServiceResponseConstants.ERROR,
                 Message = ex.Message,
                 RespException = ex.InnerException
             };
