@@ -1,0 +1,17 @@
+@using RookiesFashion.ClientSite.Models;
+@model Product
+<div class="card">
+    <div class="card-img-top">
+        <img src="https://dummyimage.com/200x200/000/fff" alt="">
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+            <h4>@Model.Name</h4>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">
+            $@Model.Price
+        </div>
+        <div class="card-text">@Model.Description</div>
+        <a href=# class="card-link">Detail</a>
+    </div>
+</div>

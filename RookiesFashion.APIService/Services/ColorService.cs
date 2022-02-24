@@ -47,7 +47,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }

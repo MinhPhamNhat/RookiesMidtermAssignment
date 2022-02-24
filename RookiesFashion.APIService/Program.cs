@@ -6,6 +6,8 @@ using RookiesFashion.APIService.Services;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Extension;
+using RookiesFashion.SharedRepo.Extension;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,13 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
         .ConfigureApiBehaviorOptions(options =>
         {
-            //options.SuppressModelStateInvalidFilter = true;
             options.InvalidModelStateResponseFactory = actionContext =>
             {
                 return new BadRequestObjectResult(new ValidationResultModel(actionContext.ModelState));
             };
-        }).AddNewtonsoftJson(options => 
-        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+        }).AddNewtonsoftJson(options =>
+        {
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+        });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

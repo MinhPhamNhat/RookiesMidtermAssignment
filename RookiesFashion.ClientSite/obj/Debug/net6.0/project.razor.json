@@ -16323,6 +16323,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Views\\Home\\_ProductItem.cshtml",
+      "TargetPath": "Views\\Home\\_ProductItem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

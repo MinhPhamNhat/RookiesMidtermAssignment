@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace RookiesFashion.APIService.Models
 {
@@ -16,7 +17,7 @@ namespace RookiesFashion.APIService.Models
 
         [Required]
         public string Name { get; set;}
-
+        [JsonIgnore]
         public virtual IEnumerable<Product> Products {get; set;}
     }
 }

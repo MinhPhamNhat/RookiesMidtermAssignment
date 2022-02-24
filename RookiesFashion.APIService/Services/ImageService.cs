@@ -52,7 +52,7 @@ public class ImageService : IImageService
             {
                 Code = ServiceResponseConstants.ERROR,
                 Message = ex.Message,
-                RespException = ex.InnerException
+                RespException = ex
             };
         }
     }

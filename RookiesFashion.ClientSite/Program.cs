@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using RookiesFashion.APIService.Services;
+using RookiesFashion.ClientSite.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IProductService, ProductService>(); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -15,6 +15,7 @@ using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.Helpers;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -25,8 +26,7 @@ namespace RookiesFashion.APIService.Controllers
         private readonly RookiesFashionContext _context;
         private readonly ICategoryService _categoryService;
 
-        private MyApiHelper apiHelper;
-        public CategoriesController(RookiesFashionContext context, ICategoryService categoryService, ICloudinaryService cloudinaryService)
+        public CategoriesController(RookiesFashionContext context, ICategoryService categoryService)
         {
             _context = context;
             _categoryService = categoryService;
@@ -36,22 +36,20 @@ namespace RookiesFashion.APIService.Controllers
         [HttpGet]
         public async Task<ActionResult> GetCategories()
         {
-            apiHelper = new MyApiHelper(HttpContext);
             ServiceResponse serResp = await _categoryService.GetCategories();
-            return apiHelper.GetRequestServiceResult(serResp);
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
-        // GET: api/Categories/5
+        // GET: api/Categories/5 
         [HttpGet("{id}")]
         public async Task<ActionResult> GetCategory(string id)
         {
-            apiHelper = new MyApiHelper(HttpContext);
             if (int.TryParse(id, out int categoryId))
             {
                 ServiceResponse serResp = await _categoryService.GetCategoryById(categoryId);
-                return apiHelper.GetRequestServiceResult(serResp);
+                return MyApiHelper.RequestResultParser(serResp, HttpContext);
             }
-            return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
+            return MyApiHelper.ValidationFailedResponseMessage("Id", id, "Invalid param", HttpContext);
         }
 
         // PUT: api/Categories/5
@@ -59,17 +57,16 @@ namespace RookiesFashion.APIService.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> PutCategory(string id, [FromForm] Category category)
         {
-            apiHelper = new MyApiHelper(HttpContext);
             if (int.TryParse(id, out int categoryId) && categoryId == category.CategoryId)
             {
                 if (_categoryService.IsExist(categoryId))
                 {
                     ServiceResponse serResp = await _categoryService.UpdateCategory(category);
-                    return apiHelper.GetRequestServiceResult(serResp);
+                    return MyApiHelper.RequestResultParser(serResp, HttpContext);
                 }
-                return apiHelper.ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
+                return MyApiHelper.ResponseMessage(HttpStatusCode.NotFound, new ResponseObject { Message = "Category Not Found" }, HttpContext);
             }
-            return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
+            return MyApiHelper.ValidationFailedResponseMessage("Id", id, "Invalid param", HttpContext);
         }
 
         // POST: api/Categories
@@ -77,26 +74,20 @@ namespace RookiesFashion.APIService.Controllers
         [HttpPost]
         public async Task<ActionResult> PostCategory([FromForm] Category category)
         {
-            apiHelper = new MyApiHelper(HttpContext);
             ServiceResponse serResp = await _categoryService.InsertCategory(category);
-            return apiHelper.GetRequestServiceResult(serResp);
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCategory(string id)
         {
-            apiHelper = new MyApiHelper(HttpContext);
             if (int.TryParse(id, out int categoryId))
             {
-                if (_categoryService.IsExist(categoryId))
-                {
-                    ServiceResponse serResp = await _categoryService.DeleteCategory(categoryId);
-                    return apiHelper.GetRequestServiceResult(serResp);
-                }
-                return apiHelper.ResponseMessage(HttpStatusCode.NotFound, "Category Not Found");
+                ServiceResponse serResp = await _categoryService.DeleteCategory(categoryId);
+                return MyApiHelper.RequestResultParser(serResp, HttpContext);
             }
-            return apiHelper.ValidationResponseMessage("Id", id, "Invalid param");
+            return MyApiHelper.ValidationFailedResponseMessage("Id", id, "Invalid param", HttpContext);
         }
     }
 }

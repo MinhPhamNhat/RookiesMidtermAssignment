@@ -23,7 +23,14 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var products = _context.Products.ToList();
+                var products = _context.Products
+                .Include(p=>p.Category)
+                .ThenInclude(c=>c.Parent)
+                .Include(p=>p.Colors)
+                .ThenInclude(c=>c.Thumbnail)
+                .Include(p=>p.Sizes)
+                .Include(p => p.Thumbnail)
+                .Include(p=>p.UpdatedDates).ToList();
 
                 return new ServiceResponse()
                 {
@@ -38,7 +45,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -48,6 +55,8 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var product = _context.Products
+                .Include(p=>p.Category)
+                .ThenInclude(c=>c.Parent)
                 .FirstOrDefault(p=>p.ProductId == productId);
 
                 if (product != null)
@@ -71,7 +80,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -97,7 +106,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -123,7 +132,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -153,7 +162,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }

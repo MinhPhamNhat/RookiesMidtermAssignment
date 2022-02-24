@@ -13,6 +13,7 @@ namespace RookiesFashion.APIService.Models
 
         [Required]
         public int RatingVal { get; set; }
+        public string? Comment { get; set; }
 
         [Required]
         public int RatingProductId { get; set; }

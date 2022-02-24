@@ -24,8 +24,8 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var categories = _context.Categories
-                .Include(c=>c.Products).ThenInclude(p=>p.Thumbnail)
-                .Include(c=>c.Parent).ToList();
+                .Include(c => c.Products).ThenInclude(p => p.Thumbnail)
+                .Include(c => c.Parent).ToList();
 
                 return new ServiceResponse()
                 {
@@ -40,7 +40,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -72,7 +72,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -83,7 +83,7 @@ namespace RookiesFashion.APIService.Services
             {
                 _context.Categories.Add(category);
                 _context.SaveChanges();
-                
+
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.DATA_CREATED,
@@ -98,7 +98,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -109,11 +109,11 @@ namespace RookiesFashion.APIService.Services
             {
                 _context.Entry(category).State = EntityState.Modified;
                 _context.SaveChanges();
-                
+
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
-                    Message = "Category Updated",
+                    Message = $"Category {category.CategoryId} Updated",
                     Data = category
                 };
 
@@ -124,7 +124,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
@@ -134,18 +134,25 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var category = _context.Categories.Find(categoryId);
-                
+
                 if (category != null)
+                {
+                    _context.Categories.Remove(category);
+                    _context.SaveChanges();
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseConstants.SUCCESS,
+                        Message = $"Category {categoryId} Deleted"
                     };
+                }
                 else
+                {
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
                         Message = "Category not found"
                     };
+                }
 
             }
             catch (Exception ex)
@@ -154,7 +161,7 @@ namespace RookiesFashion.APIService.Services
                 {
                     Code = ServiceResponseConstants.ERROR,
                     Message = ex.Message,
-                    RespException = ex.InnerException
+                    RespException = ex
                 };
             }
         }
