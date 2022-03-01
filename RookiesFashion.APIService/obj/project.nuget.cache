@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yjkVTIi7zvV8IOYB7NVMsTEGAFSmOV0V791bfjzULmO6M3LtohpCv2fazomTECrbz4mXpfTn05t95M/KyV97XA==",
+  "dgSpecHash": "6RVkf9jpij08gAqOF4jLNs2oFuTESWQsoVSUkmxcEZLV3MtzWUGfPdjSzv3MY9QGbuFEAp+vkRABZPP/1nhcOw==",
   "success": true,
   "projectFilePath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ASUS\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\cloudinarydotnet\\1.17.0\\cloudinarydotnet.1.17.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

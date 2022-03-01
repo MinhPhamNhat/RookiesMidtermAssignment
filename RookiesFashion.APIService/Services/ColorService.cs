@@ -1,7 +1,6 @@
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.APIService.Extension;
-using RookiesFashion.APIService.Helpers;
+using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
@@ -55,6 +54,12 @@ namespace RookiesFashion.APIService.Services
         public Task<ServiceResponse> GetColors()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Color> GetColorsFromRange(List<int> colorIds)
+        {
+            var listColor = _context.Colors.Where(s=>colorIds.Contains(s.ColorId)).ToList();
+            return listColor;
         }
 
         public Task<ServiceResponse> InsertColor(Color color)

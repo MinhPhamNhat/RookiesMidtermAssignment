@@ -1,6 +1,5 @@
 using CloudinaryDotNet.Actions;
-using RookiesFashion.APIService.Extension;
-using RookiesFashion.APIService.Helpers;
+using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.SharedRepo.Extensions;
 

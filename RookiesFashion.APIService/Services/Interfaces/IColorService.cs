@@ -1,5 +1,4 @@
-using RookiesFashion.APIService.Extension;
-using RookiesFashion.APIService.Helpers;
+using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.SharedRepo.Extensions;
 
@@ -11,5 +10,6 @@ public interface IColorService
     Task<ServiceResponse> InsertColor(Color color);
     Task<ServiceResponse> UpdateColor(Color color);
     Task<ServiceResponse> DeleteColor(int colorId);
+    List<Color> GetColorsFromRange(List<int> colorIds);
     bool IsExist(int colorId, out Color color);
 }

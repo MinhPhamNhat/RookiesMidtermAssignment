@@ -13,9 +13,13 @@ public static class MyResponseMapper
     {
         return jsonEl.Deserialize<Dictionary<string, object>>();
     }
-    public static List<T> MapperToList<T>(JsonElement jsonEl)
+    public static List<T> MapJsonToList<T>(JsonElement jsonEl)
     {
         return jsonEl.Deserialize<List<T>>();
+    }
+    public static T MapJson<T>(JsonElement jsonEl)
+    {
+        return jsonEl.Deserialize<T>();
     }
     public static object MapFromJsonElement<T>(JsonElement jsonEl)
     {

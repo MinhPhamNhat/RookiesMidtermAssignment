@@ -15,12 +15,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = d:\Rookies Batch 4\RookiesMidtermAssignment\RookiesFashion.ClientSite
 build_property._RazorSourceGeneratorDebug = 
 
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Pages/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Pages/Shared/Product/_Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXFByb2R1Y3RcX0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/Upload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGxvYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Rookies Batch 4/RookiesMidtermAssignment/RookiesFashion.ClientSite/Views/Home/_ProductItem.cshtml]

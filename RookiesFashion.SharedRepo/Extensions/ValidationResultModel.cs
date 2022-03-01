@@ -30,4 +30,6 @@ namespace RookiesFashion.SharedRepo.Extension;
         Errors = new List<ValidationError>() { error };
         IsValidation = true;
     }
+
+    public ValidationResultModel(){}
 }

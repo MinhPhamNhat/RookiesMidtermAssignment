@@ -35,6 +35,68 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasIndex("ProductsProductId");
 
                     b.ToTable("ColorProduct");
+
+                    b.HasData(
+                        new
+                        {
+                            ColorsColorId = 1,
+                            ProductsProductId = 1
+                        },
+                        new
+                        {
+                            ColorsColorId = 1,
+                            ProductsProductId = 2
+                        },
+                        new
+                        {
+                            ColorsColorId = 1,
+                            ProductsProductId = 3
+                        },
+                        new
+                        {
+                            ColorsColorId = 1,
+                            ProductsProductId = 5
+                        },
+                        new
+                        {
+                            ColorsColorId = 2,
+                            ProductsProductId = 1
+                        },
+                        new
+                        {
+                            ColorsColorId = 2,
+                            ProductsProductId = 2
+                        },
+                        new
+                        {
+                            ColorsColorId = 2,
+                            ProductsProductId = 3
+                        },
+                        new
+                        {
+                            ColorsColorId = 2,
+                            ProductsProductId = 5
+                        },
+                        new
+                        {
+                            ColorsColorId = 3,
+                            ProductsProductId = 1
+                        },
+                        new
+                        {
+                            ColorsColorId = 3,
+                            ProductsProductId = 2
+                        },
+                        new
+                        {
+                            ColorsColorId = 3,
+                            ProductsProductId = 3
+                        },
+                        new
+                        {
+                            ColorsColorId = 3,
+                            ProductsProductId = 5
+                        });
                 });
 
             modelBuilder.Entity("ProductSize", b =>
@@ -50,6 +112,68 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasIndex("SizesSizeId");
 
                     b.ToTable("ProductSize");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductsProductId = 1,
+                            SizesSizeId = 1
+                        },
+                        new
+                        {
+                            ProductsProductId = 2,
+                            SizesSizeId = 1
+                        },
+                        new
+                        {
+                            ProductsProductId = 3,
+                            SizesSizeId = 1
+                        },
+                        new
+                        {
+                            ProductsProductId = 5,
+                            SizesSizeId = 1
+                        },
+                        new
+                        {
+                            ProductsProductId = 1,
+                            SizesSizeId = 2
+                        },
+                        new
+                        {
+                            ProductsProductId = 2,
+                            SizesSizeId = 2
+                        },
+                        new
+                        {
+                            ProductsProductId = 3,
+                            SizesSizeId = 2
+                        },
+                        new
+                        {
+                            ProductsProductId = 5,
+                            SizesSizeId = 2
+                        },
+                        new
+                        {
+                            ProductsProductId = 1,
+                            SizesSizeId = 3
+                        },
+                        new
+                        {
+                            ProductsProductId = 2,
+                            SizesSizeId = 3
+                        },
+                        new
+                        {
+                            ProductsProductId = 3,
+                            SizesSizeId = 3
+                        },
+                        new
+                        {
+                            ProductsProductId = 5,
+                            SizesSizeId = 3
+                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Account", b =>
@@ -93,14 +217,12 @@ namespace RookiesFashion.APIService.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsParent")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ParentCategoryId")
@@ -116,33 +238,518 @@ namespace RookiesFashion.APIService.Data.Migrations
                         new
                         {
                             CategoryId = 1,
-                            Description = "Áo",
+                            Description = "Topwear",
                             IsParent = true,
-                            Name = "Áo"
+                            Name = "Topwear"
                         },
                         new
                         {
                             CategoryId = 2,
-                            Description = "Áo khoác",
+                            Description = "T-Shirts",
                             IsParent = false,
-                            Name = "Áo khoác",
+                            Name = "T-Shirts",
                             ParentCategoryId = 1
                         },
                         new
                         {
                             CategoryId = 3,
-                            Description = "Áo Hoodie",
+                            Description = "Casual Shirts",
                             IsParent = false,
-                            Name = "Áo Hoodie",
+                            Name = "Casual Shirts",
                             ParentCategoryId = 1
                         },
                         new
                         {
                             CategoryId = 4,
-                            Description = "Áo Thun",
+                            Description = "Formal Shirts",
                             IsParent = false,
-                            Name = "Áo Hoodie",
+                            Name = "Formal Shirts",
                             ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            Description = "Sweatshirts",
+                            IsParent = false,
+                            Name = "Sweatshirts",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            Description = "Sweaters",
+                            IsParent = false,
+                            Name = "Sweaters",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            Description = "Jackets",
+                            IsParent = false,
+                            Name = "Jackets",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            Description = "Blazers & Coats",
+                            IsParent = false,
+                            Name = "Blazers & Coats",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 9,
+                            Description = "Suits",
+                            IsParent = false,
+                            Name = "Suits",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 10,
+                            Description = "Rain Jackets",
+                            IsParent = false,
+                            Name = "Rain Jackets",
+                            ParentCategoryId = 1
+                        },
+                        new
+                        {
+                            CategoryId = 11,
+                            Description = "Indian & Festive Wear",
+                            IsParent = true,
+                            Name = "Indian & Festive Wear"
+                        },
+                        new
+                        {
+                            CategoryId = 12,
+                            Description = "Kurtas & Kurta Sets",
+                            IsParent = false,
+                            Name = "Kurtas & Kurta Sets",
+                            ParentCategoryId = 11
+                        },
+                        new
+                        {
+                            CategoryId = 13,
+                            Description = "Sherwanis",
+                            IsParent = false,
+                            Name = "Sherwanis",
+                            ParentCategoryId = 11
+                        },
+                        new
+                        {
+                            CategoryId = 14,
+                            Description = "Nehru Jackets",
+                            IsParent = false,
+                            Name = "Nehru Jackets",
+                            ParentCategoryId = 11
+                        },
+                        new
+                        {
+                            CategoryId = 15,
+                            Description = "Dhotis",
+                            IsParent = false,
+                            Name = "Dhotis",
+                            ParentCategoryId = 11
+                        },
+                        new
+                        {
+                            CategoryId = 16,
+                            Description = "Bottomwear",
+                            IsParent = true,
+                            Name = "Bottomwear"
+                        },
+                        new
+                        {
+                            CategoryId = 17,
+                            Description = "Jeans",
+                            IsParent = false,
+                            Name = "Jeans",
+                            ParentCategoryId = 16
+                        },
+                        new
+                        {
+                            CategoryId = 18,
+                            Description = "Casual Trousers",
+                            IsParent = false,
+                            Name = "Casual Trousers",
+                            ParentCategoryId = 16
+                        },
+                        new
+                        {
+                            CategoryId = 19,
+                            Description = "Formal Trousers",
+                            IsParent = false,
+                            Name = "Formal Trousers",
+                            ParentCategoryId = 16
+                        },
+                        new
+                        {
+                            CategoryId = 20,
+                            Description = "Shorts",
+                            IsParent = false,
+                            Name = "Shorts",
+                            ParentCategoryId = 16
+                        },
+                        new
+                        {
+                            CategoryId = 21,
+                            Description = "Track Pants & Joggers",
+                            IsParent = false,
+                            Name = "Track Pants & Joggers",
+                            ParentCategoryId = 16
+                        },
+                        new
+                        {
+                            CategoryId = 22,
+                            Description = "Innerwear & Sleepwear",
+                            IsParent = true,
+                            Name = "Innerwear & Sleepwear"
+                        },
+                        new
+                        {
+                            CategoryId = 23,
+                            Description = "Briefs & Trunks",
+                            IsParent = false,
+                            Name = "Briefs & Trunks",
+                            ParentCategoryId = 22
+                        },
+                        new
+                        {
+                            CategoryId = 24,
+                            Description = "Boxers",
+                            IsParent = false,
+                            Name = "Boxers",
+                            ParentCategoryId = 22
+                        },
+                        new
+                        {
+                            CategoryId = 25,
+                            Description = "Vests",
+                            IsParent = false,
+                            Name = "Vests",
+                            ParentCategoryId = 22
+                        },
+                        new
+                        {
+                            CategoryId = 26,
+                            Description = "Sleepwear & Loungewear",
+                            IsParent = false,
+                            Name = "Sleepwear & Loungewear",
+                            ParentCategoryId = 22
+                        },
+                        new
+                        {
+                            CategoryId = 27,
+                            Description = "Thermals",
+                            IsParent = false,
+                            Name = "Thermals",
+                            ParentCategoryId = 22
+                        },
+                        new
+                        {
+                            CategoryId = 28,
+                            Description = "Plus Size",
+                            IsParent = true,
+                            Name = "Plus Size"
+                        },
+                        new
+                        {
+                            CategoryId = 29,
+                            Description = "Footwear",
+                            IsParent = true,
+                            Name = "Footwear"
+                        },
+                        new
+                        {
+                            CategoryId = 30,
+                            Description = "Casual Shoes",
+                            IsParent = false,
+                            Name = "Casual Shoes",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 31,
+                            Description = "Sports Shoes",
+                            IsParent = false,
+                            Name = "Sports Shoes",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 32,
+                            Description = "Formal Shoes",
+                            IsParent = false,
+                            Name = "Formal Shoes",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 33,
+                            Description = "Sneakers",
+                            IsParent = false,
+                            Name = "Sneakers",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 34,
+                            Description = "Sandals & Floaters",
+                            IsParent = false,
+                            Name = "Sandals & Floaters",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 35,
+                            Description = "Flip Flops",
+                            IsParent = false,
+                            Name = "Flip Flops",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 36,
+                            Description = "Socks",
+                            IsParent = false,
+                            Name = "Socks",
+                            ParentCategoryId = 29
+                        },
+                        new
+                        {
+                            CategoryId = 37,
+                            Description = "Personal Care & Grooming",
+                            IsParent = true,
+                            Name = "Personal Care & Grooming"
+                        },
+                        new
+                        {
+                            CategoryId = 38,
+                            Description = "Sunglasses & Frames",
+                            IsParent = true,
+                            Name = "Sunglasses & Frames"
+                        },
+                        new
+                        {
+                            CategoryId = 39,
+                            Description = "Watches",
+                            IsParent = true,
+                            Name = "Watches"
+                        },
+                        new
+                        {
+                            CategoryId = 40,
+                            Description = "Sports & Active Wear",
+                            IsParent = true,
+                            Name = "Sports & Active Wear"
+                        },
+                        new
+                        {
+                            CategoryId = 41,
+                            Description = "Sports Shoes",
+                            IsParent = false,
+                            Name = "Sports Shoes",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 42,
+                            Description = "Sports Sandals",
+                            IsParent = false,
+                            Name = "Sports Sandals",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 43,
+                            Description = "Active T-Shirts",
+                            IsParent = false,
+                            Name = "Active T-Shirts",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 44,
+                            Description = "Track Pants & Shorts",
+                            IsParent = false,
+                            Name = "Track Pants & Shorts",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 45,
+                            Description = "Tracksuits",
+                            IsParent = false,
+                            Name = "Tracksuits",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 46,
+                            Description = "Jackets & Sweatshirts",
+                            IsParent = false,
+                            Name = "Jackets & Sweatshirts",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 47,
+                            Description = "Sports Accessories",
+                            IsParent = false,
+                            Name = "Sports Accessories",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 48,
+                            Description = "Swimwear",
+                            IsParent = false,
+                            Name = "Swimwear",
+                            ParentCategoryId = 40
+                        },
+                        new
+                        {
+                            CategoryId = 49,
+                            Description = "Gadgets",
+                            IsParent = true,
+                            Name = "Gadgets"
+                        },
+                        new
+                        {
+                            CategoryId = 50,
+                            Description = "Smart Wearables",
+                            IsParent = false,
+                            Name = "Smart Wearables",
+                            ParentCategoryId = 49
+                        },
+                        new
+                        {
+                            CategoryId = 51,
+                            Description = "Fitness Gadgets",
+                            IsParent = false,
+                            Name = "Fitness Gadgets",
+                            ParentCategoryId = 49
+                        },
+                        new
+                        {
+                            CategoryId = 52,
+                            Description = "Headphones",
+                            IsParent = false,
+                            Name = "Headphones",
+                            ParentCategoryId = 49
+                        },
+                        new
+                        {
+                            CategoryId = 53,
+                            Description = "Speakers",
+                            IsParent = false,
+                            Name = "Speakers",
+                            ParentCategoryId = 49
+                        },
+                        new
+                        {
+                            CategoryId = 54,
+                            Description = "Fashion Accessories",
+                            IsParent = true,
+                            Name = "Fashion Accessories"
+                        },
+                        new
+                        {
+                            CategoryId = 55,
+                            Description = "Wallets",
+                            IsParent = false,
+                            Name = "Wallets",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 56,
+                            Description = "Belts",
+                            IsParent = false,
+                            Name = "Belts",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 57,
+                            Description = "Perfumes & Body Mists",
+                            IsParent = false,
+                            Name = "Perfumes & Body Mists",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 58,
+                            Description = "Trimmers",
+                            IsParent = false,
+                            Name = "Trimmers",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 59,
+                            Description = "Deodorants",
+                            IsParent = false,
+                            Name = "Deodorants",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 60,
+                            Description = "Ties, Cufflinks & Pocket Squares",
+                            IsParent = false,
+                            Name = "Ties, Cufflinks & Pocket Squares",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 61,
+                            Description = "Accessory Gift Sets",
+                            IsParent = false,
+                            Name = "Accessory Gift Sets",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 62,
+                            Description = "Caps & Hats",
+                            IsParent = false,
+                            Name = "Caps & Hats",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 63,
+                            Description = "Mufflers, Scarves & Gloves",
+                            IsParent = false,
+                            Name = "Mufflers, Scarves & Gloves",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 64,
+                            Description = "Phone Cases",
+                            IsParent = false,
+                            Name = "Phone Cases",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 65,
+                            Description = "Rings & Wristwear",
+                            IsParent = false,
+                            Name = "Rings & Wristwear",
+                            ParentCategoryId = 54
+                        },
+                        new
+                        {
+                            CategoryId = 66,
+                            Description = "Helmets",
+                            IsParent = false,
+                            Name = "Helmets",
+                            ParentCategoryId = 54
                         });
                 });
 
@@ -213,6 +820,62 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasData(
                         new
                         {
+                            ImageId = 4,
+                            Extension = "jpg",
+                            ImageName = "yzsjv9f3zxeam2qrmsa5",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ImageId = 5,
+                            Extension = "jpg",
+                            ImageName = "qqxtq42ju9u3f7xvqx41",
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ImageId = 6,
+                            Extension = "jpg",
+                            ImageName = "iyfpc8zlmsh3hpwhem8r",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ImageId = 7,
+                            Extension = "jpg",
+                            ImageName = "wojbmn440oja7afudapp",
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ImageId = 8,
+                            Extension = "jpg",
+                            ImageName = "vjcyk00mvrrhadxdvgev",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ImageId = 9,
+                            Extension = "jpg",
+                            ImageName = "buomsanrphup1hkzgwkg",
+                            ProductId = 3
+                        },
+                        new
+                        {
+                            ImageId = 12,
+                            Extension = "jpg",
+                            ImageName = "anllsn2gzufgiv0s6hgo",
+                            ProductId = 5
+                        },
+                        new
+                        {
+                            ImageId = 13,
+                            Extension = "jpg",
+                            ImageName = "oivszjvq5ccl1xsbnous",
+                            ProductId = 5
+                        },
+                        new
+                        {
                             ImageId = 1,
                             Extension = "png",
                             ImageName = "black_ecjeap"
@@ -259,6 +922,44 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3890),
+                            Description = "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
+                            Name = "Unisex Baby Long Sleeve Bodysuits Set",
+                            Price = 35.0
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3892),
+                            Description = "Long Sleeve 3D Printed Black Cat Sweatshirt",
+                            Name = "Long Sleeve 3D Printed Black Cat Sweatshirt",
+                            Price = 55.0
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CategoryId = 3,
+                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3893),
+                            Description = "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
+                            Name = "Dreamville Street Wear Sweatshirt",
+                            Price = 55.0
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            CategoryId = 2,
+                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3897),
+                            Description = "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
+                            Name = "Walnut Wooden Watch",
+                            Price = 98.0
+                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Rating", b =>
@@ -268,6 +969,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RatingId"), 1L, 1);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
@@ -281,7 +985,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Property<int>("RatingVal")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserRatingUserId")
+                    b.Property<int?>("UserRatingUserId")
                         .HasColumnType("int");
 
                     b.HasKey("RatingId");
@@ -383,7 +1087,6 @@ namespace RookiesFashion.APIService.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<string>("IdentityUsername")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
@@ -477,9 +1180,11 @@ namespace RookiesFashion.APIService.Data.Migrations
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Image", b =>
                 {
-                    b.HasOne("RookiesFashion.APIService.Models.Product", null)
+                    b.HasOne("RookiesFashion.APIService.Models.Product", "Product")
                         .WithMany("Thumbnail")
                         .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>
@@ -499,9 +1204,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasOne("RookiesFashion.APIService.Models.User", "UserRating")
                         .WithMany()
-                        .HasForeignKey("UserRatingUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserRatingUserId");
 
                     b.Navigation("Product");
 
@@ -521,9 +1224,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                 {
                     b.HasOne("RookiesFashion.APIService.Models.Account", "Identity")
                         .WithMany()
-                        .HasForeignKey("IdentityUsername")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdentityUsername");
 
                     b.HasOne("RookiesFashion.APIService.Models.Role", "Role")
                         .WithMany()

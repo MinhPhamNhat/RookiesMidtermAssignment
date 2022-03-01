@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Constants;
@@ -23,9 +22,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories
-                .Include(c => c.Products).ThenInclude(p => p.Thumbnail)
-                .Include(c => c.Parent).ToList();
+                var categories = _context.Categories.ToList();
 
                 return new ServiceResponse()
                 {
