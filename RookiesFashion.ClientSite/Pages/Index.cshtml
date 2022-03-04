@@ -1,5 +1,13 @@
+<<<<<<< Updated upstream:RookiesFashion.ClientSite/Views/Home/Index.cshtml
 ﻿@{
     ViewData["Title"] = "Home Page";
+=======
+@page
+@model IndexModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home page";
+>>>>>>> Stashed changes:RookiesFashion.ClientSite/Pages/Index.cshtml
 }
 <link rel="stylesheet" href="~/css/home.css" type="text/css" asp-append-version="true" />
 <div class="main-wrapper">
@@ -9,6 +17,7 @@
     </div>
     <div class="container">
         <div class="card-container pt-5 pb-5">
+<<<<<<< Updated upstream:RookiesFashion.ClientSite/Views/Home/Index.cshtml
             <div class="card">
                 <div class="card-img-top">
                     <img src="https://dummyimage.com/200x200/000/fff" alt="">
@@ -145,6 +154,12 @@
                     <a href=# class="card-link">Detail</a>
                 </div>
             </div>
+=======
+            @foreach (var item in Model.products)
+            {
+                @await Component.InvokeAsync("ProductItem", item)    
+            }
+>>>>>>> Stashed changes:RookiesFashion.ClientSite/Pages/Index.cshtml
         </div>
     </div>
 </div>

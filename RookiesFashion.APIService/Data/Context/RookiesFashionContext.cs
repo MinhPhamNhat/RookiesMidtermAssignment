@@ -19,7 +19,12 @@ namespace RookiesFashion.APIService.Data.Context
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Rating> Ratings { get; set; }
 
+<<<<<<< Updated upstream
         protected override async void OnModelCreating(ModelBuilder modelBuilder){
+=======
+        protected override async void OnModelCreating(ModelBuilder modelBuilder)
+        {
+>>>>>>> Stashed changes
             modelBuilder.Seed();
         }
     }

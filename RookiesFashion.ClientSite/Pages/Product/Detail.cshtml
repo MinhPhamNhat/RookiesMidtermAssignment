@@ -1,0 +1,105 @@
+@page "{id:int?}"
+@{
+    ViewData["Title"] = "Product Detail";
+}
+@model RookiesFashion.ClientSite.Pages.Product.DetailPageModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="/">Sản phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.product.Name</li>
+        </ol>
+    </nav>
+</div>
+<div class="RF-detail-container">
+    <div class="RF-image-detail">
+        <div class="xzoom-container">
+            <img class="xzoom thumbails" src="@Model.product.Thumbnail.First().Url"
+                xoriginal="{{#getData data=data.images indx=0}}{{/getData}}" title="The description goes here"
+                width="900">
+            <div class="xzoom-thumbs">
+                @foreach (var image in Model.product.Thumbnail)
+                {
+                    <a href="@image.Url"><img class="xzoom-gallery xactive" width="80" src="@image.Url"
+                        title="@image.ImageName"></a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="RF-infor-detail">
+        <div id="name">@Model.product.Name</div>
+        <div id="rating">
+            <div class="asddd">
+                <div class="rating-stars">
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star"></i></span>
+                    <span><i class="fas fa-star-half-alt"></i></span>
+                    <span><i class="far fa-star"></i></span>
+                </div>
+                <div class="rating-value">
+                    3.5/5
+                </div>
+            </div>
+            <a class="rating-reviews" href="#">
+                <span id="numbers">20</span>
+                <span> reviews</span>
+            </a>
+        </div>
+        <hr>
+        <div id="color">
+            <div class="title">Clolor</div>
+            <div class="warpper">
+                @foreach (var item in Model.product.Colors)
+                {
+                    <div id="item" data-id="{{this._id}}" data-productid="{{../data._id}}"><img id="image"
+                        src="@item.Thumbnail.Url"><span>@item.Name</span></div>
+                }
+            </div>
+        </div>
+        <div id="size">
+            <div class="title">Size</div>
+            <div class="warpper">
+                @foreach (var item in Model.product.Sizes)
+                {
+                    <div id="item" data-id="{{this._id}}" data-productid="{{data._id}}"><span>@item.Name</span></div>
+                }
+            </div>
+        </div>
+        <div id="quantity">
+            <div class="title">Quantity</div>
+            <div class="warpper">
+                <button class="btn btn-outline-secondary btn-minus"><i class="fa fa-minus"></i></button>
+                <input id="value" type="number" value="0">
+                <button class="btn btn-outline-secondary btn-plus"><i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+        <hr>
+        <div class="RF-order-section">
+            <div id="price">
+                <div class="warpper">
+                    <div id="value">
+                        <span id="true"><span id="currency">$</span> @Model.product.Price</span>
+                    </div>
+                </div>
+            </div>
+            <div id="add-cart">
+                <button data-productid="@Model.product.ProductId"><i class="fas fa-cart-plus"></i> Add to cart</button>
+            </div>
+        </div>
+        <hr>
+        <div id="infor-bellow">
+            <span><i class="fas fa-shipping-fast"></i> Free shipping</span>
+            <span><i class="far fa-handshake"></i> Cash On Delevery (COD)</span>
+        </div>
+        <hr>
+        <div id="description">
+            <div class="title">Description</div>
+            <div class="warpper">
+                @Model.product.Description
+            </div>
+        </div>
+    </div>
+</div>

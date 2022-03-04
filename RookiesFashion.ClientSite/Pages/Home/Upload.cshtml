@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/home.css" type="text/css" asp-append-version="true" />
+<div class="main-wrapper">
+    <div class="container">
+        @using (Html.BeginForm("Insert", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="Name" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" name="Names" id="Name" aria-describedby="emailHelp">
+                        @* <div id="emailHelp" class="form-text"></div> *@
+                    </div>
+                    <div class="col">
+                        <label for="Desc" class="form-label">Product Description</label>
+                        <input type="text" class="form-control" name="Description" id="Desc">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col">
+                        <label for="Color" class="form-label">Product Color</label>
+                        <select class="form-select" name="Colors" multiple aria-label="multiple select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="Size" class="form-label">Product Size</label>
+                        <select class="form-select" name="Sizes" multiple aria-label="multiple select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div>
+                <label for="files">Files</label>
+                <input type="file" id="Files" name="files" multiple="multiple" />
+            </div>
+            <button type="submit">Upload files</button>
+        }
+    </div>
+</div>
+
+<script src="~/js/home.js" asp-append-version="true"></script>

@@ -10,7 +10,9 @@ a.navbar-brand {
 a {
   color: #0077cc;
 }
-
+#breadcrumb{
+  font-weight: 600;
+}
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
