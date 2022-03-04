@@ -6,7 +6,7 @@ public enum RequirementConstants
 {
     IMAGE_MAX_COUNT = 2,
     [Description("image")]
-    IMAGE_TYPE ,
+    TYPE ,
     [Description(".png")]
     DEFAULT_IMAGE_EXTENSION
 }

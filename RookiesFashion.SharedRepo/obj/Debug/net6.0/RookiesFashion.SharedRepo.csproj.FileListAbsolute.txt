@@ -1,0 +1,12 @@
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\bin\Debug\net6.0\RookiesFashion.SharedRepo.deps.json
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\bin\Debug\net6.0\RookiesFashion.SharedRepo.dll
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\bin\Debug\net6.0\RookiesFashion.SharedRepo.pdb
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.csproj.AssemblyReference.cache
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.AssemblyInfoInputs.cache
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.AssemblyInfo.cs
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.csproj.CoreCompileInputs.cache
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.dll
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\refint\RookiesFashion.SharedRepo.dll
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\RookiesFashion.SharedRepo.pdb
+D:\Rookies Batch 4\Exercise\RookiesMidtermAssignment\RookiesFashion.SharedRepo\obj\Debug\net6.0\ref\RookiesFashion.SharedRepo.dll

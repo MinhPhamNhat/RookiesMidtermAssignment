@@ -15,10 +15,8 @@ namespace RookiesFashion.APIService.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
 
-        [Required]
         public string? Name { get; set; }
 
-        [Required]
         public string? Description { get; set; }
         public bool IsParent { get; set; }  = false;
 
@@ -26,7 +24,7 @@ namespace RookiesFashion.APIService.Models
         public virtual Category? Parent { get; set; }
 
         public virtual IEnumerable<Category>? Children { get; set; }
-
+        
         public virtual IEnumerable<Product>? Products {get; set;}
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
@@ -41,7 +39,7 @@ namespace RookiesFashion.APIService.Models
             }
             if (IsParent && ParentCategoryId != null || !IsParent && ParentCategoryId == null)
             {
-                yield return new ValidationResult("Category parent id cannot be null", new[] { nameof(ParentCategoryId) });
+                yield return new ValidationResult("Category must be a parent or must have parent Category", new[] { nameof(ParentCategoryId), nameof(IsParent) });
             }
         }
     }

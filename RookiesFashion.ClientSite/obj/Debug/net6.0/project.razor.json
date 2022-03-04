@@ -14264,7 +14264,7 @@
           {
             "Kind": "MVC.ViewComponent",
             "Name": "product",
-            "TypeName": "ProductVM",
+            "TypeName": "RookiesFashion.ClientSite.ViewModels.ProductVM",
             "Metadata": {
               "Common.PropertyName": "product"
             }

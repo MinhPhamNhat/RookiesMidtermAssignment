@@ -21,17 +21,9 @@ public class IndexModel : PageModel
 
     [BindProperty(SupportsGet = true)]
     public List<ProductVM> products { get; set; }
-
-
-    // public async Task OnGetProductCategoryName(string categorynameclient)
-    // {
-    //     var productDto = await _productService.GetProductByCategoryAndPageAsync(categorynameclient);
-    //     PagedResponseVM = _mapper.Map<PagedResponseVM<ProductVM>>(productDto);
-    //     await ShowCategoryName();
-    // }
+    
     public async Task OnGetAsync()
     {
-        Console.WriteLine(11111 + "");
         var resp = await _productService.GetProducts();
         var data = MyResponseMapper.MapJsonToList<RookiesFashion.ClientSite.Models.Product>((JsonElement)resp.Data);
         products = data.Select(d => _mapper.Map<ProductVM>(d)).ToList();

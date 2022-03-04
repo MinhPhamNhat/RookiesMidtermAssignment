@@ -1,20 +1,21 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RookiesFashion.APIService.Services;
+using RookiesFashion.ClientSite.Profiles;
+using RookiesFashion.ClientSite.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-<<<<<<< Updated upstream
-=======
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<RookiesFashion.APIService.Services.Interfaces.ICloudinaryService, RookiesFashion.APIService.Services.CloudinaryService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IProductService, ProductService>(); 
+builder.Services.AddScoped<RookiesFashion.APIService.Services.Interfaces.ICloudinaryService, RookiesFashion.APIService.Services.CloudinaryService>(); 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     {
         cfg.AddProfile(new MappingProfile(provider.GetService<RookiesFashion.APIService.Services.Interfaces.ICloudinaryService>()));
     }).CreateMapper());
->>>>>>> Stashed changes
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +36,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.MapRazorPages();
 app.Run();

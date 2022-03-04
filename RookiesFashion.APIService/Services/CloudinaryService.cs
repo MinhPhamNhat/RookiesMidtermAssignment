@@ -1,8 +1,9 @@
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Helpers;
 
-namespace RookiesFashion.APIService.Extension;
+namespace RookiesFashion.APIService.Services;
 
 public class CloudinaryService : ICloudinaryService
 {
@@ -37,6 +38,22 @@ public class CloudinaryService : ICloudinaryService
         throw new NotImplementedException();
     }
 
+    public async Task<List<Models.Image>> FormFilesUpload(List<IFormFile> files)
+    {
+        List<Models.Image> imageList = new List<Models.Image>();
+        foreach (var f in files)
+        {
+            var filePath = await ImageHelper.SaveToTempPath(f);
+            var imageUploadedResult = await this.Upload(filePath);
+            var image = new Models.Image
+            {
+                ImageName = imageUploadedResult.PublicId,
+                Extension = imageUploadedResult.Format
+            };
+            imageList.Add(image);
+        }
+        return imageList;
+    }
     public string BuildImageUrl(string imageName) => cloud.Api.UrlImgUp.Secure(true)
-    .Transform(new Transformation().AspectRatio("1.1").Crop("fill_pad")).BuildUrl(imageName);
+    .Transform(new Transformation().AspectRatio("1.0").Crop("pad").Background("auto")).BuildUrl(imageName);
 }

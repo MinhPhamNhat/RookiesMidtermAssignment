@@ -1,7 +1,6 @@
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.APIService.Helpers;
-using RookiesFashion.APIService.Extension;
+using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
 
@@ -27,6 +26,12 @@ namespace RookiesFashion.APIService.Services
         public Task<ServiceResponse> GetSizes()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Size> GetSizesFromRange(List<int> sizeIds)
+        {
+            var listSize = _context.Sizes.Where(s=>sizeIds.Contains(s.SizeId)).ToList();
+            return listSize;
         }
 
         public Task<ServiceResponse> InsertSize(Size size)
