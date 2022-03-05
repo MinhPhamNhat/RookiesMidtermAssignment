@@ -24,6 +24,8 @@ namespace RookiesFashion.APIService.Models
         public int? CategoryId { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual Category? Category { get; set; }
+        public double AvgRating { get => Ratings.Aggregate(0, (x, y) => (x + y.RatingVal) / Ratings.Count()); }
+        public virtual List<Rating>? Ratings { get; set; }
         public virtual IEnumerable<UpdatedDate>? UpdatedDates { get; set; }
         public virtual IEnumerable<Image>? Thumbnail { get; set; }
         public virtual IEnumerable<Color>? Colors { get; set; }
@@ -43,8 +45,9 @@ namespace RookiesFashion.APIService.Models
             {
                 yield return new ValidationResult("Product category cannot be null", new[] { nameof(CategoryId) });
             }
-            if (CategoryId == null){
-                yield return new ValidationResult("Category cannot be null", new []{nameof(CategoryId)});
+            if (CategoryId == null)
+            {
+                yield return new ValidationResult("Category cannot be null", new[] { nameof(CategoryId) });
             }
         }
     }

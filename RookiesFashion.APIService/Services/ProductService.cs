@@ -5,6 +5,8 @@ using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.DTO;
+using RookiesFashion.APIService.Helpers;
 
 namespace RookiesFashion.APIService.Services
 {
@@ -22,9 +24,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                Console.WriteLine("BEFORE: ");
                 var products = _context.Products.ToList();
-                Console.WriteLine("LENGTH: " + products.Count());
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -134,10 +134,10 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.FirstOrDefault(p=>p.ProductId==productId);
+                var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
-                {   
+                {
                     _context.Images.RemoveRange(product.Thumbnail);
                     _context.Products.Remove(product);
                     _context.SaveChanges();
@@ -174,5 +174,31 @@ namespace RookiesFashion.APIService.Services
             return product != null;
         }
 
+        public async Task<ServiceResponse> GetFilterdProduct(BaseQueryCriteriaDTO baseQueryCriteria)
+        {
+            try
+            {
+                var products = _context.Products.Where(p => FilterHelper.ProductMatch(p, baseQueryCriteria)).ToList();
+                products.Sort((a, b) => FilterHelper.ParseProductOrder(a, b, baseQueryCriteria.SortOrder));
+                var outProducts = products
+                .Skip((baseQueryCriteria.Page - 1) * baseQueryCriteria.Limit)
+                .Take(baseQueryCriteria.Limit);
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Products",
+                    Data = outProducts
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex
+                };
+            }
+        }
     }
 }

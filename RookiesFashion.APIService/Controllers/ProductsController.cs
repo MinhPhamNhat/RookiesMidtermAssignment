@@ -48,6 +48,14 @@ namespace RookiesFashion.APIService.Controllers
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
+        // GET: api/Product?abc
+        [HttpGet]
+        public async Task<ActionResult> GetProducts(string search)
+        {
+            ServiceResponse serResp = await _productService.GetProducts();
+            return Ok();
+        }
+
         // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult> GetProduct(int id)

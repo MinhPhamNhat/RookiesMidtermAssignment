@@ -94,7 +94,10 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var resp = await RequestHelper.Get($"{_config["Host:api"]}/Product/");
+                Console.WriteLine("ASDASD");
+                var uri = QueryHelper.parseQuery($"{_config["Host:api"]}/Product/Collection", query);
+                Console.WriteLine(uri);
+                var resp = await RequestHelper.Get(uri);
                 return resp;                
             }
             catch (Exception ex)
