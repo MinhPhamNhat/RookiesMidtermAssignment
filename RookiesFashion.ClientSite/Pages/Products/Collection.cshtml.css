@@ -8,6 +8,22 @@
 .LYAF-collection-wrapper .LYAF-collection-filter {
   width: 20%;
 }
+.LYAF-collection-wrapper .LYAF-collection-filter .rating-selecter {
+  display: flex;
+  flex-direction: column;
+}
+.LYAF-collection-wrapper .LYAF-collection-filter .rating-selecter {
+  display: flex;
+  flex-direction: column;
+}
+.LYAF-collection-wrapper .LYAF-collection-filter .rating-selecter .rating-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.LYAF-collection-wrapper .LYAF-collection-filter .rating-selecter .rating-option label{
+  cursor: pointer;
+}
 .LYAF-collection-wrapper .LYAF-collection-filter .price-selecter {
   width: 80%;
   margin-top: 50px;
@@ -278,4 +294,8 @@
 .LYAF-collection-wrapper .no-data p {
   font-weight: 600;
   font-szie: 24px;
+}
+
+.parent-category{
+  font-weight: bold;
 }

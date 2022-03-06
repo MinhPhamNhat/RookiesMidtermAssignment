@@ -1,6 +1,8 @@
+using RookiesFashion.ClientSite.ViewModels;
+
 namespace RookiesFashion.ClientSite.ViewModels;
 
-public class PagedResponseVM<TViewModel> : BaseQueryCriteriaVM
+public class PagedResponseVM<TViewModel1> : BaseQueryCriteriaVM
 {
     public int CurrentPage { get; set; }
 
@@ -8,7 +10,7 @@ public class PagedResponseVM<TViewModel> : BaseQueryCriteriaVM
 
     public int TotalPages { get; set; }
 
-    public IEnumerable<TViewModel> Items { get; set; }
+    public IEnumerable<TViewModel1> Items { get; set; }
 
     public bool HasPreviousPage
     {

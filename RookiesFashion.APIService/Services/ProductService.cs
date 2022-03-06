@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.SharedRepo.Helpers;
+using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
@@ -48,8 +48,6 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var product = _context.Products
-                .Include(p => p.Category)
-                .ThenInclude(c => c.Parent)
                 .FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
@@ -174,20 +172,18 @@ namespace RookiesFashion.APIService.Services
             return product != null;
         }
 
-        public async Task<ServiceResponse> GetFilterdProduct(BaseQueryCriteriaDTO baseQueryCriteria)
+        public async Task<ServiceResponse> GetPagedProductFilter(BaseQueryCriteriaDTO baseQueryCriteria, CancellationToken cancellationToken)
         {
             try
             {
-                var products = _context.Products.Where(p => FilterHelper.ProductMatch(p, baseQueryCriteria)).ToList();
-                products.Sort((a, b) => FilterHelper.ParseProductOrder(a, b, baseQueryCriteria.SortOrder));
-                var outProducts = products
-                .Skip((baseQueryCriteria.Page - 1) * baseQueryCriteria.Limit)
-                .Take(baseQueryCriteria.Limit);
+                var products = _context.Products.AsQueryable();
+                products = ProductFilter(products, baseQueryCriteria);
+                var pagedProducts = await products.PaginateAsync(baseQueryCriteria, cancellationToken);
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
                     Message = "Successfully Get Products",
-                    Data = outProducts
+                    Data = pagedProducts
                 };
             }
             catch (Exception ex)
@@ -199,6 +195,20 @@ namespace RookiesFashion.APIService.Services
                     RespException = ex
                 };
             }
+        }
+
+        private IQueryable<Product> ProductFilter(
+            IQueryable<Product> productQuery,
+            BaseQueryCriteriaDTO baseQueryCriteriaDto)
+        {
+            if (baseQueryCriteriaDto.CategoryId != null)
+                productQuery = productQuery.Where(p => p.CategoryId == baseQueryCriteriaDto.CategoryId);
+            if (baseQueryCriteriaDto.Rating != null)
+                productQuery = productQuery.Where(p => p.AvgRating >= baseQueryCriteriaDto.Rating);
+            if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
+                productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
+            productQuery = FilterHelper.ParseProductOrder(productQuery, baseQueryCriteriaDto.SortOrder);
+            return productQuery;
         }
     }
 }

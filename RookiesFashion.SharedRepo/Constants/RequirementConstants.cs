@@ -9,4 +9,5 @@ public static class RequirementConstants
     public static string DEFAULT_IMAGE_EXTENSION = "Image:Extension";
     public static string DEFAULT_PAGE = "Pagging:DefaultPage";
     public static string DEFAULT_LIMIT = "Pagging:Limit";
+    public static string PAGE_RANGE_COUNT = "Pagging:Range";
 }

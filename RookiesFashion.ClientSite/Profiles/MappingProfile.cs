@@ -2,6 +2,7 @@ using AutoMapper;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.ClientSite.Models;
 using RookiesFashion.ClientSite.ViewModels;
+using RookiesFashion.SharedRepo.DTO;
 
 namespace RookiesFashion.ClientSite.Profiles;
 
@@ -15,5 +16,6 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.Url, act => act.MapFrom(src => cloudinaryService.BuildImageUrl($"{src.ImageName}.{src.Extension}")));
         CreateMap<Color, ColorVM>();
         CreateMap<Size, SizeVM>();
+        CreateMap<PagedModelDTO<Product>, PagedResponseVM<ProductVM>>();
     }
 }

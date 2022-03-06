@@ -6,7 +6,7 @@ using RookiesFashion.ClientSite.Services.Interfaces;
 using RookiesFashion.ClientSite.ViewModels;
 using RookiesFashion.SharedRepo.Helpers;
 
-namespace RookiesFashion.ClientSite.Pages.Product;
+namespace RookiesFashion.ClientSite.Pages.Products;
 public class DetailPageModel : PageModel
 {
     private readonly IProductService _productService;

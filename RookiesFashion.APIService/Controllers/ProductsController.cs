@@ -13,6 +13,7 @@ using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.SharedRepo.Extension;
 using RookiesFashion.SharedRepo.Extensions;
 using RookiesFashion.SharedRepo.Helpers;
+using RookiesFashion.SharedRepo.DTO;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -25,35 +26,30 @@ namespace RookiesFashion.APIService.Controllers
         private readonly IColorService _colorService;
         private readonly ISizeService _sizeService;
         private readonly ICategoryService _categoryService;
+        private readonly IConfiguration _config;
         private readonly IMapper _mapper;
         public ProductsController(
             IProductService productService,
             IColorService colorService,
             ISizeService sizeService,
             ICategoryService categoryService,
-            IMapper mapper)
+            IMapper mapper,
+            IConfiguration config)
         {
             _productService = productService;
             _colorService = colorService;
             _sizeService = sizeService;
             _categoryService = categoryService;
             _mapper = mapper;
+            _config = config;
         }
 
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult> GetProducts()
+        public async Task<ActionResult> GetProducts([FromQuery] BaseQueryCriteriaDTO baseQuery, CancellationToken cancellationToken)
         {
-            ServiceResponse serResp = await _productService.GetProducts();
+            ServiceResponse serResp = await _productService.GetPagedProductFilter(baseQuery, cancellationToken);
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
-        }
-
-        // GET: api/Product?abc
-        [HttpGet]
-        public async Task<ActionResult> GetProducts(string search)
-        {
-            ServiceResponse serResp = await _productService.GetProducts();
-            return Ok();
         }
 
         // GET: api/Product/5
@@ -152,5 +148,7 @@ namespace RookiesFashion.APIService.Controllers
             }
             return true;
         }
+
+
     }
 }

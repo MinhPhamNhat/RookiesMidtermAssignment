@@ -1,0 +1,189 @@
+@page
+@{
+    ViewData["Title"] = "Product Collection";
+}
+@model RookiesFashion.ClientSite.Pages.Products.CollectionPageModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
+<div id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Áo thun</li>
+        </ol>
+    </nav>
+</div>
+<div class="LYAF-collection-wrapper">
+    <div class="LYAF-collection-filter">
+        <form>
+            <section>
+                <!-- Section: Filters -->
+                <section id="filters" data-auto-filter="true">
+                    <h4>Filters</h4>
+                    <hr>
+                    <!-- Section: Condition -->
+                    <section class="mb-4" data-filter="search">
+                        <h6 class="font-weight-bold mb-3">Search</h6>
+                        <div class=" mb-3">
+                            <input type="text" class="form-control" id="keyword" name="searchKeyword"
+                                placeholder="Keyword..." value="@Model.baseQuery.Search">
+                        </div>
+                    </section>
+
+                    <!-- Section: Avg. Customer Review -->
+                    <section class="mb-4">
+                        <h6 class="font-weight-bold mb-3">Rating</h6>
+                        <div class="rating-selecter btn-group" role="group">
+                            <input type="radio" name="rating" class="btn-check" autocomplete="off" id="rating-5"
+                                value="5">
+                            <label for="rating-5" class="btn btn-outline-secondary">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                            </label>
+                            <input type="radio" name="rating" class="btn-check" autocomplete="off" id="rating-4"
+                                value="4">
+                            <label for="rating-4" class="btn btn-outline-secondary">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span> & Up</span>
+                            </label>
+                            <input type="radio" name="rating" class="btn-check" autocomplete="off" id="rating-3"
+                                value="3">
+                            <label for="rating-3" class="btn btn-outline-secondary">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span> & Up</span>
+                            </label>
+                            <input type="radio" name="rating" class="btn-check" autocomplete="off" id="rating-2"
+                                value="2">
+                            <label for="rating-2" class="btn btn-outline-secondary">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span> & Up</span>
+                            </label>
+                            <input type="radio" name="rating" class="btn-check" autocomplete="off" id="rating-1"
+                                value="1">
+                            <label for="rating-1" class="btn btn-outline-secondary">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span> & Up</span>
+                            </label>
+                        </div>
+                    </section>
+                    <!-- Section: Avg. Customer Review -->
+                </section>
+                <hr>
+                <button type="submit" asp-route="Product/Collection"
+                    class="btn btn-primary collection-search">Search</button>
+        </form>
+    </div>
+    <div class="LYAF-collection-products-wrapper">
+        <div class="LYAF-collection-product-sort">
+            <div class="LYAF-sort-section">
+                <label for="LYAF-form-sort">Sắp xếp</label>
+                <select name="sort" id="LYAF-form-sort">
+                    <option value="any">
+                        Tất cả</option>
+                    <option value="price-desc">
+                        Tên từ a đến z</option>
+                    <option value="price-asc">
+                        Tên từ a đến z</option>
+                    <option value="rating-desc">
+                        Đánh giá từ cao đến thấp</option>
+                    <option value="rating-asc">
+                        Đánh giá từ thấp đến cao</option>
+                </select>
+            </div>
+            <div class="LYAF-sort-section">
+                <label for="LYAF-form-sort">Danh mục</label>
+                <select name="CategoryId" id="LYAF-form-sort">
+                    <option>Tất cả
+                    </option>
+                    @foreach (var item in Model.categories)
+                    {
+                        @if (@item.IsParent)
+                        {
+                            <option class="parent-category" value="@item.CategoryId">@item.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.CategoryId">&ensp;- @item.Name</option>
+                        }
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="LYAF-products-container">
+            <div class="card-container pt-5 pb-5">
+                @foreach (var item in Model.pagedResponse.Items)
+                {
+                    @await Component.InvokeAsync("ProductItem", item)
+                }
+            </div>
+        </div>
+        <div class="LYAF-product-pagination">
+            @{
+                var prevDisabled = !Model.pagedResponse.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.pagedResponse.HasNextPage ? "disabled" : "";
+            }
+            <ul class="pagination">
+                <li class="page-item">
+                    <a  
+                        asp-page="/Products/Collection" 
+                        asp-route-sortOrder="@Model.baseQuery.SortOrder"
+                        asp-route-page="@(Model.baseQuery.Page - 1)"
+                        asp-route-rating="@Model.baseQuery.Rating" 
+                        asp-route-categoryId="@Model.baseQuery.CategoryId"
+                        asp-route-search="@Model.baseQuery.Search" 
+                        class="btn btn-primary @prevDisabled">
+                        Previous
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a  asp-page="/Products/Collection" 
+                        asp-route-pageIndex="@Model.baseQuery.Page"
+                        asp-route-sortOrder="@Model.baseQuery.SortOrder"
+                        asp-route-rating="@Model.baseQuery.Rating" 
+                        asp-route-categoryId="@Model.baseQuery.CategoryId"
+                        asp-route-searchKeyword="@Model.baseQuery.Search" 
+                        class="btn btn-primary">
+                        @Model.baseQuery.Page
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a  asp-page="/Products/Collection" 
+                        asp-route-pageIndex="@(Model.baseQuery.Page+1)"
+                        asp-route-sortOrder="@Model.baseQuery.SortOrder"
+                        asp-route-rating="@Model.baseQuery.Rating" 
+                        asp-route-categoryId="@Model.baseQuery.CategoryId"
+                        asp-route-searchKeyword="@Model.baseQuery.Search" 
+                        class="btn btn-primary @nextDisabled">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"
+    integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"
+    integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>

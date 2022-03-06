@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.SharedRepo.DTO;
@@ -6,7 +7,10 @@ namespace RookiesFashion.APIService.Helpers;
 
 public static class FilterHelper
 {
-    public static bool ProductMatch(Product product, BaseQueryCriteriaDTO baseQueryCriteria)
+    
+    public static Expression<Func<Product, bool>> IsValid(BaseQueryCriteriaDTO baseQueryCriteria) => product => isProductValid(product, baseQueryCriteria);
+
+    public static bool isProductValid(Product product, BaseQueryCriteriaDTO baseQueryCriteria)
     {
         bool isMatch = true;
         if (baseQueryCriteria.CategoryId != null)
@@ -32,23 +36,24 @@ public static class FilterHelper
         }
         return isMatch;
     }
-
-    public static int ParseProductOrder(Product a, Product b, SortConstants sortOrder){
-        switch(sortOrder){
+    public static IQueryable<Product> ParseProductOrder(IQueryable<Product> productQuery, SortConstants? sortOrder)
+    {
+        switch (sortOrder)
+        {
             case SortConstants.NAME_ASC:
-                return a.Name.CompareTo(b.Name);
+                return productQuery.OrderBy(p => p.Name);
             case SortConstants.NAME_DESC:
-                return b.Name.CompareTo(a.Name);
+                return productQuery.OrderByDescending(p => p.Name);
             case SortConstants.PRICE_ASC:
-                return a.Name.CompareTo(b.Name);
+                return productQuery.OrderBy(p => p.Price);
             case SortConstants.PRICE_DESC:
-                return b.Name.CompareTo(a.Name);
+                return productQuery.OrderByDescending(p => p.Price);
             case SortConstants.RATING_ASC:
-                return a.AvgRating.CompareTo(b.AvgRating);
+                return productQuery.OrderBy(p => p.AvgRating);
             case SortConstants.RATING_DESC:
-                return b.AvgRating.CompareTo(a.AvgRating);
+                return productQuery.OrderByDescending(p => p.AvgRating);
             default:
-                return 0;
+                return productQuery;
 
         }
     }

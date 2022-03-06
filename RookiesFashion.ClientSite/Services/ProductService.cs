@@ -10,7 +10,7 @@ using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.ClientSite.Helpers;
 using RookiesFashion.ClientSite.ViewModels;
 
-namespace RookiesFashion.APIService.Services
+namespace RookiesFashion.ClientSite.Services
 {
     public class ProductService : IProductService
     {
@@ -94,8 +94,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                Console.WriteLine("ASDASD");
-                var uri = QueryHelper.parseQuery($"{_config["Host:api"]}/Product/Collection", query);
+                var uri = QueryHelper.parseQuery($"{_config["Host:api"]}/api/Products", query);
                 Console.WriteLine(uri);
                 var resp = await RequestHelper.Get(uri);
                 return resp;                
