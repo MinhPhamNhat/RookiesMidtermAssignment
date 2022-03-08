@@ -14277,6 +14277,38 @@
         }
       },
       {
+        "HashCode": -2047759325,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__RatingComponentViewComponentTagHelper",
+        "AssemblyName": "RookiesFashion.ClientSite",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:rating-component",
+            "Attributes": [
+              {
+                "Name": "rating"
+              }
+            ]
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "MVC.ViewComponent",
+            "Name": "rating",
+            "TypeName": "RookiesFashion.ClientSite.ViewModels.RatingVM",
+            "Metadata": {
+              "Common.PropertyName": "rating"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__RatingComponentViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "RatingComponent"
+        }
+      },
+      {
         "HashCode": 141407075,
         "Kind": "Components.Bind",
         "Name": "Bind",
@@ -16340,6 +16372,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Collection.cshtml",
+      "TargetPath": "Pages\\Products\\Collection.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
       "TargetPath": "Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
       "FileKind": "mvc"
@@ -16360,8 +16397,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Product\\Collection.cshtml",
-      "TargetPath": "Pages\\Product\\Collection.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Detail.cshtml",
+      "TargetPath": "Pages\\Products\\Detail.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16375,18 +16412,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Login\\Index.cshtml",
+      "TargetPath": "Pages\\Login\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\_ProductItem.cshtml",
       "TargetPath": "Pages\\Home\\_ProductItem.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Product\\Detail.cshtml",
-      "TargetPath": "Pages\\Product\\Detail.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Index.cshtml",
+      "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Index.cshtml",
-      "TargetPath": "Pages\\Index.cshtml",
+      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\RatingComponent\\Default.cshtml",
+      "TargetPath": "Pages\\Shared\\Components\\RatingComponent\\Default.cshtml",
       "FileKind": "mvc"
     },
     {

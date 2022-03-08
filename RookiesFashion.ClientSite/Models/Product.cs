@@ -14,6 +14,8 @@ namespace RookiesFashion.ClientSite.Models
         public int? CategoryId { get; set; }
         public DateTime CreatedDate { get; set; }
         public Category? Category { get; set; }
+        public List<Rating>? Ratings { get; set; }
+        public double AvgRating { get; set; }
         public IEnumerable<UpdatedDate>? UpdatedDates { get; set; }
         public IEnumerable<Image>? Thumbnail { get; set; }
         public IEnumerable<Color>? Colors { get; set; }

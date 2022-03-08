@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.SharedRepo.Helpers;
+using RookiesFashion.APIService.Extension;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.DTO;
+using RookiesFashion.APIService.Helpers;
 
 namespace RookiesFashion.APIService.Services
 {
@@ -22,9 +24,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                Console.WriteLine("BEFORE: ");
                 var products = _context.Products.ToList();
-                Console.WriteLine("LENGTH: " + products.Count());
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -48,8 +48,6 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var product = _context.Products
-                .Include(p => p.Category)
-                .ThenInclude(c => c.Parent)
                 .FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
@@ -134,10 +132,10 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.FirstOrDefault(p=>p.ProductId==productId);
+                var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
-                {   
+                {
                     _context.Images.RemoveRange(product.Thumbnail);
                     _context.Products.Remove(product);
                     _context.SaveChanges();
@@ -174,5 +172,43 @@ namespace RookiesFashion.APIService.Services
             return product != null;
         }
 
+        public async Task<ServiceResponse> GetPagedProductFilter(BaseQueryCriteriaDTO baseQueryCriteria, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var products = _context.Products.AsQueryable();
+                products = ProductFilter(products, baseQueryCriteria);
+                var pagedProducts = await products.PaginateAsync(baseQueryCriteria, cancellationToken);
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Products",
+                    Data = pagedProducts
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex
+                };
+            }
+        }
+
+        private IQueryable<Product> ProductFilter(
+            IQueryable<Product> productQuery,
+            BaseQueryCriteriaDTO baseQueryCriteriaDto)
+        {
+            if (baseQueryCriteriaDto.CategoryId != null)
+                productQuery = productQuery.Where(p => p.CategoryId == baseQueryCriteriaDto.CategoryId);
+            if (baseQueryCriteriaDto.Rating != null)
+                productQuery = productQuery.Where(p => p.AvgRating >= baseQueryCriteriaDto.Rating);
+            if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
+                productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
+            productQuery = FilterHelper.ParseProductOrder(productQuery, baseQueryCriteriaDto.SortOrder);
+            return productQuery;
+        }
     }
 }

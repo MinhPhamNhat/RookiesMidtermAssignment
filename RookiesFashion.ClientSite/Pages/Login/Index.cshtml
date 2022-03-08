@@ -1,0 +1,38 @@
+@page
+@{
+    ViewData["Title"] = "Login";
+}
+@model RookiesFashion.ClientSite.Pages.Login.IndexPageModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}
+<div class="container">
+    <div class="RF-login-container">
+        <h2>
+            Login
+        </h2>
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.currentLogin.Username" class="form-label">Username</label>
+                <input asp-for="@Model.currentLogin.Username" class="form-control" />
+                <span asp-validation-for="@Model.currentLogin.Username" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.currentLogin.Password" class="form-label">Password</label>
+                <input asp-for="@Model.currentLogin.Password" type="password" class="form-control" />
+                <span asp-validation-for="@Model.currentLogin.Password" class="text-danger"></span>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div class="mb-3">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>@Model.Message</strong> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            }
+            <input type="submit" class="btn btn-primary" asp-page-handler="Login">
+        </form>
+    </div>
+</div>

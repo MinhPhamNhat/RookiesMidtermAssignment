@@ -928,7 +928,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3890),
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6202),
                             Description = "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
                             Name = "Unisex Baby Long Sleeve Bodysuits Set",
                             Price = 35.0
@@ -937,7 +937,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3892),
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6204),
                             Description = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             Name = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             Price = 55.0
@@ -946,7 +946,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3893),
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6206),
                             Description = "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
                             Name = "Dreamville Street Wear Sweatshirt",
                             Price = 55.0
@@ -955,7 +955,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 1, 13, 50, 18, 944, DateTimeKind.Local).AddTicks(3897),
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6207),
                             Description = "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
                             Name = "Walnut Wooden Watch",
                             Price = 98.0
@@ -973,19 +973,16 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("RatingProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RatingUserId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("RatingVal")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserRatingUserId")
+                    b.Property<int>("UserRatingUserId")
                         .HasColumnType("int");
 
                     b.HasKey("RatingId");
@@ -995,6 +992,152 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasIndex("UserRatingUserId");
 
                     b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            RatingId = 1,
+                            Comment = "Nice one, i love this product",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6738),
+                            ProductId = 1,
+                            RatingVal = 4,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 2,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6741),
+                            ProductId = 1,
+                            RatingVal = 4,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 3,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6742),
+                            ProductId = 2,
+                            RatingVal = 3,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 4,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            ProductId = 2,
+                            RatingVal = 3,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 5,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            ProductId = 2,
+                            RatingVal = 5,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 6,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6744),
+                            ProductId = 2,
+                            RatingVal = 4,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 7,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            ProductId = 3,
+                            RatingVal = 2,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 8,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            ProductId = 3,
+                            RatingVal = 3,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 9,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6746),
+                            ProductId = 5,
+                            RatingVal = 3,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 10,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            ProductId = 5,
+                            RatingVal = 4,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 11,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            ProductId = 2,
+                            RatingVal = 5,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 12,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6748),
+                            ProductId = 1,
+                            RatingVal = 3,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 13,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6749),
+                            ProductId = 5,
+                            RatingVal = 2,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 14,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6750),
+                            ProductId = 1,
+                            RatingVal = 5,
+                            UserRatingUserId = 2
+                        },
+                        new
+                        {
+                            RatingId = 15,
+                            Comment = "The watch make me feel very elegant",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            ProductId = 5,
+                            RatingVal = 4,
+                            UserRatingUserId = 1
+                        },
+                        new
+                        {
+                            RatingId = 16,
+                            Comment = "Very beautiful and affordable price",
+                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            ProductId = 3,
+                            RatingVal = 3,
+                            UserRatingUserId = 2
+                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Role", b =>
@@ -1199,12 +1342,16 @@ namespace RookiesFashion.APIService.Data.Migrations
             modelBuilder.Entity("RookiesFashion.APIService.Models.Rating", b =>
                 {
                     b.HasOne("RookiesFashion.APIService.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
+                        .WithMany("Ratings")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("RookiesFashion.APIService.Models.User", "UserRating")
                         .WithMany()
-                        .HasForeignKey("UserRatingUserId");
+                        .HasForeignKey("UserRatingUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
@@ -1246,6 +1393,8 @@ namespace RookiesFashion.APIService.Data.Migrations
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Product", b =>
                 {
+                    b.Navigation("Ratings");
+
                     b.Navigation("Thumbnail");
 
                     b.Navigation("UpdatedDates");

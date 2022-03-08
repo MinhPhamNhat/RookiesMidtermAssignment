@@ -34,8 +34,10 @@ namespace RookiesFashion.SharedRepo.Helpers
                     return ResponseMessage(HttpStatusCode.NotFound, responseObject, context);
                 case ServiceResponseConstants.DATA_CREATED:
                     return ResponseMessage(HttpStatusCode.Created, responseObject, context);
+                case ServiceResponseConstants.UNAUTHENTICATED:
+                    return ResponseMessage(HttpStatusCode.Unauthorized, responseObject, context);
                 default:
-                    return ResponseMessage(HttpStatusCode.BadRequest, new ResponseObject { Message = "Bad request" }, context);
+                    return ResponseMessage(HttpStatusCode.NoContent, new ResponseObject { }, context);
             }
         }
 

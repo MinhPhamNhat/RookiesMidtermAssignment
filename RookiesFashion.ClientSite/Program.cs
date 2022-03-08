@@ -1,20 +1,21 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RookiesFashion.APIService.Services;
 using RookiesFashion.ClientSite.Profiles;
+using RookiesFashion.ClientSite.Services;
 using RookiesFashion.ClientSite.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductService, ProductService>(); 
-builder.Services.AddScoped<RookiesFashion.APIService.Services.Interfaces.ICloudinaryService, RookiesFashion.APIService.Services.CloudinaryService>(); 
+builder.Services.AddScoped<ICategoryService, CategoryService>(); 
+builder.Services.AddScoped<IAccountService, AccountService>(); 
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>(); 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     {
-        cfg.AddProfile(new MappingProfile(provider.GetService<RookiesFashion.APIService.Services.Interfaces.ICloudinaryService>()));
+        cfg.AddProfile(new MappingProfile(provider.GetService<ICloudinaryService>()));
     }).CreateMapper());
 var app = builder.Build();
 

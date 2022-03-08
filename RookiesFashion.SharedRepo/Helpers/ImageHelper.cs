@@ -7,7 +7,8 @@ namespace RookiesFashion.SharedRepo.Helpers;
 
 public static class ImageHelper
 {
-
+    public static string DEFAULT_IMAGE_EXTENSION = ".png";
+    public static string IMAGE_CONTENT_TYPE = "image";
     public static async Task<string> SaveToTempPath(IFormFile f)
     {
         var filePath = getImageTempPath();
@@ -28,5 +29,5 @@ public static class ImageHelper
         imgData.Headers.Add("Content-Type", file.ContentType);
         return imgData;
     }
-    public static string getImageTempPath() => Path.GetTempPath() + Guid.NewGuid().ToString() + FunctionsHelper.GetDescription(RequirementConstants.DEFAULT_IMAGE_EXTENSION);
+    public static string getImageTempPath() => Path.GetTempPath() + Guid.NewGuid().ToString() + DEFAULT_IMAGE_EXTENSION;
 }

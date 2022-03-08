@@ -2,8 +2,10 @@ using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RookiesFashion.ClientSite.Models;
 using RookiesFashion.ClientSite.Services.Interfaces;
 using RookiesFashion.ClientSite.ViewModels;
+using RookiesFashion.SharedRepo.DTO;
 using RookiesFashion.SharedRepo.Helpers;
 
 public class IndexModel : PageModel
@@ -24,9 +26,9 @@ public class IndexModel : PageModel
     
     public async Task OnGetAsync()
     {
-        var resp = await _productService.GetProducts();
-        var data = MyResponseMapper.MapJsonToList<RookiesFashion.ClientSite.Models.Product>((JsonElement)resp.Data);
-        products = data.Select(d => _mapper.Map<ProductVM>(d)).ToList();
+        var productResp = await _productService.GetProducts();
+        var pagedProducts = MyResponseMapper.MapJson<PagedModelDTO<Product>>((JsonElement)productResp.Data);
+        products = _mapper.Map<PagedResponseVM<ProductVM>>(pagedProducts).Items.ToList();
     }
 
 }
