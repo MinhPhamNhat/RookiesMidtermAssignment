@@ -10,7 +10,7 @@ using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.ClientSite.Helpers;
 using RookiesFashion.ClientSite.ViewModels;
 
-namespace RookiesFashion.APIService.Services
+namespace RookiesFashion.ClientSite.Services
 {
     public class ProductService : IProductService
     {
@@ -25,7 +25,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var resp = await RequestHelper.Get($"{_config["Host:api"]}/api/Products");
+                var resp = await HttpClientHelper.Get($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}");
                 return resp;
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var resp = await RequestHelper.Get($"{_config["Host:api"]}/api/Products/{productId}");
+                var resp = await HttpClientHelper.Get($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}/{productId}");
                 return resp;
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace RookiesFashion.APIService.Services
                         formData.Add(imgData, "Files", file.FileName);
                     }
                     formData.Add(new StringContent(JsonConvert.SerializeObject(dataModel), Encoding.UTF8));
-                    resp = await RequestHelper.Post($"{_config["Host:api"]}/api/Products", formData);
+                    resp = await HttpClientHelper.Post($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}", formData);
                 }
                 return resp;
             }
@@ -88,13 +88,16 @@ namespace RookiesFashion.APIService.Services
                     RespException = ex
                 };
             }
+            throw new NotImplementedException();
         }
 
         public async Task<ServiceResponse> GetProductsByQuery(BaseQueryCriteriaVM query)
         {
             try
             {
-                var resp = await RequestHelper.Get($"{_config["Host:api"]}/Product/");
+                var uri = QueryHelper.parseQuery($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}", query);
+                Console.WriteLine(uri);
+                var resp = await HttpClientHelper.Get(uri);
                 return resp;                
             }
             catch (Exception ex)

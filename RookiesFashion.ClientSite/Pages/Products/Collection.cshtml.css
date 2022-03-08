@@ -1,0 +1,286 @@
+.RF-collection-wrapper .RF-collection-filter .rating-selecter {
+  display: flex;
+  flex-direction: column;
+}
+.RF-collection-wrapper .RF-collection-filter .rating-selecter {
+  display: flex;
+  flex-direction: column;
+}
+.RF-collection-wrapper .RF-collection-filter .rating-selecter .rating-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.RF-collection-wrapper .RF-collection-filter .rating-selecter .rating-option label{
+  cursor: pointer;
+}
+.RF-collection-wrapper .RF-collection-products-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  0% {
+    opacity: 1;
+    display: block;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component {
+  max-width: 250px;
+  min-width: 175px;
+  border: 1px solid transparent;
+  padding: 5px;
+  flex: 1 0 20%;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-thumbnails {
+  cursor: pointer;
+  position: relative;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-thumbnails
+  img {
+  max-width: 100%;
+  height: auto;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-thumbnails
+  #main-thumbnail {
+  animation-name: fadeInAnimation;
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-thumbnails
+  #second-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info {
+  position: relative;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #price {
+  position: absolute;
+  top: -30px;
+  font-weight: 600;
+  background-color: rgba(240, 248, 255, 0.7);
+  transition: 0.2s;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #price
+  span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #price
+  #true-price {
+  font-size: 16px;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #price
+  #sale-price {
+  font-size: 13px;
+  text-decoration: line-through red;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #name {
+  font-weight: 600;
+  font-size: 16px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #name:hover {
+  color: deepskyblue;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #category {
+  line-height: 1;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #category
+  a {
+  font-weight: 600;
+  font-size: 12px;
+  color: #858585;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component
+  .RF-product-info
+  #rating {
+  display: flex;
+  flex-direction: row;
+  font-weight: 600;
+  justify-content: space-between;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component:hover {
+  border: 1px solid black;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component:hover
+  .RF-product-thumbnails
+  #main-thumbnail {
+  animation-name: fadeOutAnimation;
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component:hover
+  .RF-product-thumbnails
+  #second-thumbnail {
+  animation-name: fadeInAnimation;
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-products-container
+  .RF-product-component:hover
+  .RF-product-info
+  #price {
+  top: -40px;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-collection-product-sort {
+  width: 100%;
+  display: flex;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-collection-product-sort
+  .RF-sort-section {
+  position: relative;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-collection-product-sort
+  .RF-sort-section
+  select {
+  padding: 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.RF-collection-wrapper
+  .RF-collection-products-wrapper
+  .RF-collection-product-sort
+  .RF-sort-section
+  label {
+  font-weight: 600;
+  position: absolute;
+  font-size: 12px;
+  top: -10px;
+  left: 15px;
+  background-color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.RF-collection-wrapper .no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.RF-collection-wrapper .no-data p {
+  font-weight: 600;
+  font-szie: 24px;
+}
+
+.parent-category{
+  font-weight: bold;
+}

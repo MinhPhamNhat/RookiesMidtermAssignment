@@ -1,0 +1,27 @@
+
+.card {
+  width: 300px;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card .card-img-top img {
+  width: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.card .card-body {
+  width: 100%;
+}
+
+.card .card-body .card-text {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

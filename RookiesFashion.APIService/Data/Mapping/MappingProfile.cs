@@ -20,6 +20,7 @@ public class MappingProfile : Profile
         .ForMember( dest => dest.Colors,
                         act => act.MapFrom(
                             src => colorService.GetColorsFromRange(src.ColorIds)));
+
         
     }
 }

@@ -1,0 +1,36 @@
+@using RookiesFashion.ClientSite.ViewModels;
+@model RatingVM;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <div class="col-sm-3">
+        <div class="review-block-name"><a href="#">@Model.UserRating.Name</a></div>
+        <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+    </div>
+    <div class="col-sm-9">
+        <div class="review-block-rate">
+            @{ratingStars(Model.RatingVal);}
+        </div>
+        <div class="review-block-description">@Model.Comment</div>
+    </div>
+</div>
+<hr />
+@{
+    void ratingStars(double val)
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            if (val - i >= 1)
+            {
+                <span><i class="fas fa-star"></i></span>
+            }
+            else if (val - i > 0 && val - i < 1)
+            {
+                <span><i class="fas fa-star-half-alt"></i></span>
+            }
+            else
+            {
+                <span><i class="far fa-star"></i></span>
+            }
+        }
+    }
+}

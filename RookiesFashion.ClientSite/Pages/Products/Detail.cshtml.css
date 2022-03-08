@@ -1,9 +1,6 @@
 .RF-detail-container {
-  padding: 20px;
   display: flex;
   flex-direction: row;
-  padding-right: 150px;
-  padding-left: 150px;
 }
 .RF-detail-container .selected {
   border: 2px solid black;
@@ -58,7 +55,6 @@
 .RF-detail-container .RF-infor-detail #name {
   font-weight: 600;
   font-size: 24px;
-  font-family: "SVN-Proxima Nova", sans-serif;
   margin-bottom: 20px;
 }
 .RF-detail-container .RF-infor-detail #rating {
@@ -204,12 +200,7 @@
   flex-direction: row;
   align-items: center;
 }
-.RF-detail-container
-  .RF-infor-detail
-  .RF-order-section
-  #price
-  .warpper
-  #value {
+.RF-detail-container .RF-infor-detail .RF-order-section #price .warpper #value {
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -245,22 +236,12 @@
   #currency {
   text-decoration: underline;
 }
-.RF-detail-container
-  .RF-infor-detail
-  .RF-order-section
-  #price
-  .warpper
-  #slash {
+.RF-detail-container .RF-infor-detail .RF-order-section #price .warpper #slash {
   position: relative;
   bottom: -10px;
   font-size: 13px;
 }
-.RF-detail-container
-  .RF-infor-detail
-  .RF-order-section
-  #price
-  .warpper
-  #unit {
+.RF-detail-container .RF-infor-detail .RF-order-section #price .warpper #unit {
   position: relative;
   bottom: -10px;
   font-weight: 600;
@@ -275,11 +256,7 @@
   transition: 0.3s;
   font-weight: 600;
 }
-.RF-detail-container
-  .RF-infor-detail
-  .RF-order-section
-  #add-cart
-  button:hover {
+.RF-detail-container .RF-infor-detail .RF-order-section #add-cart button:hover {
   background-color: white;
   color: black;
 }
@@ -309,4 +286,47 @@
   .RF-detail-container .RF-infor-detail {
     width: 100%;
   }
+}
+.btn-grey {
+  background-color: #d8d8d8;
+  color: #fff;
+}
+.rating-bar .rating-progress {
+  width: 180px;
+}
+.rating-bar {
+  display: flex;
+  flex-direction: row;
+}
+.rating-bar .pull-left {
+  width: 35px;
+  line-height: 1;
+}
+.rating-bar .pull-right {
+  margin-left: 10px;
+}
+
+.rating-block {
+  background-color: #fafafa;
+  border: 1px solid #efefef;
+  padding: 15px 15px 20px 15px;
+  border-radius: 3px;
+}
+.rating-block span{
+  font-size: 24px;
+}
+.bold {
+  font-weight: 700;
+}
+.padding-bottom-7 {
+  padding-bottom: 7px;
+}
+
+.review-block {
+  background-color: #fafafa;
+  border: 1px solid #efefef;
+  padding: 15px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  width: 100%;
 }

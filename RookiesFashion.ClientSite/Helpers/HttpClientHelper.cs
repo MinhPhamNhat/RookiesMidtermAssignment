@@ -7,11 +7,11 @@ using RookiesFashion.SharedRepo.Helpers;
 
 namespace RookiesFashion.ClientSite.Helpers;
 
-public static class RequestHelper
+public static class HttpClientHelper
 {
     static HttpClientHandler clientHandler = new HttpClientHandler();
 
-    public static async Task<ServiceResponse> Get(string url)
+    public static async Task<ServiceResponse> Get(string uri)
     {
         try
         {
@@ -20,7 +20,7 @@ public static class RequestHelper
             {
                 clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
                 var client = new HttpClient(clientHandler);
-                respMess = await client.GetAsync(url);
+                respMess = await client.GetAsync(uri);
             }
             return await MyApiHelper.ReadApiResponse(respMess);
         }
@@ -34,7 +34,7 @@ public static class RequestHelper
         }
     }
 
-    public static async Task<ServiceResponse> Post(string url, MultipartFormDataContent formData)
+    public static async Task<ServiceResponse> Post(string uri, HttpContent  formData)
     {
         try
         {
@@ -43,7 +43,7 @@ public static class RequestHelper
             {
                 clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
                 var client = new HttpClient(clientHandler);
-                respMess = await client.PostAsync(url, formData);
+                respMess = await client.PostAsync(uri, formData);
             }
             return await MyApiHelper.ReadApiResponse(respMess);
         }
@@ -57,12 +57,12 @@ public static class RequestHelper
         }
     }
 
-    public static Task<ServiceResponse> Delete(string url, object data)
+    public static Task<ServiceResponse> Delete(string uri, object data)
     {
         throw new NotImplementedException();
     }
 
-    public static Task<ServiceResponse> Put(string url, object data)
+    public static Task<ServiceResponse> Put(string uri, object data)
     {
         throw new NotImplementedException();
     }

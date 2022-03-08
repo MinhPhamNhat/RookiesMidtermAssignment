@@ -37,7 +37,7 @@ public class ProductFormDTO : IValidatableObject
         }
         else
         {
-            if (!Files.All(f => f.ContentType.Contains(FunctionsHelper.GetDescription(RequirementConstants.TYPE))))
+            if (!Files.All(f => f.ContentType.Contains("image")))
             {
                 yield return new ValidationResult("Not all file is image", new[] { nameof(Files) });
             }

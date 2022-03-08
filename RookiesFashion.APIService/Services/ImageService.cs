@@ -1,7 +1,5 @@
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.APIService.Data.Context;
-using RookiesFashion.APIService.Extension;
-using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;

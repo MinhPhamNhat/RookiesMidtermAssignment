@@ -6,7 +6,7 @@ using RookiesFashion.ClientSite.Services.Interfaces;
 using RookiesFashion.ClientSite.ViewModels;
 using RookiesFashion.SharedRepo.Helpers;
 
-namespace RookiesFashion.ClientSite.Pages.Product;
+namespace RookiesFashion.ClientSite.Pages.Products;
 public class DetailPageModel : PageModel
 {
     private readonly IProductService _productService;
@@ -20,7 +20,7 @@ public class DetailPageModel : PageModel
 
 
     [BindProperty(SupportsGet = true)]
-    public ProductVM product { get; set; }
+    public ProductDetailVM product { get; set; }
 
 
     // public async Task OnGetProductCategoryName(string categorynameclient)
@@ -34,7 +34,7 @@ public class DetailPageModel : PageModel
     {
         var resp = await _productService.GetProductById((int)id);
         var data = MyResponseMapper.MapJson<RookiesFashion.ClientSite.Models.Product>((JsonElement)resp.Data);
-        product = _mapper.Map<ProductVM>(data);
+        product = _mapper.Map<ProductDetailVM>(data);
         return Page();
     }
 

@@ -14,13 +14,14 @@ namespace RookiesFashion.APIService.Models
         [Required]
         public int RatingVal { get; set; }
         public string? Comment { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [Required]
-        public int RatingProductId { get; set; }
+        public int ProductId { get; set; }
         public virtual Product? Product { get; set; }
         [Required]
 
-        public int RatingUserId { get; set; }
+        public int UserRatingUserId { get; set; }
         public virtual User? UserRating { get; set; }
     }
 }

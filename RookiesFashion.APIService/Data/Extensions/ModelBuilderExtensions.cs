@@ -619,6 +619,119 @@ public static class ModelBuilderExtensions
             new { SizesSizeId = 3, ProductsProductId = 5 }
         ));
 
-
+        modelBuilder.Entity<Rating>().HasData(
+            new Rating(){
+                RatingId = 1,
+                ProductId = 1,
+                Comment = "Nice one, i love this product",
+                RatingVal = 4,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 2,
+                ProductId = 1,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 4,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 3,
+                ProductId = 2,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 3,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 4,
+                ProductId = 2,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 3,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 5,
+                ProductId = 2,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 5,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 6,
+                ProductId = 2,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 4,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 7,
+                ProductId = 3,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 2,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 8,
+                ProductId = 3,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 3,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 9,
+                ProductId = 5,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 3,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 10,
+                ProductId = 5,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 4,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 11,
+                ProductId = 2,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 5,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 12,
+                ProductId = 1,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 3,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 13,
+                ProductId = 5,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 2,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 14,
+                ProductId = 1,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 5,
+                UserRatingUserId = 2
+            },
+            new Rating(){
+                RatingId = 15,
+                ProductId = 5,
+                Comment = "The watch make me feel very elegant",
+                RatingVal = 4,
+                UserRatingUserId = 1
+            },
+            new Rating(){
+                RatingId = 16,
+                ProductId = 3,
+                Comment = "Very beautiful and affordable price",
+                RatingVal = 3,
+                UserRatingUserId = 2
+            }
+        );
     }
 }
