@@ -27,7 +27,6 @@ builder.Services.AddControllers()
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddDbContext<RookiesFashionContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("RookiesFashion_Connection_String")).UseLazyLoadingProxies(), ServiceLifetime.Scoped);
 
@@ -42,6 +41,19 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     {
         cfg.AddProfile(new MappingProfile(provider.GetService<ICloudinaryService>(), provider.GetService<ISizeService>(), provider.GetService<IColorService>()));
     }).CreateMapper());
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigins",
+        policy =>
+        {
+            policy.WithOrigins(builder.Configuration["AllowedHosts"])
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -52,8 +64,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCors("AllowOrigins");
+// app.UseAuthorization();
 
 app.MapControllers();
 
