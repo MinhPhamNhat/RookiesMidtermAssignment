@@ -20,7 +20,11 @@ public class MappingProfile : Profile
         .ForMember( dest => dest.Colors,
                         act => act.MapFrom(
                             src => colorService.GetColorsFromRange(src.ColorIds)));
-
         
+        CreateMap<Product, ProductDTO>();
+        CreateMap<Image, ImageDTO>()
+        .ForMember( dest => dest.ImageUrl ,
+                        act => act.MapFrom(
+                            src => cloudinaryService.BuildImageUrl(src.ImageName)));
     }
 }

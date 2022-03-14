@@ -23,15 +23,18 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories
-                .Include(c=>c.Products).ThenInclude(p=>p.Thumbnail)
-                .Include(c=>c.Parent).ToList();
+                var categories = _context.Categories.Where(c=>c.IsParent).ToList();
+                var output = new List<Category>();
+                foreach(var category in categories){
+                    output.Add(category);
+                    output.AddRange(category.Children);
+                }
 
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
                     Message = "Successfully Get Categories",
-                    Data = categories
+                    Data = output
                 };
             }
             catch (Exception ex)

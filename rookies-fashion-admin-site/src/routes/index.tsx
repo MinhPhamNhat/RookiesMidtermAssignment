@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Loading from "../components/Loading";
 import RookieNavbar from "../components/RookieNavbar";
 import { PageRoutes } from "../constants";
+
 import Product from "../pages/Product";
 
 const Home = lazy(() => import("../pages/Home"));

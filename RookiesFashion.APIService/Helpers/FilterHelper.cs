@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Models.DTO;
 using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.SharedRepo.DTO;
 
@@ -7,7 +8,7 @@ namespace RookiesFashion.APIService.Helpers;
 
 public static class FilterHelper
 {
-    
+
     public static Expression<Func<Product, bool>> IsValid(BaseQueryCriteriaDTO baseQueryCriteria) => product => isProductValid(product, baseQueryCriteria);
 
     public static bool isProductValid(Product product, BaseQueryCriteriaDTO baseQueryCriteria)
@@ -54,7 +55,6 @@ public static class FilterHelper
                 return productQuery.OrderByDescending(p => p.AvgRating);
             default:
                 return productQuery;
-
         }
     }
 }

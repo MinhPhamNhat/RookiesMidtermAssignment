@@ -3,3 +3,11 @@
     flex-direction: row;
     gap: 5px;
 }
+
+.product-thumbnail{
+    width: 100px;
+    height: 100px;
+}
+.box-body table td{
+    padding: 10px;
+}

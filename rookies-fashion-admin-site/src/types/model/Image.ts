@@ -5,6 +5,6 @@ export  type Image = {
     ImageName: string,
     Extension: string,
     ProductId: number,
-    Url: string | undefined
+    ImageUrl: string | undefined
     Product: Product | undefined
 }

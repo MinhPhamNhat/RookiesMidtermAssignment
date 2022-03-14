@@ -1,4 +1,4 @@
-import { Product } from "./model";
+import { Category, Product } from "./model";
 
 // For Action Creator
 export type getProductsAction = {
@@ -8,6 +8,15 @@ export type getProductsAction = {
 export type gotProducts = {
   type: "GOT_PRODUCTS";
   products: Array<Product>;
+};
+
+export type getCategoriesAction = {
+  type: "GET_CATEGORIES";
+};
+
+export type gotCategories = {
+  type: "GOT_CATEGORIES";
+  categories: Array<Category>;
 };
 
 // export interface deleteTodoAction {

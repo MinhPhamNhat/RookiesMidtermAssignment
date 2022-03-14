@@ -40,10 +40,10 @@ class HttpClient {
     return response;
   }
 
-  async post(endpoint: string, data?: object): Promise<Response> {
+  async post(endpoint: string, formData?: any): Promise<Response> {
     this.token = getToken();
     const response = await axios
-      .post(`${endpoint}`, data)
+      .post(`${endpoint}`, formData)
       .then((res: any) => {
         return {
           code: res.status,

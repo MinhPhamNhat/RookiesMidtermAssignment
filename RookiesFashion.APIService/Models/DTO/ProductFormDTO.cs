@@ -8,7 +8,7 @@ using RookiesFashion.SharedRepo.Constants;
 namespace RookiesFashion.APIService.Models.DTO;
 public class ProductFormDTO : IValidatableObject
 {
-    public int ProductId { get; set; }
+    public int? ProductId { get; set; }
     [Required]
     public string? Name { get; set; }
     [Required]
@@ -16,7 +16,7 @@ public class ProductFormDTO : IValidatableObject
     [Required]
     public double? Price { get; set; }
     [Required]
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
     [Required]
     public List<int>? ColorIds { get; set; }

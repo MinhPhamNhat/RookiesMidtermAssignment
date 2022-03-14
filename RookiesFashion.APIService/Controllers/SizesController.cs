@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.Helpers;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -16,17 +19,19 @@ namespace RookiesFashion.APIService.Controllers
     public class SizesController : ControllerBase
     {
         private readonly RookiesFashionContext _context;
-
-        public SizesController(RookiesFashionContext context)
+        private readonly ISizeService _sizeService;
+        public SizesController(RookiesFashionContext context, ISizeService sizeService)
         {
+            _sizeService = sizeService;
             _context = context;
         }
 
         // GET: api/Sizes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Size>>> GetSizes()
+        public async Task<ActionResult> GetSizes()
         {
-            return await _context.Sizes.ToListAsync();
+            ServiceResponse serResp = await _sizeService.GetSizes();
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
         // GET: api/Sizes/5

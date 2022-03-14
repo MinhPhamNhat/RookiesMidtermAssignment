@@ -84,15 +84,17 @@ namespace RookiesFashion.APIService.Controllers
         // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult> PostProduct([FromForm] ProductFormDTO formProduct)
+        public async Task<ActionResult> PostProduct(dynamic formProduct)
         {
-            if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
-                return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
+            Console.WriteLine(JsonConvert.SerializeObject(formProduct));
+            return Ok();
+            // if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
+            //     return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
 
-            var product = _mapper.Map<Product>(formProduct);
+            // var product = _mapper.Map<Product>(formProduct);
 
-            ServiceResponse serResp = await _productService.InsertProduct(product);
-            return MyApiHelper.RequestResultParser(serResp, HttpContext);
+            // ServiceResponse serResp = await _productService.InsertProduct(product);
+            // return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
         // DELETE: api/Product/5
@@ -110,10 +112,10 @@ namespace RookiesFashion.APIService.Controllers
                 validateColors(formProduct.ColorIds, out validationResult);
 
         }
-        private bool validateCategory(int CategoryId, out ValidationResultModel validationState)
+        private bool validateCategory(int? CategoryId, out ValidationResultModel validationState)
         {
             validationState = new ValidationResultModel();
-            if (!_categoryService.IsExist(CategoryId))
+            if (!_categoryService.IsExist((int)CategoryId))
             {
                 validationState = new ValidationResultModel(new ValidationError("CategoryId", CategoryId, "Category not found"));
                 return false;

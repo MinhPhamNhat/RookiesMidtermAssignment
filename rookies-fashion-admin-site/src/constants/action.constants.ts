@@ -1,6 +1,8 @@
 const Actions = {
   GET_PRODUCTS: "GET_PRODUCTS",
   GOT_PRODUCTS: "GOT_PRODUCTS",
+  GET_CATEGORIES: "GET_CATEGORIES",
+  GOT_CATEGORIES: "GOT_CATEGORIES",
 };
 
 export default Actions;
