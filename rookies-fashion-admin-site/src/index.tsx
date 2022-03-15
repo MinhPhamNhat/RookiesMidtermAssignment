@@ -11,6 +11,7 @@ import reducers from "./reducers";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import sagaSagaLaydyGaga from "./sagas";
+import { ReactNotifications } from "react-notifications-component";
 const sagaMiddleWare = createSagaMiddleware();
 
 const store = createStore(
@@ -20,6 +21,7 @@ const store = createStore(
 sagaMiddleWare.run(sagaSagaLaydyGaga);
 ReactDOM.render(
   <React.StrictMode>
+    <ReactNotifications />
     <Provider store={store}>
       <MyRoutes />
     </Provider>

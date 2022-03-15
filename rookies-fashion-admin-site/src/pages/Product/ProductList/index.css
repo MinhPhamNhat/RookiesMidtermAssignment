@@ -11,3 +11,27 @@
 .box-body table td{
     padding: 10px;
 }
+.custom-ui{
+    background-color: rgb(204, 95, 95);
+    color: white;
+    padding: 30px 80px 30px 80px;
+
+}
+
+.dialog-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dialog-button button{
+    outline: none;
+    background-color: rgb(204, 95, 95);
+    transition: 0.5s;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 20px 10px 20px;
+}
+.dialog-button button:hover{
+    background-color: rgb(235, 68, 68);
+}

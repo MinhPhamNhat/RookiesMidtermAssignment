@@ -3,13 +3,17 @@ import { Container, Table, Button, Row, Col, Card } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 import { connect } from "react-redux";
 import { getProducts } from "../../../actions";
-
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { Product } from "../../../types/model";
 
 const List: React.FC<any> = (props) => {
   const { getProducts, products } = props;
+  const onDeleteAccepted = (id: number) => {
+    console.log("OK DELETE " + id);
+  };
   const customStyles = {
     rows: {
       style: {
@@ -33,7 +37,7 @@ const List: React.FC<any> = (props) => {
     {
       name: "Thumbnail",
       cell: (row: Product) => (
-        <img className="product-thumbnail" src={row.Thumbnail[0].ImageUrl} />
+        <img className="product-thumbnail" src={row.Thumbnail[0]?.ImageUrl} />
       ),
       sortable: true,
     },
@@ -42,12 +46,6 @@ const List: React.FC<any> = (props) => {
       selector: (row: Product) => row.Name,
       sortable: true,
     },
-    // {
-    //   name: "Description",
-    //   selector: (row: Product) => row.Description,
-    //   maxWidth: "600px",
-    //   sortable: true,
-    // },
     {
       name: "Category",
       selector: (row: Product) => row.Category.Name,
@@ -75,21 +73,31 @@ const List: React.FC<any> = (props) => {
     },
     {
       button: true,
-      cell: () => (
+      cell: (row: Product) => (
         <div className="text-end">
           <a href="" className="btn btn-outline-info btn-rounded">
             <i className="fas fa-pen"></i>
           </a>
-          <a href="" className="btn btn-outline-danger btn-rounded">
+          <button
+            type="button"
+            onClick={() =>
+              ShowDialog(
+                "Are you sure",
+                "You wanna delete this",
+                onDeleteAccepted,
+                row.ProductId
+              )
+            }
+            className="btn btn-outline-danger btn-rounded"
+          >
             <i className="fas fa-trash"></i>
-          </a>
+          </button>
         </div>
       ),
       sortable: false,
       right: true,
     },
   ];
-
   useReducer(getProducts);
 
   return (
@@ -112,7 +120,7 @@ const List: React.FC<any> = (props) => {
             data={products}
             progressPending={!products}
             pagination={true}
-            selectableRows
+            // selectableRows
             customStyles={customStyles}
           />
         </div>
@@ -130,3 +138,38 @@ const mapStateToProps = (state: any) => {
 export default connect(mapStateToProps, {
   getProducts,
 })(List);
+
+const ShowDialog = (
+  title: string,
+  message: string,
+  onAccepted?: any,
+  id?: any
+) => {
+  confirmAlert({
+    customUI: ({ onClose }) => {
+      return (
+        <div className="custom-ui">
+          <h1>{title}</h1>
+          <p>{message}</p>
+          <div className="dialog-button">
+            <button
+              onClick={() => {
+                onClose();
+              }}
+            >
+              No
+            </button>
+            <button
+              onClick={() => {
+                onAccepted(id);
+                onClose();
+              }}
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      );
+    },
+  });
+};

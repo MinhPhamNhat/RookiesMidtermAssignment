@@ -1,4 +1,5 @@
 import { Response } from "../../types/model";
+import { ValidationError } from "../../types/model/ValidationError";
 import axios from "./base";
 
 function getToken() {
@@ -54,8 +55,8 @@ class HttpClient {
       .catch((err: any) => {
         return {
           code: err.response.status,
-          message: err.response.data.message,
-          data: undefined,
+          message: err.response.data.Message,
+          data: err.response.data.Data as Array<ValidationError>,
         };
       });
     return response;

@@ -84,17 +84,20 @@ namespace RookiesFashion.APIService.Controllers
         // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult> PostProduct(dynamic formProduct)
+        public async Task<ActionResult> PostProduct([FromForm] List<IFormFile> Files, [FromForm] IFormCollection formCollection)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(formProduct));
-            return Ok();
-            // if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
-            //     return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
+            ProductFormDTO formProduct = ProductFormDTOBinder(formCollection, Files);
+            if (TryValidateModel(formProduct))
+            {
+                if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
+                    return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
 
-            // var product = _mapper.Map<Product>(formProduct);
+                var product = _mapper.Map<Product>(formProduct);
 
-            // ServiceResponse serResp = await _productService.InsertProduct(product);
-            // return MyApiHelper.RequestResultParser(serResp, HttpContext);
+                ServiceResponse serResp = await _productService.InsertProduct(product);
+                return MyApiHelper.RequestResultParser(serResp, HttpContext);
+            }
+            return MyApiHelper.ValidationResponseMessage(new ValidationResultModel(ModelState), HttpContext);
         }
 
         // DELETE: api/Product/5
@@ -126,6 +129,11 @@ namespace RookiesFashion.APIService.Controllers
         private bool validateColors(List<int> colorIds, out ValidationResultModel validationState)
         {
             validationState = new ValidationResultModel();
+            if (colorIds.Count() <= 0)
+            {
+                validationState = new ValidationResultModel(new ValidationError("ColorId", colorIds, $"Please select color"));
+                return false;
+            }
             foreach (var colorId in colorIds)
             {
                 if (!_colorService.IsExist(colorId, out _))
@@ -140,6 +148,11 @@ namespace RookiesFashion.APIService.Controllers
         private bool validateSizes(List<int> sizeIds, out ValidationResultModel validationState)
         {
             validationState = new ValidationResultModel();
+            if (sizeIds.Count() <= 0)
+            {
+                validationState = new ValidationResultModel(new ValidationError("SizeIds", sizeIds, $"Please select size"));
+                return false;
+            }
             foreach (var sizeId in sizeIds)
             {
                 if (!_sizeService.IsExist(sizeId, out _))
@@ -151,6 +164,17 @@ namespace RookiesFashion.APIService.Controllers
             return true;
         }
 
-
+        private ProductFormDTO ProductFormDTOBinder(IFormCollection formCollection, List<IFormFile> files)
+        {
+            ProductFormDTO productFormDTO = new ProductFormDTO();
+            productFormDTO.CategoryId = int.Parse(formCollection["CategoryId"].First());
+            productFormDTO.Description = formCollection["Description"].First();
+            productFormDTO.Name = formCollection["Name"].First();
+            productFormDTO.Price = int.Parse(formCollection["Price"].First());
+            productFormDTO.ColorIds = formCollection["ColorIds[]"].Select(_ => int.Parse(_)).ToList();
+            productFormDTO.SizeIds = formCollection["SizeIds[]"].Select(_ => int.Parse(_)).ToList();
+            productFormDTO.Files = files;
+            return productFormDTO;
+        }
     }
 }

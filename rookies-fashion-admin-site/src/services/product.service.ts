@@ -5,7 +5,7 @@ import { ProductForm } from "../types/form/ProductForm";
 class ProductService {
   async getProducts() {
     const endpoint = Endpoints.PRODUCTS;
-    const response = await HttpClient.get(endpoint);
+    const response = await HttpClient.get(endpoint,{Limit: 10} );
     return response;
   }
   async getProductById(id: string) {
@@ -15,9 +15,7 @@ class ProductService {
   }
   async insertProduct(form: any) {
     const endpoint = Endpoints.PRODUCTS;
-    console.log(form)
     const response = await HttpClient.post(endpoint, form);
-    console.log(response)
     return response;
   }
 }

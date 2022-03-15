@@ -5,17 +5,30 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { connect } from "react-redux";
 import { getCategories } from "../../../actions";
-import { categoryService, colorService, sizeService, productService } from "../../../services";
-import { serialize } from 'object-to-formdata';
+import {
+  categoryService,
+  colorService,
+  sizeService,
+  productService,
+} from "../../../services";
+import { serialize } from "object-to-formdata";
 import { Category, Color, Size } from "../../../types/model";
 import Option from "../../../components/Option";
-import AsyncSelect from "react-select/async";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import UploadZone from "../../../components/UploadZone";
 import InputSection from "../../../components/InputSection";
 import { ProductForm } from "../../../types/form/ProductForm";
+import AsyncSelect from "react-select/async";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import {
+  NOTIFICATION_TYPE,
+  Store,
+} from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import { StatusCode } from "../../../constants";
+import { ValidationError } from "../../../types/model/ValidationError";
 
 const ProductInsert: React.FC<any> = (props) => {
+  const [isSuccess, setIsSuccess] = useState(false);
   const [form, setForm] = useState<ProductForm>({
     CategoryId: 0,
     ColorIds: [],
@@ -31,16 +44,26 @@ const ProductInsert: React.FC<any> = (props) => {
   const onFileUploaded = (files: Array<File>) => {
     setForm({ ...form, Files: files });
   };
-  const formSubmit = () => {
-    var formData = new FormData()
-    productService.insertProduct(form)
-  }
+  const formSubmit = async () => {
+    var formData = serialize(form);
+    form.Files.forEach((f) => formData.append("Files", f, f.name));
+    var resp = await productService.insertProduct(formData);
+    if (resp.code == StatusCode.OK || resp.code == StatusCode.CREATED) {
+      ShowNotification(resp.message, "Success", "success")
+    } else {
+      resp.data.forEach((err: ValidationError) =>
+        ShowNotification(err.ErrorMessage, err.Field, "danger")
+      );
+    }
+  };
+
   useEffect(() => {
     setForm({
       ...form,
       Description: draftToHtml(convertToRaw(editorState.getCurrentContent())),
     });
   }, [editorState]);
+
   return (
     <Container>
       <div className="page-title">
@@ -95,7 +118,10 @@ const ProductInsert: React.FC<any> = (props) => {
               component={
                 <AsyncSelect
                   onChange={(value: any) =>
-                    setForm({ ...form, ColorIds: value.map((c: any) => c.value) })
+                    setForm({
+                      ...form,
+                      ColorIds: value.map((c: any) => c.value),
+                    })
                   }
                   cacheOptions
                   defaultOptions
@@ -109,7 +135,10 @@ const ProductInsert: React.FC<any> = (props) => {
               component={
                 <AsyncSelect
                   onChange={(value: any) =>
-                    setForm({ ...form, SizeIds: value.map((s: any) => s.value) })
+                    setForm({
+                      ...form,
+                      SizeIds: value.map((s: any) => s.value),
+                    })
                   }
                   cacheOptions
                   defaultOptions
@@ -146,7 +175,11 @@ const ProductInsert: React.FC<any> = (props) => {
                 <button type="button" className="btn btn-secondary mb-2">
                   <i className="fas fa-times"></i> Cancel
                 </button>
-                <button type="button" className="btn btn-primary mb-2" onClick={formSubmit}>
+                <button
+                  type="button"
+                  className="btn btn-primary mb-2"
+                  onClick={formSubmit}
+                >
                   <i className="fas fa-save"></i> Save
                 </button>
               </div>
@@ -202,5 +235,25 @@ const promiseSizeOptions = async () => {
       label: c.Name,
       name: c.Name,
     };
+  });
+};
+
+const ShowNotification = (
+  message: string,
+  title: string,
+  type: NOTIFICATION_TYPE
+) => {
+  Store.addNotification({
+    title: title,
+    message: message,
+    type: type,
+    insert: "top",
+    container: "bottom-right",
+    animationIn: ["animate__animated", "animate__fadeIn"],
+    animationOut: ["animate__animated", "animate__fadeOut"],
+    dismiss: {
+      duration: 5000,
+      onScreen: true,
+    },
   });
 };

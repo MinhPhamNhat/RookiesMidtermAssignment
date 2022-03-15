@@ -25,7 +25,7 @@ namespace RookiesFashion.APIService.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual Category? Category { get; set; }
         public virtual List<Rating>? Ratings { get; set; }
-        public double AvgRating { get => Math.Round(Ratings.Aggregate<Rating, double>(0, (x, y) => x + ((double)y.RatingVal / Ratings.Count())), 1); }
+        public double? AvgRating { get => (Ratings==null||Ratings.Count()<=0)?0:Math.Round(Ratings.Aggregate<Rating, double>(0, (x, y) => x + ((double)y.RatingVal / Ratings.Count())), 1); }
         public virtual IEnumerable<UpdatedDate>? UpdatedDates { get; set; }
         public virtual IEnumerable<Image>? Thumbnail { get; set; }
         public virtual IEnumerable<Color>? Colors { get; set; }
