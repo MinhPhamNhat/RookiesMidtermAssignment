@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj": {}
+    "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj": {}
   },
   "projects": {
-    "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj": {
+    "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
+        "projectUniqueName": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
         "projectName": "RookiesFashion.APIService",
-        "projectPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.APIService\\obj\\",
+        "projectPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\RookiesFashion.APIService.csproj",
+        "packagesPath": "C:\\Users\\minhn\\.nuget\\packages\\",
+        "outputPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.APIService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\minhn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
-                "projectPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj"
+              "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
+                "projectPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj"
               }
             }
           }
@@ -111,17 +111,17 @@
         }
       }
     },
-    "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
+    "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
+        "projectUniqueName": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
         "projectName": "RookiesFashion.SharedRepo",
-        "projectPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\obj\\",
+        "projectPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
+        "packagesPath": "C:\\Users\\minhn\\.nuget\\packages\\",
+        "outputPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\minhn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

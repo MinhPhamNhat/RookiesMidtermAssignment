@@ -5,7 +5,7 @@ const UploadZone: React.FC<any> = (props) => {
   const { onFileUploaded } = props;
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     maxFiles: 2,
-    accept: "image/jpeg,image/png",
+    accept: "image/jpeg,image/png,image/webp",
   });
   useEffect(() => {
     onFileUploaded(acceptedFiles);

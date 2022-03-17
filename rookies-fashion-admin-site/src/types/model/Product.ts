@@ -13,7 +13,7 @@ export type Product = {
   Description: string;
   Price: number;
   CategoryId: number;
-  CreatedDate: Date;
+  CreatedDate: string;
   Category: Category;
   Ratings: Array<Rating>;
   AvgRating: number;

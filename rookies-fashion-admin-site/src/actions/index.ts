@@ -1,16 +1,16 @@
-import { getCategoriesActionCreator, getProductsActionCreator } from "../types/actionCreatorTypes";
-
-export const getProducts: getProductsActionCreator = () => {
-	console.log(333)
+import { getCategoriesActionCreator, getPagingProductsActionCreator } from "../types/actionCreatorTypes";
+import {PagingForm} from "../types/form/PagingForm"
+export const getPagingProducts: getPagingProductsActionCreator = (query: PagingForm) => {
 	return {
-		type: "GET_PRODUCTS",
+		type: "GET_PAGING_PRODUCTS",
+		query
 	};
 };
 
 export const getCategories: getCategoriesActionCreator = () => {
-	console.log(222)
 	return {
 		type: "GET_CATEGORIES",
 	};
 };
+
 

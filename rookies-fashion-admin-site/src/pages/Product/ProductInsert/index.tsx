@@ -19,10 +19,7 @@ import InputSection from "../../../components/InputSection";
 import { ProductForm } from "../../../types/form/ProductForm";
 import AsyncSelect from "react-select/async";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import {
-  NOTIFICATION_TYPE,
-  Store,
-} from "react-notifications-component";
+import { NOTIFICATION_TYPE, Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { StatusCode } from "../../../constants";
 import { ValidationError } from "../../../types/model/ValidationError";
@@ -49,7 +46,7 @@ const ProductInsert: React.FC<any> = (props) => {
     form.Files.forEach((f) => formData.append("Files", f, f.name));
     var resp = await productService.insertProduct(formData);
     if (resp.code == StatusCode.OK || resp.code == StatusCode.CREATED) {
-      ShowNotification(resp.message, "Success", "success")
+      ShowNotification(resp.message, "Success", "success");
     } else {
       resp.data.forEach((err: ValidationError) =>
         ShowNotification(err.ErrorMessage, err.Field, "danger")
@@ -65,12 +62,13 @@ const ProductInsert: React.FC<any> = (props) => {
   }, [editorState]);
 
   return (
-    <Container>
+    <div>
       <div className="page-title">
         <h3>Insert Product</h3>
       </div>
+      <hr />
       <Card>
-        <div className="card-body">
+        <Card.Body>
           <h5 className="card-title"></h5>
           <form className="">
             <InputSection
@@ -185,9 +183,9 @@ const ProductInsert: React.FC<any> = (props) => {
               </div>
             </div>
           </form>
-        </div>
+        </Card.Body>
       </Card>
-    </Container>
+    </div>
   );
 };
 

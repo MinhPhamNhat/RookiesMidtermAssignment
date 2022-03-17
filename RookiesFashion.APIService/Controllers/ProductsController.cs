@@ -48,6 +48,7 @@ namespace RookiesFashion.APIService.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProducts([FromQuery] BaseQueryCriteriaDTO baseQuery, CancellationToken cancellationToken)
         {
+            Console.WriteLine(JsonConvert.SerializeObject(baseQuery));
             ServiceResponse serResp = await _productService.GetPagedProductFilter(baseQuery, cancellationToken);
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }

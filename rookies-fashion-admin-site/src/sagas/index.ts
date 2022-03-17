@@ -1,31 +1,31 @@
 import { takeEvery, put, call, StrictEffect } from "redux-saga/effects";
 import {
-  getProductsAction,
+  getPagingProductsAction,
   gotCategories,
-  gotProducts,
+  gotPagingProducts,
 } from "../types/actionTypes";
 import { Actions } from "../constants";
 import { categoryService, productService } from "../services";
 import { Response } from "../types/model";
+import { PagingForm } from "../types/form/PagingForm";
 // watchers
 
 function* sagaSagaLaydyGaga(): Generator<StrictEffect> {
-  console.log(10)
   yield takeEvery(Actions.GET_CATEGORIES, getCategoriesWorker);
-  yield takeEvery(Actions.GET_PRODUCTS, getProductsWorker);
+  yield takeEvery(Actions.GET_PAGING_PRODUCTS, getProductsWorker);
 }
 
 // workers
 
-function* getProductsWorker() {
+function* getProductsWorker({query}: getPagingProductsAction) {
   // create todo using api
   try {
-    const response: Response = yield call(productService.getProducts);
+    const response: Response = yield call(productService.getProducts, query);
     switch (response.code) {
       case 200:
-        const data: gotProducts = {
-          type: "GOT_PRODUCTS",
-          products: response.data.Items,
+        const data: gotPagingProducts = {
+          type: "GOT_PAGING_PRODUCTS",
+          paging: response.data,
         };
         yield put(data);
     }

@@ -12,8 +12,8 @@ export const useAsyncService = (service: any) => {
   // },[])
   // return resp;
 };
-export const useReducer = (callback: any, callbackParams?: any) => {
+export const useReducer = (callback: any, ...args: any[]) => {
   useEffect(() => {
-    callback(callbackParams);
+    callback(args);
   }, [callback]);
 };

@@ -1,11 +1,12 @@
 import HttpClient from "../utils/HttpClient";
 import { Endpoints } from "../constants";
 import { ProductForm } from "../types/form/ProductForm";
+import { PagingForm } from "../types/form/PagingForm";
 
 class ProductService {
-  async getProducts() {
+  async getProducts(query: PagingForm) {
     const endpoint = Endpoints.PRODUCTS;
-    const response = await HttpClient.get(endpoint,{Limit: 10} );
+    const response = await HttpClient.get(endpoint, query);
     return response;
   }
   async getProductById(id: string) {

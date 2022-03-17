@@ -34,7 +34,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("ProductsProductId");
 
-                    b.ToTable("ColorProduct");
+                    b.ToTable("ColorProduct", (string)null);
 
                     b.HasData(
                         new
@@ -111,7 +111,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("SizesSizeId");
 
-                    b.ToTable("ProductSize");
+                    b.ToTable("ProductSize", (string)null);
 
                     b.HasData(
                         new
@@ -188,7 +188,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasKey("Username");
 
-                    b.ToTable("Account");
+                    b.ToTable("Account", (string)null);
 
                     b.HasData(
                         new
@@ -232,7 +232,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
 
                     b.HasData(
                         new
@@ -771,7 +771,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("ThumbnailImageId");
 
-                    b.ToTable("Color");
+                    b.ToTable("Color", (string)null);
 
                     b.HasData(
                         new
@@ -815,7 +815,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Image", (string)null);
 
                     b.HasData(
                         new
@@ -921,14 +921,14 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
 
                     b.HasData(
                         new
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6202),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2290),
                             Description = "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
                             Name = "Unisex Baby Long Sleeve Bodysuits Set",
                             Price = 35.0
@@ -937,7 +937,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6204),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2292),
                             Description = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             Name = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             Price = 55.0
@@ -946,7 +946,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6206),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2294),
                             Description = "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
                             Name = "Dreamville Street Wear Sweatshirt",
                             Price = 55.0
@@ -955,7 +955,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6207),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2295),
                             Description = "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
                             Name = "Walnut Wooden Watch",
                             Price = 98.0
@@ -991,14 +991,14 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("UserRatingUserId");
 
-                    b.ToTable("Rating");
+                    b.ToTable("Rating", (string)null);
 
                     b.HasData(
                         new
                         {
                             RatingId = 1,
                             Comment = "Nice one, i love this product",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6738),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2982),
                             ProductId = 1,
                             RatingVal = 4,
                             UserRatingUserId = 1
@@ -1007,7 +1007,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 2,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6741),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2985),
                             ProductId = 1,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1016,7 +1016,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 3,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6742),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2987),
                             ProductId = 2,
                             RatingVal = 3,
                             UserRatingUserId = 1
@@ -1025,7 +1025,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 4,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2987),
                             ProductId = 2,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1034,7 +1034,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 5,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2988),
                             ProductId = 2,
                             RatingVal = 5,
                             UserRatingUserId = 1
@@ -1043,7 +1043,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 6,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6744),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2989),
                             ProductId = 2,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1052,7 +1052,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 7,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2990),
                             ProductId = 3,
                             RatingVal = 2,
                             UserRatingUserId = 1
@@ -1061,7 +1061,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 8,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2990),
                             ProductId = 3,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1070,7 +1070,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 9,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6746),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2991),
                             ProductId = 5,
                             RatingVal = 3,
                             UserRatingUserId = 1
@@ -1079,7 +1079,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 10,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2994),
                             ProductId = 5,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1088,7 +1088,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 11,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2995),
                             ProductId = 2,
                             RatingVal = 5,
                             UserRatingUserId = 1
@@ -1097,7 +1097,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 12,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6748),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2996),
                             ProductId = 1,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1106,7 +1106,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 13,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6749),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2996),
                             ProductId = 5,
                             RatingVal = 2,
                             UserRatingUserId = 1
@@ -1115,7 +1115,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 14,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6750),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2997),
                             ProductId = 1,
                             RatingVal = 5,
                             UserRatingUserId = 2
@@ -1124,7 +1124,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 15,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2998),
                             ProductId = 5,
                             RatingVal = 4,
                             UserRatingUserId = 1
@@ -1133,7 +1133,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 16,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            CreatedDate = new DateTime(2022, 3, 16, 17, 41, 25, 540, DateTimeKind.Local).AddTicks(2998),
                             ProductId = 3,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1151,7 +1151,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
 
                     b.HasData(
                         new
@@ -1180,7 +1180,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasKey("SizeId");
 
-                    b.ToTable("Size");
+                    b.ToTable("Size", (string)null);
 
                     b.HasData(
                         new
@@ -1218,7 +1218,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("UpdatedDate");
+                    b.ToTable("UpdatedDate", (string)null);
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.User", b =>
@@ -1245,7 +1245,7 @@ namespace RookiesFashion.APIService.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
 
                     b.HasData(
                         new

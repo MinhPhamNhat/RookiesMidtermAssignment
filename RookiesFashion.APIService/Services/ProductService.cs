@@ -204,7 +204,7 @@ namespace RookiesFashion.APIService.Services
             if (baseQueryCriteriaDto.CategoryId != null)
                 productQuery = productQuery.Where(p => p.CategoryId == baseQueryCriteriaDto.CategoryId);
             if (baseQueryCriteriaDto.Rating != null)
-                productQuery = productQuery.Where(p => p.AvgRating >= baseQueryCriteriaDto.Rating);
+                productQuery = productQuery.Where(p => p.Ratings.Select(r => r.RatingVal).Average() >= baseQueryCriteriaDto.Rating);
             if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
                 productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
             productQuery = FilterHelper.ParseProductOrder(productQuery, baseQueryCriteriaDto.SortOrder);

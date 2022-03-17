@@ -8,7 +8,7 @@ import { Color } from "./Color";
 import { Size } from "./Size";
 import { UpdatedDates } from "./UpdatedDates";
 import { Response } from "./Response";
-
+import { PagingProduct } from "./PagingProduct";
 export type {
   Product,
   Category,
@@ -20,4 +20,5 @@ export type {
   Size,
   UpdatedDates,
   Response,
+  PagingProduct,
 };

@@ -50,9 +50,13 @@ public static class FilterHelper
             case SortConstants.PRICE_DESC:
                 return productQuery.OrderByDescending(p => p.Price);
             case SortConstants.RATING_ASC:
-                return productQuery.OrderBy(p => p.AvgRating);
+                return productQuery.OrderBy(p => p.Ratings.Select(r => r.RatingVal).Average());
             case SortConstants.RATING_DESC:
-                return productQuery.OrderByDescending(p => p.AvgRating);
+                return productQuery.OrderByDescending(p => p.Ratings.Select(r => r.RatingVal).Average());
+            case SortConstants.CREATED_DATE_ASC:
+                return productQuery.OrderBy(p => p.CreatedDate);
+            case SortConstants.CREATED_DATE_DESC:
+                return productQuery.OrderByDescending(p => p.CreatedDate);
             default:
                 return productQuery;
         }

@@ -1,3 +1,4 @@
-import { getCategoriesAction, getProductsAction } from "./actionTypes";
-export type getProductsActionCreator = () => getProductsAction;
+import { getCategoriesAction, getPagingProductsAction } from "./actionTypes";
+import { PagingForm } from "./form/PagingForm";
+export type getPagingProductsActionCreator = (query: PagingForm) => getPagingProductsAction;
 export type getCategoriesActionCreator = () => getCategoriesAction;

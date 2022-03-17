@@ -1,5 +1,3 @@
-import { EditorState } from "draft-js";
-
 export type ProductForm = {
     Name?: string;
     Description?: string;
@@ -10,3 +8,4 @@ export type ProductForm = {
     SizeIds?: Array<number>;
 }
 
+// {"Search":"Rainbow ","Rating":null,"CategoryId":null,"SortOrder":0,"Page":1,"Limit":2}
