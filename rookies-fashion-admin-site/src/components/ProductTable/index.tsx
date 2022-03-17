@@ -6,7 +6,17 @@ import { Product } from "../../types/model";
 import { PagingForm } from "../../types/form/PagingForm";
 import "./index.css";
 import { Actions, SortOrderValue, SortType } from "../../constants";
-const ProductTable = (props: any) => {
+const ProductTable = ({
+  getPagingProducts,
+  pagingProduct,
+  actionType,
+  pagingForm,
+  setPagingForm,
+  onChanging,
+  setOnChanging,
+  loading,
+  setLoading,
+}: any) => {
   const onDeleteAccepted = (id: number) => {
     console.log("OK DELETE " + id);
   };
@@ -46,7 +56,7 @@ const ProductTable = (props: any) => {
       name: "Name",
       sortable: true,
       selector: (row: Product) => row.Name,
-      cell: (row: Product) => <p title={row.Name}>{row.Name}</p>,
+      cell: (row: Product) => <span title={row.Name}>{row.Name}</span>,
     },
     {
       id: SortType.CREATED_DATE,
@@ -68,7 +78,8 @@ const ProductTable = (props: any) => {
       id: SortType.PRICE,
       sortable: true,
       name: "Price",
-      selector: (row: Product) => "$" + row.Price,
+      selector: (row: Product) => row.Price,
+      cell: (row: Product) => <span>${row.Price}</span>
     },
     {
       id: SortType.RATING,
@@ -85,14 +96,28 @@ const ProductTable = (props: any) => {
     {
       name: "Category",
       cell: (row: Product) => (
-        <p>
+        <span>
           {!row.Category.IsParent ? (
-            <Link to="/product">{row.Category.Parent.Name}, </Link>
+            <a
+              href="#"
+              onClick={() =>
+                handleCategoryClick(row.Category.Parent.CategoryId)
+              }
+            >
+              {row.Category.Parent.Name},{" "}
+            </a>
           ) : (
             <></>
           )}
-          {<Link to="/product">{row.Category.Name}</Link>}
-        </p>
+          {
+            <a
+              href="#"
+              onClick={() => handleCategoryClick(row.Category.CategoryId)}
+            >
+              {row.Category.Name}
+            </a>
+          }
+        </span>
       ),
     },
     {
@@ -125,30 +150,10 @@ const ProductTable = (props: any) => {
     },
   ];
 
-  const { getPagingProducts, pagingProduct, actionType } = props;
-
-  const [pagingForm, setPagingForm] = useState<PagingForm>({
-    Search: "",
-    CategoryId: undefined,
-    Page: 1,
-    Rating: undefined,
-    SortOrder: 0,
-    Limit: 10,
-  });
-
-  console.log(pagingForm)
-  const [onChanging, setOnChanging] = useState(true);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (onChanging) {
-      setLoading(true);
-      getPagingProducts(pagingForm);
-      setOnChanging(false);
-    }
-  }, [getPagingProducts, onChanging, pagingProduct]);
-
-  if (loading && actionType == Actions.GOT_PAGING_PRODUCTS) setLoading(false);
+  const handleCategoryClick = (value: any) => {
+    setPagingForm({ ...pagingForm, CategoryId: value });
+    setOnChanging(true);
+  };
 
   const handlePageChange = (page: number) => {
     setPagingForm({ ...pagingForm, Page: page });

@@ -201,9 +201,11 @@ namespace RookiesFashion.APIService.Services
             IQueryable<Product> productQuery,
             BaseQueryCriteriaDTO baseQueryCriteriaDto)
         {
-            if (baseQueryCriteriaDto.CategoryId != null)
-                productQuery = productQuery.Where(p => p.CategoryId == baseQueryCriteriaDto.CategoryId);
-            if (baseQueryCriteriaDto.Rating != null)
+            if (baseQueryCriteriaDto.CategoryId != null && baseQueryCriteriaDto.CategoryId > 0)
+                productQuery = productQuery.Where(p => 
+                p.CategoryId == baseQueryCriteriaDto.CategoryId || 
+                p.Category.ParentCategoryId == baseQueryCriteriaDto.CategoryId);
+            if (baseQueryCriteriaDto.Rating != null && baseQueryCriteriaDto.Rating > 0)
                 productQuery = productQuery.Where(p => p.Ratings.Select(r => r.RatingVal).Average() >= baseQueryCriteriaDto.Rating);
             if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
                 productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
