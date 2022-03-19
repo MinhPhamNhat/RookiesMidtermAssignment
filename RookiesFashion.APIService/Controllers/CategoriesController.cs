@@ -15,6 +15,7 @@ using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.DTO;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -36,6 +37,15 @@ namespace RookiesFashion.APIService.Controllers
         public async Task<ActionResult> GetCategories()
         {
             ServiceResponse serResp = await _categoryService.GetCategories();
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
+        }
+        // GET: api/Categories
+        [HttpGet]
+        [Route("filter")]
+        public async Task<ActionResult> GetCategoriesFilter([FromQuery] CategoryBaseQueryCriteriaDto baseQuery, CancellationToken cancellationToken)
+        {
+            Console.WriteLine(JsonConvert.SerializeObject(baseQuery));
+            ServiceResponse serResp = await _categoryService.GetPagedCategoryFilter(baseQuery, cancellationToken);
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 

@@ -1,11 +1,10 @@
 import { SortOrder } from "../../constants";
 
-export type PagingForm = {
+ type CategoryPagingQuery = {
     Search?: string;
-    CategoryId?: number;
     Page?: number;
-    Rating?: number;
+    IsParent?: boolean;
     SortOrder?: SortOrder,
     Limit?: number;
 }
-
+export default CategoryPagingQuery;

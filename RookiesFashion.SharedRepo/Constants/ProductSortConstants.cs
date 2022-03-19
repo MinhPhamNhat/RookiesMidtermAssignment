@@ -1,6 +1,6 @@
 namespace RookiesFashion.SharedRepo.Constants;
 
-public enum SortConstants
+public enum ProductSortConstants
 {
     ALL = 0,
     NAME_ASC = 1,

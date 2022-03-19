@@ -1,5 +1,5 @@
 namespace RookiesFashion.SharedRepo.DTO;
-public class PagedModelDTO<TModel>
+public class PagedModelDto<TModel>
 {
     const int MaxPageSize = 50;
     private int _pageSize;
@@ -14,7 +14,7 @@ public class PagedModelDTO<TModel>
     public int TotalPages { get; set; }
     public IList<TModel> Items { get; set; }
 
-    public PagedModelDTO()
+    public PagedModelDto()
     {
         Items = new List<TModel>();
     }

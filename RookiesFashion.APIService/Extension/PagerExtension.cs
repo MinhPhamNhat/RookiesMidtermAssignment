@@ -5,14 +5,14 @@ namespace RookiesFashion.APIService.Extension
 {
     public static class PagerExtension
     {
-        public static async Task<PagedModelDTO<TModel>> PaginateAsync<TModel>(
+        public static async Task<PagedModelDto<TModel>> PaginateAsync<TModel>(
             this IQueryable<TModel> query,
-            BaseQueryCriteriaDTO criteriaDto,
+            BaseQueryCriteriaDto criteriaDto,
             CancellationToken cancellationToken)
             where TModel : class
         {
 
-            var paged = new PagedModelDTO<TModel>();
+            var paged = new PagedModelDto<TModel>();
 
             paged.CurrentPage = (criteriaDto.Page < 0) ? 1 : criteriaDto.Page;
             paged.PageSize = criteriaDto.Limit;

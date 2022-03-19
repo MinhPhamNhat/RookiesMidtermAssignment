@@ -6,6 +6,7 @@ import Product from "../pages/Product";
 
 const Home = lazy(() => import("../pages/Home"));
 const User = lazy(() => import("../pages/User"));
+const Category = lazy(() => import("../pages/Category"))
 
 const SusspenseLoading: React.FC<any> = ({ children }) => {
   return <Suspense fallback={<Loading />}>{children}</Suspense>;
@@ -16,9 +17,9 @@ const MyRoutes = () => {
     <SusspenseLoading>
       <Routes>
         <Route path={PageRoutes.USER} element={<User />} />
+        <Route path={PageRoutes.CATEGORY_LIST} element={<Category />} />
         <Route path={PageRoutes.PRODUCT_LIST} element={<Product.List />} />
         <Route path={PageRoutes.PRODUCT_INSERT} element={<Product.Insert />} />
-        <Route path={PageRoutes.PRODUCT_DETAIL+"/:id"} element={<Product.Detail />} />
         <Route path={PageRoutes.PRODUCT_EDIT+"/:id"} element={<Product.Edit />} />
         <Route path={PageRoutes.HOME} element={<Home />} />
       </Routes>

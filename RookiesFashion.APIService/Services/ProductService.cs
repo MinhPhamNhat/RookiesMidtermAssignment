@@ -192,12 +192,12 @@ namespace RookiesFashion.APIService.Services
             return product != null;
         }
 
-        public async Task<ServiceResponse> GetPagedProductFilter(BaseQueryCriteriaDTO baseQueryCriteria, CancellationToken cancellationToken)
+        public async Task<ServiceResponse> GetPagedProductFilter(ProductBaseQueryCriteriaDto baseQueryCriteria, CancellationToken cancellationToken)
         {
             try
             {
                 var products = _context.Products.Where(p=>!p.IsDeleted).AsQueryable();
-                products = ProductFilter(products, baseQueryCriteria);
+                products = FilterHelper.ProductFilter(products, baseQueryCriteria);
                 var pagedProducts = await products.PaginateAsync(baseQueryCriteria, cancellationToken);
                 return new ServiceResponse()
                 {
@@ -217,20 +217,5 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        private IQueryable<Product> ProductFilter(
-            IQueryable<Product> productQuery,
-            BaseQueryCriteriaDTO baseQueryCriteriaDto)
-        {
-            if (baseQueryCriteriaDto.CategoryId != null && baseQueryCriteriaDto.CategoryId > 0)
-                productQuery = productQuery.Where(p =>
-                p.CategoryId == baseQueryCriteriaDto.CategoryId ||
-                p.Category.ParentCategoryId == baseQueryCriteriaDto.CategoryId);
-            if (baseQueryCriteriaDto.Rating != null && baseQueryCriteriaDto.Rating > 0)
-                productQuery = productQuery.Where(p => p.Ratings.Select(r => r.RatingVal).Average() >= baseQueryCriteriaDto.Rating);
-            if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
-                productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
-            productQuery = FilterHelper.ParseProductOrder(productQuery, baseQueryCriteriaDto.SortOrder);
-            return productQuery;
-        }
     }
 }

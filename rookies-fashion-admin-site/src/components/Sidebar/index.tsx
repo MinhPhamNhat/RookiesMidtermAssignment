@@ -35,7 +35,7 @@ const SideBar = () => {
             icon={<FontAwesomeIcon icon={faHome} />}
             suffix={<span className="badge red">10</span>}
           >
-            Categories
+             <Link to={PageRoutes.CATEGORY_LIST}>Categories</Link>
           </MenuItem>
           <MenuItem
             icon={<FontAwesomeIcon icon={faHome} />}

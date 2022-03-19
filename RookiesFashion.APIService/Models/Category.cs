@@ -13,15 +13,14 @@ namespace RookiesFashion.APIService.Models
 
         public string? Name { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
         public string? Description { get; set; }
-        public bool IsParent { get; set; }  = false;
+        public bool IsParent { get; set; } = false;
 
         public int? ParentCategoryId { get; set; }
         public virtual Category? Parent { get; set; }
-
         public virtual IEnumerable<Category>? Children { get; set; }
-        [JsonIgnore]
-        public virtual IEnumerable<Product>? Products {get; set;}
+        public virtual IEnumerable<Product>? Products { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

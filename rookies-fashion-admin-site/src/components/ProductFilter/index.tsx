@@ -12,6 +12,7 @@ const ProductFilter = ({
   setOnChanging,
 }: any) => {
   const [categoryOptions, setCategoryOptions] = useState<any>([]);
+  const [defaultRating, setDefaultRating] = useState<any>(ratingOptions.find((c:any) => c.value == pagingForm?.Rating));
   const [defaultCategoryOption, setDefaultCategoryOption] = useState<any>({
     value: 0,
     name: "All",
@@ -38,32 +39,6 @@ const ProductFilter = ({
     setCategoryOptions(out);
     return out;
   };
-  const ratingOptions = [
-    {
-      value: 0,
-      label: "All",
-    },
-    {
-      value: 5,
-      label: "5 stars",
-    },
-    {
-      value: 4,
-      label: "4 stars and up",
-    },
-    {
-      value: 3,
-      label: "3 stars and up",
-    },
-    {
-      value: 2,
-      label: "2 stars and up",
-    },
-    {
-      value: 1,
-      label: "1 stars and up",
-    },
-  ];
   const handleSearchChange = (value: any) => setSearch(value.target.value);
 
   const handleCategoryChange = (value: any) => {
@@ -80,6 +55,16 @@ const ProductFilter = ({
     setPagingForm({ ...pagingForm, Search: search });
     setOnChanging(true);
   };
+  
+  useEffect(() => {
+    setSearch(pagingForm?.Search);
+    console.log(defaultRating)
+  }, []);
+  useEffect(() => {
+    setDefaultCategoryOption(
+      categoryOptions.find((c: any) => c.value == pagingForm.CategoryId)
+    );
+  }, [categoryOptions]);
   useEffect(() => {
     setDefaultCategoryOption(
       categoryOptions.find((c: any) => c.value == pagingForm.CategoryId)
@@ -131,7 +116,7 @@ const ProductFilter = ({
           <Select
             className="filter-select"
             onChange={handleRatingChange}
-            defaultValue={ratingOptions[0]}
+            defaultValue={defaultRating}
             options={ratingOptions}
           />
         </div>
@@ -141,3 +126,30 @@ const ProductFilter = ({
   );
 };
 export default ProductFilter;
+
+const ratingOptions = [
+  {
+    value: 0,
+    label: "All",
+  },
+  {
+    value: 5,
+    label: "5 stars",
+  },
+  {
+    value: 4,
+    label: "4 stars and up",
+  },
+  {
+    value: 3,
+    label: "3 stars and up",
+  },
+  {
+    value: 2,
+    label: "2 stars and up",
+  },
+  {
+    value: 1,
+    label: "1 stars and up",
+  },
+];

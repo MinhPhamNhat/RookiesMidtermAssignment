@@ -9,9 +9,8 @@ namespace RookiesFashion.APIService.Helpers;
 public static class FilterHelper
 {
 
-    public static Expression<Func<Product, bool>> IsValid(BaseQueryCriteriaDTO baseQueryCriteria) => product => isProductValid(product, baseQueryCriteria);
 
-    public static bool isProductValid(Product product, BaseQueryCriteriaDTO baseQueryCriteria)
+    public static bool isProductValid(Product product, ProductBaseQueryCriteriaDto baseQueryCriteria)
     {
         bool isMatch = true;
         if (baseQueryCriteria.CategoryId != null)
@@ -37,28 +36,69 @@ public static class FilterHelper
         }
         return isMatch;
     }
-    public static IQueryable<Product> ParseProductOrder(IQueryable<Product> productQuery, SortConstants? sortOrder)
+
+    public static IQueryable<Product> ProductFilter(
+        IQueryable<Product> productQuery,
+        ProductBaseQueryCriteriaDto baseQueryCriteriaDto)
+    {
+        if (baseQueryCriteriaDto.CategoryId != null && baseQueryCriteriaDto.CategoryId > 0)
+            productQuery = productQuery.Where(p =>
+            p.CategoryId == baseQueryCriteriaDto.CategoryId ||
+            p.Category.ParentCategoryId == baseQueryCriteriaDto.CategoryId);
+        if (baseQueryCriteriaDto.Rating != null && baseQueryCriteriaDto.Rating > 0)
+            productQuery = productQuery.Where(p => p.Ratings.Select(r => r.RatingVal).Average() >= baseQueryCriteriaDto.Rating);
+        if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
+            productQuery = productQuery.Where(p => p.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
+        productQuery = FilterHelper.ParseProductOrder(productQuery, baseQueryCriteriaDto.SortOrder);
+        return productQuery;
+    }
+
+    public static IQueryable<Product> ParseProductOrder(IQueryable<Product> productQuery, ProductSortConstants? sortOrder)
     {
         switch (sortOrder)
         {
-            case SortConstants.NAME_ASC:
+            case ProductSortConstants.NAME_ASC:
                 return productQuery.OrderBy(p => p.Name);
-            case SortConstants.NAME_DESC:
+            case ProductSortConstants.NAME_DESC:
                 return productQuery.OrderByDescending(p => p.Name);
-            case SortConstants.PRICE_ASC:
+            case ProductSortConstants.PRICE_ASC:
                 return productQuery.OrderBy(p => p.Price);
-            case SortConstants.PRICE_DESC:
+            case ProductSortConstants.PRICE_DESC:
                 return productQuery.OrderByDescending(p => p.Price);
-            case SortConstants.RATING_ASC:
+            case ProductSortConstants.RATING_ASC:
                 return productQuery.OrderBy(p => p.Ratings.Select(r => r.RatingVal).Average());
-            case SortConstants.RATING_DESC:
+            case ProductSortConstants.RATING_DESC:
                 return productQuery.OrderByDescending(p => p.Ratings.Select(r => r.RatingVal).Average());
-            case SortConstants.CREATED_DATE_ASC:
+            case ProductSortConstants.CREATED_DATE_ASC:
                 return productQuery.OrderBy(p => p.CreatedDate);
-            case SortConstants.CREATED_DATE_DESC:
+            case ProductSortConstants.CREATED_DATE_DESC:
                 return productQuery.OrderByDescending(p => p.CreatedDate);
             default:
                 return productQuery;
+        }
+    }
+
+    public static IQueryable<Category> CategoryFilter(
+        IQueryable<Category> categoryQuery,
+        CategoryBaseQueryCriteriaDto baseQueryCriteriaDto)
+    {
+        if (baseQueryCriteriaDto.IsParent != null)
+            categoryQuery = categoryQuery.Where(c => c.IsParent == baseQueryCriteriaDto.IsParent);
+        if (!string.IsNullOrEmpty(baseQueryCriteriaDto.Search))
+            categoryQuery = categoryQuery.Where(c => c.Name.ToLower().Contains(baseQueryCriteriaDto.Search.ToLower()));
+        categoryQuery = FilterHelper.ParseCategoryOrder(categoryQuery, baseQueryCriteriaDto.SortOrder);
+        return categoryQuery;
+    }
+    public static IQueryable<Category> ParseCategoryOrder(IQueryable<Category> categoryQuery, CategorySortConstants? sortOrder)
+    {
+        switch (sortOrder)
+        {
+            case CategorySortConstants.NAME_ASC:
+                return categoryQuery.OrderBy(p => p.Name);
+            case CategorySortConstants.NAME_DESC:
+                return categoryQuery.OrderByDescending(p => p.Name);
+            default:
+                return categoryQuery;
         }
     }
 }

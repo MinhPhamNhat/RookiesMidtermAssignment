@@ -7,9 +7,11 @@ import {
   getPagingProducts,
   getProductById,
   deleteProduct,
+  setCategoryPagingQuery,
+  setProductPagingQuery,
 } from "../../../actions";
-import { PagingForm } from "../../../types/form/PagingForm";
-import { Actions } from "../../../constants";
+import ProductPagingQuery from "../../../types/form/ProductPagingQuery";
+import { Actions, PageRoutes } from "../../../constants";
 
 import ProductFilter from "../../../components/ProductFilter";
 import DetailModal from "../../../components/DetailModal";
@@ -28,10 +30,14 @@ const ProductList: React.FC<any> = (props) => {
     getPagingProducts,
     getProductById,
     deleteProduct,
-    message
+    message,
+    setCategoryPagingQuery,
+    categoryPagingQuery,
+    setProductPagingQuery,
+    productPagingQuery,
   } = props;
 
-  const [pagingForm, setPagingForm] = useState<PagingForm>({
+  const [pagingForm, setPagingForm] = useState<ProductPagingQuery>((productPagingQuery as ProductPagingQuery)??{
     Search: "",
     CategoryId: 0,
     Page: 1,
@@ -40,6 +46,10 @@ const ProductList: React.FC<any> = (props) => {
     Limit: 10,
   });
 
+  useEffect(()=>{
+    if (actionType !== Actions.DONE_SET_PRODUCT_PAGING_QUERY)
+    setProductPagingQuery(pagingForm)
+  }, [pagingForm])
   const [modalShow, setModalShow] = useState(false);
   const [onChanging, setOnChanging] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -56,12 +66,11 @@ const ProductList: React.FC<any> = (props) => {
   useEffect(() => {
     if (currentProductClicked) getProductById(currentProductClicked);
   }, [currentProductClicked]);
-  
+
   useEffect(() => {
-    console.log(props)
-    if (actionType === Actions.DELETED_PRODUCT){
+    if (actionType === Actions.DELETED_PRODUCT) {
       ShowNotification(message, "Success", "success");
-      setOnChanging(true)
+      setOnChanging(true);
     }
   }, [actionType]);
 
@@ -74,9 +83,9 @@ const ProductList: React.FC<any> = (props) => {
     setModalShow(false);
     setCurrentProductClicked("");
   };
-  
+
   const onDeleteAccepted = (id: string) => {
-    deleteProduct(id)
+    deleteProduct(id);
   };
 
   if (loading && actionType === Actions.GOT_PAGING_PRODUCTS) setLoading(false);
@@ -85,7 +94,10 @@ const ProductList: React.FC<any> = (props) => {
     <div>
       <div className="page-title">
         <h3>Products</h3>
-        <Link to="/product/insert" className="btn btn-outline-primary">
+        <Link
+          to={PageRoutes.PRODUCT_INSERT}
+          className="btn btn-outline-primary"
+        >
           <i className="fa-solid fa-plus"></i> Add
         </Link>
       </div>
@@ -118,7 +130,7 @@ const ProductList: React.FC<any> = (props) => {
         </Row>
       </Container>
       {actionType === Actions.GOT_PRODUCT_BY_ID ? (
-        <DetailModal
+        <DetailModal.Product
           show={modalShow}
           onHide={hideModel}
           product={product}
@@ -141,4 +153,6 @@ export default connect(mapStateToProps, {
   getPagingProducts,
   getProductById,
   deleteProduct,
+  setProductPagingQuery,
+  setCategoryPagingQuery 
 })(ProductList);

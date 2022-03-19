@@ -5,10 +5,15 @@ import {
   insertProductActionCreator,
   updateProductActionCreator,
   deleteProductActionCreator,
-} from "../types/actionCreatorTypes";
-import { PagingForm } from "../types/form/PagingForm";
+  getPagingCategoriesActionCreator,
+  getCategoryByIdActionCreator,
+  setCategoryPagingQueryCreator,
+  setProductPagingQueryCreator,
+} from "../types/ActionCreatorTypes";
+import CategoryPagingQuery from "../types/form/CategoryPagingQuery";
+import ProductPagingQuery from "../types/form/ProductPagingQuery";
 export const getPagingProducts: getPagingProductsActionCreator = (
-  query: PagingForm
+  query: ProductPagingQuery
 ) => {
   return {
     type: "GET_PAGING_PRODUCTS",
@@ -53,3 +58,32 @@ export const getCategories: getCategoriesActionCreator = () => {
     type: "GET_CATEGORIES",
   };
 };
+
+export const getPagingCategories: getPagingCategoriesActionCreator = (
+  query: CategoryPagingQuery
+) => {
+  return {
+    type: "GET_PAGING_CATEGORIES",
+    query,
+  };
+};
+export const getCategoryById: getCategoryByIdActionCreator = (id: string) => {
+  return {
+    type: "GET_CATEGORY_BY_ID",
+    id,
+  };
+};
+
+export const setProductPagingQuery: setProductPagingQueryCreator = (query: ProductPagingQuery) => {
+  return {
+    type: "SET_PRODUCT_PAGING_QUERY",
+    query,
+  };
+};
+export const setCategoryPagingQuery: setCategoryPagingQueryCreator = (query: CategoryPagingQuery) => {
+  return {
+    type: "SET_CATEGORY_PAGING_QUERY",
+    query,
+  };
+};
+

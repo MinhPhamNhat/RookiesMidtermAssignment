@@ -2,14 +2,16 @@ import { Reducer } from "redux";
 import { Actions } from "../constants";
 import {
   badRequestGot,
+  doneSetProductPagingQuery,
   getPagingProductsAction,
   gotPagingProducts,
   gotProductById,
   insertedProduct,
   internalErrorGot,
+  setProductPagingQueryAction,
   updatedProduct,
-} from "../types/actionTypes";
-import { storeType } from "../types/storeType";
+} from "../types/ActionTypes";
+import { StoreType } from "../types/StoreType";
 
 type actions =
   | gotPagingProducts
@@ -17,12 +19,13 @@ type actions =
   | gotProductById
   | updatedProduct
   | insertedProduct
+  | doneSetProductPagingQuery
   | badRequestGot
   | internalErrorGot;
 
-const initialState: storeType = {};
+const initialState: StoreType = {};
 
-const productReducer: Reducer<storeType, actions> = (
+const productReducer: Reducer<StoreType, actions> = (
   state = initialState,
   action
 ) => {
@@ -39,6 +42,11 @@ const productReducer: Reducer<storeType, actions> = (
       return { ...state, product: (action as updatedProduct).product };
     case Actions.DELETED_PRODUCT:
       return { ...state };
+    case Actions.DONE_SET_PRODUCT_PAGING_QUERY:
+      return {
+        ...state,
+        productPagingQuery: (action as doneSetProductPagingQuery).query,
+      };
     case Actions.BAD_REQUEST_GOT:
       return {
         ...state,

@@ -1,10 +1,10 @@
 import HttpClient from "../utils/HttpClient";
 import { Endpoints } from "../constants";
 import { ProductForm } from "../types/form/ProductForm";
-import { PagingForm } from "../types/form/PagingForm";
+import ProductPagingQuery from "../types/form/ProductPagingQuery";
 
 class ProductService {
-  async getProducts(query: PagingForm) {
+  async getProducts(query: ProductPagingQuery) {
     const endpoint = Endpoints.PRODUCTS;
     const response = await HttpClient.get(endpoint, query);
     return response;
