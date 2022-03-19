@@ -1,9 +1,17 @@
 
 .custom-ui{
-    background-color: rgb(204, 95, 95);
-    color: white;
+    background-color: white;
     padding: 30px 80px 30px 80px;
 
+}
+
+.custom-ui .dialog-title{
+    font-size: 36px;
+    color: crimson;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row;
 }
 
 .dialog-button{

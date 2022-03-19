@@ -6,7 +6,7 @@ import { Role } from "./Role";
 import { Image } from "./Image";
 import { Color } from "./Color";
 import { Size } from "./Size";
-import { UpdatedDates } from "./UpdatedDates";
+import { UpdatedDate } from "./UpdatedDate";
 import { Response } from "./Response";
 import { PagingProduct } from "./PagingProduct";
 export type {
@@ -18,7 +18,7 @@ export type {
   Image,
   Color,
   Size,
-  UpdatedDates,
+  UpdatedDate,
   Response,
   PagingProduct,
 };

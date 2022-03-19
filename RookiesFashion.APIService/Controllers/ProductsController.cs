@@ -64,22 +64,27 @@ namespace RookiesFashion.APIService.Controllers
         // PUT: api/Product/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutProduct(int id, [FromForm] ProductFormDTO formProduct)
+        public async Task<ActionResult> PutProduct(int id, [FromForm] List<IFormFile> Files, [FromForm] IFormCollection formCollection)
         {
+            ProductFormDTO formProduct = ProductFormDTOBinder(formCollection, Files);
+
             if (id != formProduct.ProductId)
             {
                 return MyApiHelper.ValidationFailedResponseMessage("id", id, "Id not match", HttpContext);
             }
-
-            if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
+            if (TryValidateModel(formProduct))
             {
-                return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
+                if (!validateSomeOfProperties(formProduct, out ValidationResultModel validationResult))
+                {
+                    return MyApiHelper.ValidationResponseMessage(validationResult, HttpContext);
+                }
+
+                var product = _mapper.Map<Product>(formProduct);
+                Console.WriteLine("TAGGG " + id + JsonConvert.SerializeObject(product));
+                ServiceResponse serResp = await _productService.UpdateProduct(product);
+                return MyApiHelper.RequestResultParser(serResp, HttpContext);
             }
-
-            var product = _mapper.Map<Product>(formProduct);
-
-            ServiceResponse serResp = await _productService.UpdateProduct(product);
-            return MyApiHelper.RequestResultParser(serResp, HttpContext);
+            return MyApiHelper.ValidationResponseMessage(new ValidationResultModel(ModelState), HttpContext);
         }
 
         // POST: api/Product
@@ -168,6 +173,7 @@ namespace RookiesFashion.APIService.Controllers
         private ProductFormDTO ProductFormDTOBinder(IFormCollection formCollection, List<IFormFile> files)
         {
             ProductFormDTO productFormDTO = new ProductFormDTO();
+            productFormDTO.ProductId = int.Parse(formCollection["ProductId"].First());
             productFormDTO.CategoryId = int.Parse(formCollection["CategoryId"].First());
             productFormDTO.Description = formCollection["Description"].First();
             productFormDTO.Name = formCollection["Name"].First();

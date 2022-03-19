@@ -3,8 +3,8 @@ const PageRoutes = {
     USER: '/user',
     PRODUCT_LIST: '/product',
     PRODUCT_INSERT: '/product/insert',
-    PRODUCT_DETAIL: '/product/detail/:id',
-    PRODUCT_EDIT: '/product/edit/:id',
+    PRODUCT_DETAIL: '/product/detail',
+    PRODUCT_EDIT: '/product/edit',
 };
 
 export default PageRoutes;

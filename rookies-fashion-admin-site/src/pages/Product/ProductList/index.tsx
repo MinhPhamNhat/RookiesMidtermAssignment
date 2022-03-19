@@ -1,19 +1,36 @@
-import { useReducer } from "../../../hooks/AsyncHookService";
-import { Container, Table, Button, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getPagingProducts } from "../../../actions";
-import ProductTable from "../../../components/ProductTable";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TableFilter from "../../../components/TableFilter";
-import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import { Link } from "react-router-dom";
+
+import {
+  getPagingProducts,
+  getProductById,
+  deleteProduct,
+} from "../../../actions";
 import { PagingForm } from "../../../types/form/PagingForm";
 import { Actions } from "../../../constants";
 
+import ProductFilter from "../../../components/ProductFilter";
+import DetailModal from "../../../components/DetailModal";
+import ProductTable from "../../../components/ProductTable";
+
+import "react-confirm-alert/src/react-confirm-alert.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import { ShowNotification } from "../../../helpers";
+
 const ProductList: React.FC<any> = (props) => {
-  const { pagingProduct, actionType, getPagingProducts } = props;
+  const {
+    pagingProduct,
+    product,
+    actionType,
+    getPagingProducts,
+    getProductById,
+    deleteProduct,
+    message
+  } = props;
+
   const [pagingForm, setPagingForm] = useState<PagingForm>({
     Search: "",
     CategoryId: 0,
@@ -22,10 +39,12 @@ const ProductList: React.FC<any> = (props) => {
     SortOrder: 0,
     Limit: 10,
   });
+
+  const [modalShow, setModalShow] = useState(false);
   const [onChanging, setOnChanging] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [currentProductClicked, setCurrentProductClicked] = useState("");
 
-  console.log(pagingProduct)
   useEffect(() => {
     if (onChanging) {
       setLoading(true);
@@ -34,7 +53,34 @@ const ProductList: React.FC<any> = (props) => {
     }
   }, [getPagingProducts, onChanging, pagingProduct]);
 
-  if (loading && actionType == Actions.GOT_PAGING_PRODUCTS) setLoading(false);
+  useEffect(() => {
+    if (currentProductClicked) getProductById(currentProductClicked);
+  }, [currentProductClicked]);
+  
+  useEffect(() => {
+    console.log(props)
+    if (actionType === Actions.DELETED_PRODUCT){
+      ShowNotification(message, "Success", "success");
+      setOnChanging(true)
+    }
+  }, [actionType]);
+
+  const showModal = (id: string) => {
+    setModalShow(true);
+    setCurrentProductClicked(id);
+  };
+
+  const hideModel = () => {
+    setModalShow(false);
+    setCurrentProductClicked("");
+  };
+  
+  const onDeleteAccepted = (id: string) => {
+    deleteProduct(id)
+  };
+
+  if (loading && actionType === Actions.GOT_PAGING_PRODUCTS) setLoading(false);
+
   return (
     <div>
       <div className="page-title">
@@ -47,7 +93,7 @@ const ProductList: React.FC<any> = (props) => {
       <Container fluid={true}>
         <Row>
           <Col xl={2} lg={3}>
-            <TableFilter
+            <ProductFilter
               pagingForm={pagingForm}
               setPagingForm={setPagingForm}
               onChanging={onChanging}
@@ -58,6 +104,7 @@ const ProductList: React.FC<any> = (props) => {
           </Col>
           <Col xl={10} lg={9}>
             <ProductTable
+              showModal={showModal}
               pagingProduct={pagingProduct}
               pagingForm={pagingForm}
               setPagingForm={setPagingForm}
@@ -65,10 +112,21 @@ const ProductList: React.FC<any> = (props) => {
               setOnChanging={setOnChanging}
               loading={loading}
               setLoading={setLoading}
+              onDeleteAccepted={onDeleteAccepted}
             />
           </Col>
         </Row>
       </Container>
+      {actionType === Actions.GOT_PRODUCT_BY_ID ? (
+        <DetailModal
+          show={modalShow}
+          onHide={hideModel}
+          product={product}
+          actionType={actionType}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
@@ -81,4 +139,6 @@ const mapStateToProps = (state: any) => {
 
 export default connect(mapStateToProps, {
   getPagingProducts,
+  getProductById,
+  deleteProduct,
 })(ProductList);

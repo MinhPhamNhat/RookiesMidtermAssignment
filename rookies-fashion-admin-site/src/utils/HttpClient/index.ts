@@ -62,10 +62,10 @@ class HttpClient {
     return response;
   }
 
-  async put(endpoint: string, data?: object): Promise<Response> {
+  async put(endpoint: string, formData?: any): Promise<Response> {
     this.token = getToken();
     const response = await axios
-      .put(`${endpoint}`, data, {})
+      .put(`${endpoint}`, formData)
       .then((res: any) => {
         return {
           code: res.status,
@@ -76,8 +76,8 @@ class HttpClient {
       .catch((err: any) => {
         return {
           code: err.response.status,
-          message: err.response.data.message,
-          data: undefined,
+          message: err.response.data.Message,
+          data: err.response.data.Data as Array<ValidationError>,
         };
       });
     return response;

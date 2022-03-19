@@ -2,20 +2,14 @@ import { useEffect, useState } from "react";
 import AsyncSelect from "react-select/async";
 import Select from "react-select";
 import { categoryService } from "../../services";
-import Option from "../../components/Option";
-import "./index.css";
+import Option from "../Option";
 import { Category } from "../../types/model";
 import { Button } from "react-bootstrap";
-const TableFilter = ({
-  getPagingProducts,
-  pagingProduct,
-  actionType,
+import "./index.css";
+const ProductFilter = ({
   pagingForm,
   setPagingForm,
-  onChanging,
   setOnChanging,
-  loading,
-  setLoading,
 }: any) => {
   const [categoryOptions, setCategoryOptions] = useState<any>([]);
   const [defaultCategoryOption, setDefaultCategoryOption] = useState<any>({
@@ -87,11 +81,10 @@ const TableFilter = ({
     setOnChanging(true);
   };
   useEffect(() => {
-    setDefaultCategoryOption(categoryOptions.find(
-      (c: any) => c.value == pagingForm.CategoryId
-    ))
-  }, [pagingForm.CategoryId])
-  console.log(defaultCategoryOption)
+    setDefaultCategoryOption(
+      categoryOptions.find((c: any) => c.value == pagingForm.CategoryId)
+    );
+  }, [pagingForm.CategoryId]);
   return (
     <div className="table-filter">
       <div className="filter-group">
@@ -147,4 +140,4 @@ const TableFilter = ({
     </div>
   );
 };
-export default TableFilter;
+export default ProductFilter;

@@ -18,8 +18,8 @@ const MyRoutes = () => {
         <Route path={PageRoutes.USER} element={<User />} />
         <Route path={PageRoutes.PRODUCT_LIST} element={<Product.List />} />
         <Route path={PageRoutes.PRODUCT_INSERT} element={<Product.Insert />} />
-        <Route path={PageRoutes.PRODUCT_DETAIL} element={<Product.Detail />} />
-        <Route path={PageRoutes.PRODUCT_EDIT} element={<Product.Edit />} />
+        <Route path={PageRoutes.PRODUCT_DETAIL+"/:id"} element={<Product.Detail />} />
+        <Route path={PageRoutes.PRODUCT_EDIT+"/:id"} element={<Product.Edit />} />
         <Route path={PageRoutes.HOME} element={<Home />} />
       </Routes>
     </SusspenseLoading>

@@ -8,886 +8,6 @@
     "Items": [
       {
         "Category": {
-          "Parent": {
-            "Parent": null,
-            "Children": [
-              {
-                "Children": [],
-                "CategoryId": 3,
-                "Name": "Casual Shirts",
-                "Description": "Casual Shirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 4,
-                "Name": "Formal Shirts",
-                "Description": "Formal Shirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 5,
-                "Name": "Sweatshirts",
-                "Description": "Sweatshirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 6,
-                "Name": "Sweaters",
-                "Description": "Sweaters",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 7,
-                "Name": "Jackets",
-                "Description": "Jackets",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 8,
-                "Name": "Blazers & Coats",
-                "Description": "Blazers & Coats",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 9,
-                "Name": "Suits",
-                "Description": "Suits",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 10,
-                "Name": "Rain Jackets",
-                "Description": "Rain Jackets",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              }
-            ],
-            "CategoryId": 1,
-            "Name": "Topwear",
-            "Description": "Topwear",
-            "IsParent": true,
-            "ParentCategoryId": null
-          },
-          "Children": [],
-          "CategoryId": 2,
-          "Name": "T-Shirts",
-          "Description": "T-Shirts",
-          "IsParent": false,
-          "ParentCategoryId": 1
-        },
-        "Ratings": [
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 9,
-            "RatingVal": 3,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402991",
-            "ProductId": 5,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 10,
-            "RatingVal": 4,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402994",
-            "ProductId": 5,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 13,
-            "RatingVal": 2,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402996",
-            "ProductId": 5,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 15,
-            "RatingVal": 4,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402998",
-            "ProductId": 5,
-            "UserRatingUserId": 1
-          }
-        ],
-        "UpdatedDates": [],
-        "Thumbnail": [
-          {
-            "ImageId": 12,
-            "ImageName": "anllsn2gzufgiv0s6hgo",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/anllsn2gzufgiv0s6hgo",
-            "ProductId": 5
-          },
-          {
-            "ImageId": 13,
-            "ImageName": "oivszjvq5ccl1xsbnous",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/oivszjvq5ccl1xsbnous",
-            "ProductId": 5
-          }
-        ],
-        "Colors": [
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 1,
-              "ImageName": "black_ecjeap",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
-              "ProductId": null
-            },
-            "ColorId": 1,
-            "Name": "Black",
-            "ThumbnailImageId": 1
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 2,
-              "ImageName": "red_e8saf2",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
-              "ProductId": null
-            },
-            "ColorId": 2,
-            "Name": "Red",
-            "ThumbnailImageId": 2
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 3,
-              "ImageName": "white_s8f0yl",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
-              "ProductId": null
-            },
-            "ColorId": 3,
-            "Name": "White",
-            "ThumbnailImageId": 3
-          }
-        ],
-        "Sizes": [
-          { "SizeId": 1, "Name": "XL" },
-          { "SizeId": 2, "Name": "XXL" },
-          { "SizeId": 3, "Name": "L" }
-        ],
-        "ProductId": 5,
-        "Name": "Walnut Wooden Watch",
-        "Description": "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
-        "Price": 98.0,
-        "CategoryId": 2,
-        "CreatedDate": "2022-03-16T17:41:25.5402295",
-        "AvgRating": 3.2
-      },
-      {
-        "Category": {
-          "Parent": {
-            "Parent": null,
-            "Children": [
-              {
-                "Children": [],
-                "CategoryId": 2,
-                "Name": "T-Shirts",
-                "Description": "T-Shirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 4,
-                "Name": "Formal Shirts",
-                "Description": "Formal Shirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 5,
-                "Name": "Sweatshirts",
-                "Description": "Sweatshirts",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 6,
-                "Name": "Sweaters",
-                "Description": "Sweaters",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 7,
-                "Name": "Jackets",
-                "Description": "Jackets",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 8,
-                "Name": "Blazers & Coats",
-                "Description": "Blazers & Coats",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 9,
-                "Name": "Suits",
-                "Description": "Suits",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              },
-              {
-                "Children": [],
-                "CategoryId": 10,
-                "Name": "Rain Jackets",
-                "Description": "Rain Jackets",
-                "IsParent": false,
-                "ParentCategoryId": 1
-              }
-            ],
-            "CategoryId": 1,
-            "Name": "Topwear",
-            "Description": "Topwear",
-            "IsParent": true,
-            "ParentCategoryId": null
-          },
-          "Children": [],
-          "CategoryId": 3,
-          "Name": "Casual Shirts",
-          "Description": "Casual Shirts",
-          "IsParent": false,
-          "ParentCategoryId": 1
-        },
-        "Ratings": [
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 7,
-            "RatingVal": 2,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.540299",
-            "ProductId": 3,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 8,
-            "RatingVal": 3,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.540299",
-            "ProductId": 3,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 16,
-            "RatingVal": 3,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402998",
-            "ProductId": 3,
-            "UserRatingUserId": 2
-          }
-        ],
-        "UpdatedDates": [],
-        "Thumbnail": [
-          {
-            "ImageId": 8,
-            "ImageName": "vjcyk00mvrrhadxdvgev",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/vjcyk00mvrrhadxdvgev",
-            "ProductId": 3
-          },
-          {
-            "ImageId": 9,
-            "ImageName": "buomsanrphup1hkzgwkg",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/buomsanrphup1hkzgwkg",
-            "ProductId": 3
-          }
-        ],
-        "Colors": [
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 1,
-              "ImageName": "black_ecjeap",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
-              "ProductId": null
-            },
-            "ColorId": 1,
-            "Name": "Black",
-            "ThumbnailImageId": 1
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 2,
-              "ImageName": "red_e8saf2",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
-              "ProductId": null
-            },
-            "ColorId": 2,
-            "Name": "Red",
-            "ThumbnailImageId": 2
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 3,
-              "ImageName": "white_s8f0yl",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
-              "ProductId": null
-            },
-            "ColorId": 3,
-            "Name": "White",
-            "ThumbnailImageId": 3
-          }
-        ],
-        "Sizes": [
-          { "SizeId": 1, "Name": "XL" },
-          { "SizeId": 2, "Name": "XXL" },
-          { "SizeId": 3, "Name": "L" }
-        ],
-        "ProductId": 3,
-        "Name": "Dreamville Street Wear Sweatshirt",
-        "Description": "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
-        "Price": 55.0,
-        "CategoryId": 3,
-        "CreatedDate": "2022-03-16T17:41:25.5402294",
-        "AvgRating": 2.7
-      },
-      {
-        "Category": {
-          "Parent": null,
-          "Children": [
-            {
-              "Children": [],
-              "CategoryId": 2,
-              "Name": "T-Shirts",
-              "Description": "T-Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 3,
-              "Name": "Casual Shirts",
-              "Description": "Casual Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 4,
-              "Name": "Formal Shirts",
-              "Description": "Formal Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 5,
-              "Name": "Sweatshirts",
-              "Description": "Sweatshirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 6,
-              "Name": "Sweaters",
-              "Description": "Sweaters",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 7,
-              "Name": "Jackets",
-              "Description": "Jackets",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 8,
-              "Name": "Blazers & Coats",
-              "Description": "Blazers & Coats",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 9,
-              "Name": "Suits",
-              "Description": "Suits",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 10,
-              "Name": "Rain Jackets",
-              "Description": "Rain Jackets",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            }
-          ],
-          "CategoryId": 1,
-          "Name": "Topwear",
-          "Description": "Topwear",
-          "IsParent": true,
-          "ParentCategoryId": null
-        },
-        "Ratings": [
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 3,
-            "RatingVal": 3,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402987",
-            "ProductId": 2,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 4,
-            "RatingVal": 3,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402987",
-            "ProductId": 2,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 5,
-            "RatingVal": 5,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402988",
-            "ProductId": 2,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 6,
-            "RatingVal": 4,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402989",
-            "ProductId": 2,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 11,
-            "RatingVal": 5,
-            "Comment": "The watch make me feel very elegant",
-            "CreatedDate": "2022-03-16T17:41:25.5402995",
-            "ProductId": 2,
-            "UserRatingUserId": 1
-          }
-        ],
-        "UpdatedDates": [],
-        "Thumbnail": [
-          {
-            "ImageId": 6,
-            "ImageName": "iyfpc8zlmsh3hpwhem8r",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/iyfpc8zlmsh3hpwhem8r",
-            "ProductId": 2
-          },
-          {
-            "ImageId": 7,
-            "ImageName": "wojbmn440oja7afudapp",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/wojbmn440oja7afudapp",
-            "ProductId": 2
-          }
-        ],
-        "Colors": [
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 1,
-              "ImageName": "black_ecjeap",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
-              "ProductId": null
-            },
-            "ColorId": 1,
-            "Name": "Black",
-            "ThumbnailImageId": 1
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 2,
-              "ImageName": "red_e8saf2",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
-              "ProductId": null
-            },
-            "ColorId": 2,
-            "Name": "Red",
-            "ThumbnailImageId": 2
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 3,
-              "ImageName": "white_s8f0yl",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
-              "ProductId": null
-            },
-            "ColorId": 3,
-            "Name": "White",
-            "ThumbnailImageId": 3
-          }
-        ],
-        "Sizes": [
-          { "SizeId": 1, "Name": "XL" },
-          { "SizeId": 2, "Name": "XXL" },
-          { "SizeId": 3, "Name": "L" }
-        ],
-        "ProductId": 2,
-        "Name": "Long Sleeve 3D Printed Black Cat Sweatshirt",
-        "Description": "Long Sleeve 3D Printed Black Cat Sweatshirt",
-        "Price": 55.0,
-        "CategoryId": 1,
-        "CreatedDate": "2022-03-16T17:41:25.5402292",
-        "AvgRating": 4.0
-      },
-      {
-        "Category": {
-          "Parent": null,
-          "Children": [
-            {
-              "Children": [],
-              "CategoryId": 2,
-              "Name": "T-Shirts",
-              "Description": "T-Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 3,
-              "Name": "Casual Shirts",
-              "Description": "Casual Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 4,
-              "Name": "Formal Shirts",
-              "Description": "Formal Shirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 5,
-              "Name": "Sweatshirts",
-              "Description": "Sweatshirts",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 6,
-              "Name": "Sweaters",
-              "Description": "Sweaters",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 7,
-              "Name": "Jackets",
-              "Description": "Jackets",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 8,
-              "Name": "Blazers & Coats",
-              "Description": "Blazers & Coats",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 9,
-              "Name": "Suits",
-              "Description": "Suits",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            },
-            {
-              "Children": [],
-              "CategoryId": 10,
-              "Name": "Rain Jackets",
-              "Description": "Rain Jackets",
-              "IsParent": false,
-              "ParentCategoryId": 1
-            }
-          ],
-          "CategoryId": 1,
-          "Name": "Topwear",
-          "Description": "Topwear",
-          "IsParent": true,
-          "ParentCategoryId": null
-        },
-        "Ratings": [
-          {
-            "UserRating": {
-              "Role": { "RoleId": 0, "Description": "Administrator" },
-              "Identity": { "Username": "ADMIN" },
-              "UserId": 1,
-              "Name": "ADMIN",
-              "RoleId": 0,
-              "IdentityUsername": "ADMIN"
-            },
-            "RatingId": 1,
-            "RatingVal": 4,
-            "Comment": "Nice one, i love this product",
-            "CreatedDate": "2022-03-16T17:41:25.5402982",
-            "ProductId": 1,
-            "UserRatingUserId": 1
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 2,
-            "RatingVal": 4,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402985",
-            "ProductId": 1,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 12,
-            "RatingVal": 3,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402996",
-            "ProductId": 1,
-            "UserRatingUserId": 2
-          },
-          {
-            "UserRating": {
-              "Role": { "RoleId": 1, "Description": "User" },
-              "Identity": { "Username": "User1" },
-              "UserId": 2,
-              "Name": "Rookies User 1",
-              "RoleId": 1,
-              "IdentityUsername": "User1"
-            },
-            "RatingId": 14,
-            "RatingVal": 5,
-            "Comment": "Very beautiful and affordable price",
-            "CreatedDate": "2022-03-16T17:41:25.5402997",
-            "ProductId": 1,
-            "UserRatingUserId": 2
-          }
-        ],
-        "UpdatedDates": [],
-        "Thumbnail": [
-          {
-            "ImageId": 4,
-            "ImageName": "yzsjv9f3zxeam2qrmsa5",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/yzsjv9f3zxeam2qrmsa5",
-            "ProductId": 1
-          },
-          {
-            "ImageId": 5,
-            "ImageName": "qqxtq42ju9u3f7xvqx41",
-            "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/qqxtq42ju9u3f7xvqx41",
-            "ProductId": 1
-          }
-        ],
-        "Colors": [
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 1,
-              "ImageName": "black_ecjeap",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
-              "ProductId": null
-            },
-            "ColorId": 1,
-            "Name": "Black",
-            "ThumbnailImageId": 1
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 2,
-              "ImageName": "red_e8saf2",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
-              "ProductId": null
-            },
-            "ColorId": 2,
-            "Name": "Red",
-            "ThumbnailImageId": 2
-          },
-          {
-            "Thumbnail": {
-              "Product": null,
-              "ImageId": 3,
-              "ImageName": "white_s8f0yl",
-              "Extension": "png",
-              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
-              "ProductId": null
-            },
-            "ColorId": 3,
-            "Name": "White",
-            "ThumbnailImageId": 3
-          }
-        ],
-        "Sizes": [
-          { "SizeId": 1, "Name": "XL" },
-          { "SizeId": 2, "Name": "XXL" },
-          { "SizeId": 3, "Name": "L" }
-        ],
-        "ProductId": 1,
-        "Name": "Unisex Baby Long Sleeve Bodysuits Set",
-        "Description": "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
-        "Price": 35.0,
-        "CategoryId": 1,
-        "CreatedDate": "2022-03-16T17:41:25.540229",
-        "AvgRating": 4.0
-      },
-      {
-        "Category": {
           "Parent": null,
           "Children": [
             {
@@ -1247,29 +367,167 @@
       {
         "Category": {
           "Parent": null,
-          "Children": [],
-          "CategoryId": 39,
-          "Name": "Watches",
-          "Description": "Watches",
+          "Children": [
+            {
+              "Children": [],
+              "CategoryId": 2,
+              "Name": "T-Shirts",
+              "Description": "T-Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 3,
+              "Name": "Casual Shirts",
+              "Description": "Casual Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 4,
+              "Name": "Formal Shirts",
+              "Description": "Formal Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 5,
+              "Name": "Sweatshirts",
+              "Description": "Sweatshirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 6,
+              "Name": "Sweaters",
+              "Description": "Sweaters",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 7,
+              "Name": "Jackets",
+              "Description": "Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 8,
+              "Name": "Blazers & Coats",
+              "Description": "Blazers & Coats",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 9,
+              "Name": "Suits",
+              "Description": "Suits",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 10,
+              "Name": "Rain Jackets",
+              "Description": "Rain Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            }
+          ],
+          "CategoryId": 1,
+          "Name": "Topwear",
+          "Description": "Topwear",
           "IsParent": true,
           "ParentCategoryId": null
         },
-        "Ratings": [],
+        "Ratings": [
+          {
+            "UserRating": {
+              "Role": { "RoleId": 0, "Description": "Administrator" },
+              "Identity": { "Username": "ADMIN" },
+              "UserId": 1,
+              "Name": "ADMIN",
+              "RoleId": 0,
+              "IdentityUsername": "ADMIN"
+            },
+            "RatingId": 1,
+            "RatingVal": 4,
+            "Comment": "Nice one, i love this product",
+            "CreatedDate": "2022-03-16T17:41:25.5402982",
+            "ProductId": 1,
+            "UserRatingUserId": 1
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 2,
+            "RatingVal": 4,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402985",
+            "ProductId": 1,
+            "UserRatingUserId": 2
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 12,
+            "RatingVal": 3,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402996",
+            "ProductId": 1,
+            "UserRatingUserId": 2
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 14,
+            "RatingVal": 5,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402997",
+            "ProductId": 1,
+            "UserRatingUserId": 2
+          }
+        ],
         "UpdatedDates": [],
         "Thumbnail": [
           {
-            "ImageId": 22,
-            "ImageName": "yvcjpw6qknf5xzx5l1o8",
+            "ImageId": 4,
+            "ImageName": "yzsjv9f3zxeam2qrmsa5",
             "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/yvcjpw6qknf5xzx5l1o8",
-            "ProductId": 10
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/yzsjv9f3zxeam2qrmsa5",
+            "ProductId": 1
           },
           {
-            "ImageId": 23,
-            "ImageName": "zhwy2cxnli17deo7lxx1",
+            "ImageId": 5,
+            "ImageName": "qqxtq42ju9u3f7xvqx41",
             "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/zhwy2cxnli17deo7lxx1",
-            "ProductId": 10
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/qqxtq42ju9u3f7xvqx41",
+            "ProductId": 1
           }
         ],
         "Colors": [
@@ -1318,40 +576,491 @@
           { "SizeId": 2, "Name": "XXL" },
           { "SizeId": 3, "Name": "L" }
         ],
-        "ProductId": 10,
-        "Name": "Rose Gold Quartz Watch",
-        "Description": "<p>Top off your elegant evening outfit with this classic rose gold quartz watch or wear it to your casual jeans and shirt combination - it will look stunning either way!</p>\r\n",
-        "Price": 115.0,
-        "CategoryId": 39,
-        "CreatedDate": "2022-03-16T15:13:15.8167493",
+        "ProductId": 1,
+        "Name": "Unisex Baby Long Sleeve Bodysuits Set",
+        "Description": "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
+        "Price": 35.0,
+        "CategoryId": 1,
+        "CreatedDate": "2022-03-16T17:41:25.540229",
+        "AvgRating": 4.0
+      },
+      {
+        "Category": {
+          "Parent": null,
+          "Children": [
+            {
+              "Children": [],
+              "CategoryId": 2,
+              "Name": "T-Shirts",
+              "Description": "T-Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 3,
+              "Name": "Casual Shirts",
+              "Description": "Casual Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 4,
+              "Name": "Formal Shirts",
+              "Description": "Formal Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 5,
+              "Name": "Sweatshirts",
+              "Description": "Sweatshirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 6,
+              "Name": "Sweaters",
+              "Description": "Sweaters",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 7,
+              "Name": "Jackets",
+              "Description": "Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 8,
+              "Name": "Blazers & Coats",
+              "Description": "Blazers & Coats",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 9,
+              "Name": "Suits",
+              "Description": "Suits",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 10,
+              "Name": "Rain Jackets",
+              "Description": "Rain Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            }
+          ],
+          "CategoryId": 1,
+          "Name": "Topwear",
+          "Description": "Topwear",
+          "IsParent": true,
+          "ParentCategoryId": null
+        },
+        "Ratings": [],
+        "UpdatedDates": [],
+        "Thumbnail": [
+          {
+            "ImageId": 18,
+            "ImageName": "of6xehw9jzscrjsfjitv",
+            "Extension": "jpg",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/of6xehw9jzscrjsfjitv",
+            "ProductId": 8
+          },
+          {
+            "ImageId": 19,
+            "ImageName": "zt8h6ozhvzc3c2obvvmj",
+            "Extension": "jpg",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/zt8h6ozhvzc3c2obvvmj",
+            "ProductId": 8
+          }
+        ],
+        "Colors": [
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 1,
+              "ImageName": "black_ecjeap",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
+              "ProductId": null
+            },
+            "ColorId": 1,
+            "Name": "Black",
+            "ThumbnailImageId": 1
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 2,
+              "ImageName": "red_e8saf2",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
+              "ProductId": null
+            },
+            "ColorId": 2,
+            "Name": "Red",
+            "ThumbnailImageId": 2
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 3,
+              "ImageName": "white_s8f0yl",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
+              "ProductId": null
+            },
+            "ColorId": 3,
+            "Name": "White",
+            "ThumbnailImageId": 3
+          }
+        ],
+        "Sizes": [
+          { "SizeId": 1, "Name": "XL" },
+          { "SizeId": 2, "Name": "XXL" },
+          { "SizeId": 3, "Name": "L" }
+        ],
+        "ProductId": 8,
+        "Name": "Tee shirt - \"I Make Beer Disappear Whats Your Super Power \"",
+        "Description": "<p>We all knew you had super power, and now we know it. Rock this Tee shirt - I  Make Beer Disappear Whats Your Super Power</p>\r\n",
+        "Price": 35.0,
+        "CategoryId": 1,
+        "CreatedDate": "2022-03-16T15:11:51.2825717",
+        "AvgRating": 0.0
+      },
+      {
+        "Category": {
+          "Parent": {
+            "Parent": null,
+            "Children": [
+              {
+                "Children": [],
+                "CategoryId": 2,
+                "Name": "T-Shirts",
+                "Description": "T-Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 3,
+                "Name": "Casual Shirts",
+                "Description": "Casual Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 4,
+                "Name": "Formal Shirts",
+                "Description": "Formal Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 5,
+                "Name": "Sweatshirts",
+                "Description": "Sweatshirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 7,
+                "Name": "Jackets",
+                "Description": "Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 8,
+                "Name": "Blazers & Coats",
+                "Description": "Blazers & Coats",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 9,
+                "Name": "Suits",
+                "Description": "Suits",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 10,
+                "Name": "Rain Jackets",
+                "Description": "Rain Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              }
+            ],
+            "CategoryId": 1,
+            "Name": "Topwear",
+            "Description": "Topwear",
+            "IsParent": true,
+            "ParentCategoryId": null
+          },
+          "Children": [],
+          "CategoryId": 6,
+          "Name": "Sweaters",
+          "Description": "Sweaters",
+          "IsParent": false,
+          "ParentCategoryId": 1
+        },
+        "Ratings": [],
+        "UpdatedDates": [],
+        "Thumbnail": [
+          {
+            "ImageId": 16,
+            "ImageName": "tnb2ddzc0woy8ffg1bkr",
+            "Extension": "gif",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/tnb2ddzc0woy8ffg1bkr",
+            "ProductId": 7
+          },
+          {
+            "ImageId": 17,
+            "ImageName": "nh0psspfvt9i5aklr9ey",
+            "Extension": "webp",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/nh0psspfvt9i5aklr9ey",
+            "ProductId": 7
+          }
+        ],
+        "Colors": [
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 1,
+              "ImageName": "black_ecjeap",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
+              "ProductId": null
+            },
+            "ColorId": 1,
+            "Name": "Black",
+            "ThumbnailImageId": 1
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 3,
+              "ImageName": "white_s8f0yl",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
+              "ProductId": null
+            },
+            "ColorId": 3,
+            "Name": "White",
+            "ThumbnailImageId": 3
+          }
+        ],
+        "Sizes": [
+          { "SizeId": 1, "Name": "XL" },
+          { "SizeId": 2, "Name": "XXL" },
+          { "SizeId": 3, "Name": "L" }
+        ],
+        "ProductId": 7,
+        "Name": "Tuxedo Tees Retro Tie Sweatshirt",
+        "Description": "<p><span style=\"color: rgb(51,51,51);background-color: rgb(255,255,255);font-size: 14px;font-family: Poppins, sans-serif;\">Looking cool has never been this easy, with this Printed Tuxedo Retro Tie Sweatshirt you will look smart no matter what you do. The perfect outfit for your next interview!  </span>&nbsp;</p>\r\n",
+        "Price": 55.0,
+        "CategoryId": 6,
+        "CreatedDate": "2022-03-16T15:10:40.9125465",
         "AvgRating": 0.0
       },
       {
         "Category": {
           "Parent": null,
-          "Children": [],
-          "CategoryId": 39,
-          "Name": "Watches",
-          "Description": "Watches",
+          "Children": [
+            {
+              "Children": [],
+              "CategoryId": 2,
+              "Name": "T-Shirts",
+              "Description": "T-Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 3,
+              "Name": "Casual Shirts",
+              "Description": "Casual Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 4,
+              "Name": "Formal Shirts",
+              "Description": "Formal Shirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 5,
+              "Name": "Sweatshirts",
+              "Description": "Sweatshirts",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 6,
+              "Name": "Sweaters",
+              "Description": "Sweaters",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 7,
+              "Name": "Jackets",
+              "Description": "Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 8,
+              "Name": "Blazers & Coats",
+              "Description": "Blazers & Coats",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 9,
+              "Name": "Suits",
+              "Description": "Suits",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            },
+            {
+              "Children": [],
+              "CategoryId": 10,
+              "Name": "Rain Jackets",
+              "Description": "Rain Jackets",
+              "IsParent": false,
+              "ParentCategoryId": 1
+            }
+          ],
+          "CategoryId": 1,
+          "Name": "Topwear",
+          "Description": "Topwear",
           "IsParent": true,
           "ParentCategoryId": null
         },
-        "Ratings": [],
+        "Ratings": [
+          {
+            "UserRating": {
+              "Role": { "RoleId": 0, "Description": "Administrator" },
+              "Identity": { "Username": "ADMIN" },
+              "UserId": 1,
+              "Name": "ADMIN",
+              "RoleId": 0,
+              "IdentityUsername": "ADMIN"
+            },
+            "RatingId": 3,
+            "RatingVal": 3,
+            "Comment": "The watch make me feel very elegant",
+            "CreatedDate": "2022-03-16T17:41:25.5402987",
+            "ProductId": 2,
+            "UserRatingUserId": 1
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 4,
+            "RatingVal": 3,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402987",
+            "ProductId": 2,
+            "UserRatingUserId": 2
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 0, "Description": "Administrator" },
+              "Identity": { "Username": "ADMIN" },
+              "UserId": 1,
+              "Name": "ADMIN",
+              "RoleId": 0,
+              "IdentityUsername": "ADMIN"
+            },
+            "RatingId": 5,
+            "RatingVal": 5,
+            "Comment": "The watch make me feel very elegant",
+            "CreatedDate": "2022-03-16T17:41:25.5402988",
+            "ProductId": 2,
+            "UserRatingUserId": 1
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 6,
+            "RatingVal": 4,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402989",
+            "ProductId": 2,
+            "UserRatingUserId": 2
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 0, "Description": "Administrator" },
+              "Identity": { "Username": "ADMIN" },
+              "UserId": 1,
+              "Name": "ADMIN",
+              "RoleId": 0,
+              "IdentityUsername": "ADMIN"
+            },
+            "RatingId": 11,
+            "RatingVal": 5,
+            "Comment": "The watch make me feel very elegant",
+            "CreatedDate": "2022-03-16T17:41:25.5402995",
+            "ProductId": 2,
+            "UserRatingUserId": 1
+          }
+        ],
         "UpdatedDates": [],
         "Thumbnail": [
           {
-            "ImageId": 20,
-            "ImageName": "o04zumkr4hxwpms8q4ib",
+            "ImageId": 6,
+            "ImageName": "iyfpc8zlmsh3hpwhem8r",
             "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/o04zumkr4hxwpms8q4ib",
-            "ProductId": 9
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/iyfpc8zlmsh3hpwhem8r",
+            "ProductId": 2
           },
           {
-            "ImageId": 21,
-            "ImageName": "paoh4rzuyubliwg4e1yq",
+            "ImageId": 7,
+            "ImageName": "wojbmn440oja7afudapp",
             "Extension": "jpg",
-            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/paoh4rzuyubliwg4e1yq",
-            "ProductId": 9
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/wojbmn440oja7afudapp",
+            "ProductId": 2
           }
         ],
         "Colors": [
@@ -1400,12 +1109,358 @@
           { "SizeId": 2, "Name": "XXL" },
           { "SizeId": 3, "Name": "L" }
         ],
-        "ProductId": 9,
-        "Name": "Inverness Watch | Limited Edition",
-        "Description": "<p>Get this unique and beautifully designed wooden watch for your inner nature lover!    limited edition collection | Only 100 made</p>\r\n",
-        "Price": 125.0,
-        "CategoryId": 39,
-        "CreatedDate": "2022-03-16T15:12:32.9456307",
+        "ProductId": 2,
+        "Name": "Long Sleeve 3D Printed Black Cat Sweatshirt",
+        "Description": "Long Sleeve 3D Printed Black Cat Sweatshirt",
+        "Price": 55.0,
+        "CategoryId": 1,
+        "CreatedDate": "2022-03-16T17:41:25.5402292",
+        "AvgRating": 4.0
+      },
+      {
+        "Category": {
+          "Parent": {
+            "Parent": null,
+            "Children": [
+              {
+                "Children": [],
+                "CategoryId": 2,
+                "Name": "T-Shirts",
+                "Description": "T-Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 4,
+                "Name": "Formal Shirts",
+                "Description": "Formal Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 5,
+                "Name": "Sweatshirts",
+                "Description": "Sweatshirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 6,
+                "Name": "Sweaters",
+                "Description": "Sweaters",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 7,
+                "Name": "Jackets",
+                "Description": "Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 8,
+                "Name": "Blazers & Coats",
+                "Description": "Blazers & Coats",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 9,
+                "Name": "Suits",
+                "Description": "Suits",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 10,
+                "Name": "Rain Jackets",
+                "Description": "Rain Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              }
+            ],
+            "CategoryId": 1,
+            "Name": "Topwear",
+            "Description": "Topwear",
+            "IsParent": true,
+            "ParentCategoryId": null
+          },
+          "Children": [],
+          "CategoryId": 3,
+          "Name": "Casual Shirts",
+          "Description": "Casual Shirts",
+          "IsParent": false,
+          "ParentCategoryId": 1
+        },
+        "Ratings": [
+          {
+            "UserRating": {
+              "Role": { "RoleId": 0, "Description": "Administrator" },
+              "Identity": { "Username": "ADMIN" },
+              "UserId": 1,
+              "Name": "ADMIN",
+              "RoleId": 0,
+              "IdentityUsername": "ADMIN"
+            },
+            "RatingId": 7,
+            "RatingVal": 2,
+            "Comment": "The watch make me feel very elegant",
+            "CreatedDate": "2022-03-16T17:41:25.540299",
+            "ProductId": 3,
+            "UserRatingUserId": 1
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 8,
+            "RatingVal": 3,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.540299",
+            "ProductId": 3,
+            "UserRatingUserId": 2
+          },
+          {
+            "UserRating": {
+              "Role": { "RoleId": 1, "Description": "User" },
+              "Identity": { "Username": "User1" },
+              "UserId": 2,
+              "Name": "Rookies User 1",
+              "RoleId": 1,
+              "IdentityUsername": "User1"
+            },
+            "RatingId": 16,
+            "RatingVal": 3,
+            "Comment": "Very beautiful and affordable price",
+            "CreatedDate": "2022-03-16T17:41:25.5402998",
+            "ProductId": 3,
+            "UserRatingUserId": 2
+          }
+        ],
+        "UpdatedDates": [],
+        "Thumbnail": [
+          {
+            "ImageId": 8,
+            "ImageName": "vjcyk00mvrrhadxdvgev",
+            "Extension": "jpg",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/vjcyk00mvrrhadxdvgev",
+            "ProductId": 3
+          },
+          {
+            "ImageId": 9,
+            "ImageName": "buomsanrphup1hkzgwkg",
+            "Extension": "jpg",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/buomsanrphup1hkzgwkg",
+            "ProductId": 3
+          }
+        ],
+        "Colors": [
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 1,
+              "ImageName": "black_ecjeap",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
+              "ProductId": null
+            },
+            "ColorId": 1,
+            "Name": "Black",
+            "ThumbnailImageId": 1
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 2,
+              "ImageName": "red_e8saf2",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/red_e8saf2",
+              "ProductId": null
+            },
+            "ColorId": 2,
+            "Name": "Red",
+            "ThumbnailImageId": 2
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 3,
+              "ImageName": "white_s8f0yl",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
+              "ProductId": null
+            },
+            "ColorId": 3,
+            "Name": "White",
+            "ThumbnailImageId": 3
+          }
+        ],
+        "Sizes": [
+          { "SizeId": 1, "Name": "XL" },
+          { "SizeId": 2, "Name": "XXL" },
+          { "SizeId": 3, "Name": "L" }
+        ],
+        "ProductId": 3,
+        "Name": "Dreamville Street Wear Sweatshirt",
+        "Description": "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
+        "Price": 55.0,
+        "CategoryId": 3,
+        "CreatedDate": "2022-03-16T17:41:25.5402294",
+        "AvgRating": 2.7
+      },
+      {
+        "Category": {
+          "Parent": {
+            "Parent": null,
+            "Children": [
+              {
+                "Children": [],
+                "CategoryId": 2,
+                "Name": "T-Shirts",
+                "Description": "T-Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 3,
+                "Name": "Casual Shirts",
+                "Description": "Casual Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 4,
+                "Name": "Formal Shirts",
+                "Description": "Formal Shirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 5,
+                "Name": "Sweatshirts",
+                "Description": "Sweatshirts",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 7,
+                "Name": "Jackets",
+                "Description": "Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 8,
+                "Name": "Blazers & Coats",
+                "Description": "Blazers & Coats",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 9,
+                "Name": "Suits",
+                "Description": "Suits",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              },
+              {
+                "Children": [],
+                "CategoryId": 10,
+                "Name": "Rain Jackets",
+                "Description": "Rain Jackets",
+                "IsParent": false,
+                "ParentCategoryId": 1
+              }
+            ],
+            "CategoryId": 1,
+            "Name": "Topwear",
+            "Description": "Topwear",
+            "IsParent": true,
+            "ParentCategoryId": null
+          },
+          "Children": [],
+          "CategoryId": 6,
+          "Name": "Sweaters",
+          "Description": "Sweaters",
+          "IsParent": false,
+          "ParentCategoryId": 1
+        },
+        "Ratings": [],
+        "UpdatedDates": [],
+        "Thumbnail": [
+          {
+            "ImageId": 14,
+            "ImageName": "uuc6ijixtbeisvu8vb7w",
+            "Extension": "webp",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/uuc6ijixtbeisvu8vb7w",
+            "ProductId": 6
+          },
+          {
+            "ImageId": 15,
+            "ImageName": "rtrkfxbliizycuotzllh",
+            "Extension": "webp",
+            "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/rtrkfxbliizycuotzllh",
+            "ProductId": 6
+          }
+        ],
+        "Colors": [
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 1,
+              "ImageName": "black_ecjeap",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/black_ecjeap",
+              "ProductId": null
+            },
+            "ColorId": 1,
+            "Name": "Black",
+            "ThumbnailImageId": 1
+          },
+          {
+            "Thumbnail": {
+              "Product": null,
+              "ImageId": 3,
+              "ImageName": "white_s8f0yl",
+              "Extension": "png",
+              "ImageUrl": "https://res.cloudinary.com/drducnod6/image/upload/ar_1.0,b_auto,c_pad/white_s8f0yl",
+              "ProductId": null
+            },
+            "ColorId": 3,
+            "Name": "White",
+            "ThumbnailImageId": 3
+          }
+        ],
+        "Sizes": [
+          { "SizeId": 1, "Name": "XL" },
+          { "SizeId": 2, "Name": "XXL" },
+          { "SizeId": 3, "Name": "L" }
+        ],
+        "ProductId": 6,
+        "Name": "Rainbow Mushroom Hoodie",
+        "Description": "<p><span style=\"color: rgb(51,51,51);background-color: rgb(255,255,255);font-size: 14px;font-family: Poppins, sans-serif;\">This Unisex Rainbow Mushroom hoodie has a hidden secret. Did you know that eating rainbow mushroom has been considered as a key to achieve a healthy life.  Rainbow mushroom, also known as “glass parasol”, is one...</span>&nbsp;</p>\r\n",
+        "Price": 75.0,
+        "CategoryId": 6,
+        "CreatedDate": "2022-03-16T15:09:31.1732156",
         "AvgRating": 0.0
       }
     ]

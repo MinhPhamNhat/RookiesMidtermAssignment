@@ -7,11 +7,15 @@
 .text-end button{
     box-sizing: border-box;
 }
-
 .product-rating{
     display: flex;
     flex-direction: column;
 
+}
+
+.product-thumbnail{
+    width: 100px;
+    height: 100px;
 }
 
 .product-rating .rating-value{

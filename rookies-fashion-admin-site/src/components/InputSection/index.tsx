@@ -1,17 +1,14 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 const InputSection: React.FC<any> = (props) => {
-    const {title, component} = props
+  const { title, component } = props;
   return (
-    <>
-      <div className="mb-3 row">
-        <label className="col-sm-2">{title}</label>
-        <div className="col-sm-10">
-          {component}
-        </div>
-      </div>
-      <div className="line"></div>
-      <br />
-    </>
+    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+      <Form.Label>
+        <strong>{title}</strong>
+      </Form.Label>
+      {component}
+    </Form.Group>
   );
 };
 

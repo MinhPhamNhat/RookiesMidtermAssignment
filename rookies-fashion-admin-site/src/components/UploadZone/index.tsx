@@ -5,11 +5,12 @@ const UploadZone: React.FC<any> = (props) => {
   const { onFileUploaded } = props;
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     maxFiles: 2,
-    accept: "image/jpeg,image/png,image/webp",
+    accept: "image/*"
   });
   useEffect(() => {
     onFileUploaded(acceptedFiles);
   }, [acceptedFiles]);
+  
   const acceptedFileItems = acceptedFiles.map((file: any) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
@@ -23,7 +24,6 @@ const UploadZone: React.FC<any> = (props) => {
         <p>Drag 'n' drop some files here, or click to select files</p>
         <em>(2 files are the maximum number of files you can drop here)</em>
       </div>
-
       <aside className="">{acceptedFileItems}</aside>
     </section>
   );

@@ -14,9 +14,19 @@ class ProductService {
     const response = await HttpClient.get(endpoint);
     return response;
   }
-  async insertProduct(form: any) {
+  async insertProduct(form: FormData) {
     const endpoint = Endpoints.PRODUCTS;
     const response = await HttpClient.post(endpoint, form);
+    return response;
+  }
+  async updateProduct(id: string, form: FormData) {
+    const endpoint = Endpoints.PRODUCTS + `/${id}`;
+    const response = await HttpClient.put(endpoint, form);
+    return response;
+  }
+  async deleteProduct(id: string) {
+    const endpoint = Endpoints.PRODUCTS + `/${id}`;
+    const response = await HttpClient.delete(endpoint);
     return response;
   }
 }

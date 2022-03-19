@@ -24,7 +24,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var products = _context.Products.ToList();
+                var products = _context.Products.Where(p=>!p.IsDeleted).ToList();
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -47,7 +47,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products
+                var product = _context.Products.Where(p=>!p.IsDeleted)
                 .FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
@@ -106,7 +106,28 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                _context.Entry(product).State = EntityState.Modified;
+                var newUpdatedDate = new UpdatedDate() { ProductId = product.ProductId };
+                _context.UpdatedDates.Add(newUpdatedDate);
+                var oldProduct = _context.Products.First(p => p.ProductId == product.ProductId);
+                oldProduct.Description = product.Description;
+                oldProduct.CategoryId = product.CategoryId;
+                oldProduct.Price = product.Price;
+                if (product.Thumbnail.Count > 0)
+                {
+                    oldProduct.Thumbnail.Clear();
+                    oldProduct.Thumbnail = product.Thumbnail;
+                }
+                if (product.Colors.Count > 0)
+                {
+                    oldProduct.Colors.Clear();
+                    oldProduct.Colors = product.Colors;
+                }
+                if (product.Sizes.Count > 0)
+                {
+                    oldProduct.Sizes.Clear();
+                    oldProduct.Sizes = product.Sizes;
+                }
+                _context.Entry(oldProduct).State = EntityState.Modified;
                 _context.SaveChanges();
 
                 return new ServiceResponse()
@@ -132,12 +153,11 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.FirstOrDefault(p => p.ProductId == productId);
+                var product = _context.Products.Where(p=>!p.IsDeleted).FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
                 {
-                    _context.Images.RemoveRange(product.Thumbnail);
-                    _context.Products.Remove(product);
+                    product.IsDeleted = true;
                     _context.SaveChanges();
                     return new ServiceResponse()
                     {
@@ -176,7 +196,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var products = _context.Products.AsQueryable();
+                var products = _context.Products.Where(p=>!p.IsDeleted).AsQueryable();
                 products = ProductFilter(products, baseQueryCriteria);
                 var pagedProducts = await products.PaginateAsync(baseQueryCriteria, cancellationToken);
                 return new ServiceResponse()
@@ -202,8 +222,8 @@ namespace RookiesFashion.APIService.Services
             BaseQueryCriteriaDTO baseQueryCriteriaDto)
         {
             if (baseQueryCriteriaDto.CategoryId != null && baseQueryCriteriaDto.CategoryId > 0)
-                productQuery = productQuery.Where(p => 
-                p.CategoryId == baseQueryCriteriaDto.CategoryId || 
+                productQuery = productQuery.Where(p =>
+                p.CategoryId == baseQueryCriteriaDto.CategoryId ||
                 p.Category.ParentCategoryId == baseQueryCriteriaDto.CategoryId);
             if (baseQueryCriteriaDto.Rating != null && baseQueryCriteriaDto.Rating > 0)
                 productQuery = productQuery.Where(p => p.Ratings.Select(r => r.RatingVal).Average() >= baseQueryCriteriaDto.Rating);
