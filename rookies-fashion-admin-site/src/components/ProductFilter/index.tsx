@@ -18,7 +18,7 @@ const ProductFilter = ({
     name: "All",
     label: <Option.Category name={"All"} isParent={true} value={0} />,
   });
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(pagingForm?.Search);
   const promiseCategoryOptions = async () => {
     var data = (await categoryService.getCategories()).data;
     var out = [defaultCategoryOption].concat(
@@ -56,10 +56,6 @@ const ProductFilter = ({
     setOnChanging(true);
   };
   
-  useEffect(() => {
-    setSearch(pagingForm?.Search);
-    console.log(defaultRating)
-  }, []);
   useEffect(() => {
     setDefaultCategoryOption(
       categoryOptions.find((c: any) => c.value == pagingForm.CategoryId)

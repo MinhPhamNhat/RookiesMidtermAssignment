@@ -9,9 +9,12 @@ import {
     getCategoryByIdAction,
     setProductPagingQueryAction,
     setCategoryPagingQueryAction,
+    insertCategoryAction,
+    updateCategoryAction,
   } from "./ActionTypes";
   import ProductPagingQuery from "./form/ProductPagingQuery";
   import CategoryPagingQuery from "./form/CategoryPagingQuery";
+import { CategoryForm } from "./form/CategoryForm";
   
   export type getPagingProductsActionCreator = (query: ProductPagingQuery) => getPagingProductsAction;
   export type getProductByIdActionCreator = (id: string) => getProductByIdAction; 
@@ -23,4 +26,6 @@ import {
   export type getCategoryByIdActionCreator = (id: string) => getCategoryByIdAction;
   export type setProductPagingQueryCreator = (query: ProductPagingQuery) => setProductPagingQueryAction;
   export type setCategoryPagingQueryCreator = (query: CategoryPagingQuery) => setCategoryPagingQueryAction;
+  export type insertCategoryCreator = (form: CategoryForm) => insertCategoryAction;
+  export type updateCategoryCreator = (id: string, form: CategoryForm) => updateCategoryAction;
   

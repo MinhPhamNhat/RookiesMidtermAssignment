@@ -6,8 +6,9 @@ import {
   gotCategories,
   gotCategoryById,
   gotPagingCategories,
+  insertedCategory,
   internalErrorGot,
-  setCategoryPagingQueryAction,
+  updatedCategory,
 } from "../types/ActionTypes";
 import { StoreType } from "../types/StoreType";
 
@@ -17,7 +18,9 @@ type actions =
   | gotCategoryById
   | doneSetCategoryPagingQuery
   | badRequestGot
-  | internalErrorGot;
+  | internalErrorGot
+  | insertedCategory
+  | updatedCategory;
 
 const initialState: StoreType = {};
 
@@ -37,6 +40,10 @@ const categoryReducer: Reducer<StoreType, actions> = (
       };
     case Actions.GOT_CATEGORY_BY_ID:
       return { ...state, category: (action as gotCategoryById).category };
+    case Actions.INSERTED_CATEGORY:
+      return { ...state, category: (action as insertedCategory).category };
+    case Actions.UPDATED_CATEGORY:
+      return { ...state, category: (action as updatedCategory).category };
     case Actions.DONE_SET_CATEGORY_PAGING_QUERY:
       return {
         ...state,

@@ -31,8 +31,6 @@ const ProductList: React.FC<any> = (props) => {
     getProductById,
     deleteProduct,
     message,
-    setCategoryPagingQuery,
-    categoryPagingQuery,
     setProductPagingQuery,
     productPagingQuery,
   } = props;

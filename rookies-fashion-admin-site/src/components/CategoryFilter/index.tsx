@@ -6,6 +6,7 @@ import Option from "../Option";
 import { Category } from "../../types/model";
 import "./index.css";
 import { Button } from "@mui/material";
+import { Button as BootstrapButton } from "react-bootstrap";
 
 const CategoryFilter = ({ pagingForm, setPagingForm, setOnChanging }: any) => {
   const [search, setSearch] = useState("");
@@ -40,9 +41,9 @@ const CategoryFilter = ({ pagingForm, setPagingForm, setOnChanging }: any) => {
           />
         </div>
       </div>
-      <Button variant="contained" color="primary" onClick={handleSubmitSearch}>
+      <BootstrapButton variant="secondary" onClick={handleSubmitSearch}>
         Search
-      </Button>
+      </BootstrapButton>
       <hr />
       <div className="filter-group">
         <div className="filter-name">

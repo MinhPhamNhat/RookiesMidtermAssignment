@@ -53,6 +53,7 @@ class HttpClient {
         };
       })
       .catch((err: any) => {
+        console.log(err.response)
         return {
           code: err.response.status,
           message: err.response.data.Message,

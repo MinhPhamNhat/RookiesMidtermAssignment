@@ -27,6 +27,7 @@ const ProductInsert: React.FC<any> = (props) => {
   });
 
   const formSubmit = async () => {
+    console.log(form)
     var formData = serialize(form);
     form.Files.forEach((f) => formData.append("Files", f, f.name));
     insertProduct(formData);

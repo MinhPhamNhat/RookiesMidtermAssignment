@@ -22,7 +22,6 @@ import ImagePreview from "../ImagePreview";
 import "./index.css";
 
 const ProductFormInput = ({ form, setForm, formSubmit, isEditForm }: any) => {
-  
   const [editorState, setEditorState] = useState(() =>
     EditorState.createWithContent(
       ContentState.createFromBlockArray(
@@ -59,15 +58,15 @@ const ProductFormInput = ({ form, setForm, formSubmit, isEditForm }: any) => {
   }, [form.CategoryId]);
   useEffect(() => {
     if (colors.length)
-    setDefaultColorsOption(
-      colors.filter((c: any) => form?.ColorIds?.includes(c.value))
-    );
+      setDefaultColorsOption(
+        colors.filter((c: any) => form?.ColorIds?.includes(c.value))
+      );
   }, [form.ColorIds]);
   useEffect(() => {
     if (sizes.length)
-    setDefaultSizesOption(
-      sizes.filter((c: any) => form?.SizeIds?.includes(c.value))
-    );
+      setDefaultSizesOption(
+        sizes.filter((c: any) => form?.SizeIds?.includes(c.value))
+      );
   }, [form.SizeIds]);
 
   const promiseCategoryOptions = async () => {
@@ -172,7 +171,7 @@ const ProductFormInput = ({ form, setForm, formSubmit, isEditForm }: any) => {
                 component={
                   <AsyncSelect
                     onChange={({ value }: any) =>
-                      setForm({ ...form, CategoryId: value.value })
+                      setForm({ ...form, CategoryId: value })
                     }
                     cacheOptions
                     defaultOptions

@@ -4,10 +4,7 @@ import { serialize } from "object-to-formdata";
 import { NOTIFICATION_TYPE, Store } from "react-notifications-component";
 import { useParams } from "react-router-dom";
 
-import {
-  getProductById,
-  updateProduct,
-} from "../../../actions";
+import { getProductById, updateProduct } from "../../../actions";
 import { ProductForm } from "../../../types/form/ProductForm";
 import { Actions, StatusCode } from "../../../constants";
 import { ValidationError } from "../../../types/model/ValidationError";
@@ -26,17 +23,33 @@ const ProductEdit: React.FC<any> = (props: any) => {
     validationErrors,
     actionType,
     message,
-  } = props
+  } = props;
   const { id } = useParams();
-  const [form, setForm] = useState<ProductForm>({ ...product , 
+  const [form, setForm] = useState<ProductForm>({
+    ...product,
     ColorIds: product?.Colors?.map((c: Color) => c.ColorId),
-    SizeIds: product?.Sizes?.map((c: Size) => c.SizeId)});
+    SizeIds: product?.Sizes?.map((c: Size) => c.SizeId),
+  });
   const [getProductTrigger, setGetProductTrigger] = useState(false);
 
   if (!getProductTrigger && (product?.ProductId != id || !product)) {
     setGetProductTrigger(true);
   }
 
+  useEffect(() => {
+    switch (actionType) {
+      case Actions.BAD_REQUEST_GOT:
+        validationErrors.forEach((err: ValidationError) =>
+          ShowNotification(err.ErrorMessage, err.Field, "danger")
+        );
+        break;
+      case Actions.INSERTED_PRODUCT:
+        ShowNotification(message, "Success", "success");
+        break;
+      default:
+        break;
+    }
+  }, [actionType]);
   useEffect(() => {
     if (getProductTrigger) {
       getProductById(id);
@@ -45,9 +58,11 @@ const ProductEdit: React.FC<any> = (props: any) => {
 
   if (actionType === Actions.GOT_PRODUCT_BY_ID && getProductTrigger) {
     setGetProductTrigger(false);
-    setForm({...product, 
+    setForm({
+      ...product,
       ColorIds: product?.Colors.map((c: Color) => c.ColorId),
-      SizeIds: product?.Sizes.map((c: Size) => c.SizeId),});
+      SizeIds: product?.Sizes.map((c: Size) => c.SizeId),
+    });
   }
   const formSubmit = async () => {
     var formData = serialize(form);

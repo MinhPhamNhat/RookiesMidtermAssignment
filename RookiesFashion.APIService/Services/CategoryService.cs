@@ -25,12 +25,12 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories.Where(c=>!c.IsDeleted).Where(c => c.IsParent).ToList();
+                var categories = _context.Categories.Where(c => !c.IsDeleted && c.IsParent).ToList();
                 var output = new List<Category>();
                 foreach (var category in categories)
                 {
                     output.Add(category);
-                    output.AddRange(category.Children.Where(c=>!c.IsDeleted));
+                    output.AddRange(category.Children.Where(c => !c.IsDeleted));
                 }
 
                 return new ServiceResponse()
@@ -55,7 +55,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var category = _context.Categories.Where(c=>!c.IsDeleted).First(c=>c.CategoryId == categoryId);
+                var category = _context.Categories.Where(c => !c.IsDeleted).First(c => c.CategoryId == categoryId);
 
                 if (category != null)
                     return new ServiceResponse()
@@ -174,10 +174,10 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories.Where(c => !c.IsDeleted).Include(c=>c.Children.Where(cc=>!cc.IsDeleted)).AsQueryable();
+                var categories = _context.Categories.Where(c => !c.IsDeleted).AsQueryable();
                 categories = FilterHelper.CategoryFilter(categories, baseQueryCriteria);
                 var pagedProducts = await categories.PaginateAsync(baseQueryCriteria, cancellationToken);
-                
+
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -196,5 +196,28 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
+        public async Task<ServiceResponse> GetParentCategories()
+        {
+            try
+            {
+                var categories = _context.Categories.Where(c => !c.IsDeleted && c.IsParent).ToList();
+
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Categories",
+                    Data = categories
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex.InnerException
+                };
+            }
+        }
     }
 }

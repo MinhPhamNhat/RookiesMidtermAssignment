@@ -31,7 +31,7 @@ public class ProductFormDTO : IValidatableObject
         {
             yield return new ValidationResult("Price must not be null or be larger than 0", new[] { nameof(Price) });
         }
-        if (Files.Count() <= 0 && Files.Count() >= 3)
+        if (Files?.Count() <= 0 && Files.Count() >= 3)
         {
             yield return new ValidationResult("Files must larger than 0 and less than 3", new[] { nameof(Files) });
         }
@@ -42,7 +42,5 @@ public class ProductFormDTO : IValidatableObject
                 yield return new ValidationResult("Not all file is image", new[] { nameof(Files) });
             }
         }
-
-
     }
 }

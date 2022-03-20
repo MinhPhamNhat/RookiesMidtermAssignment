@@ -4,6 +4,7 @@ import { ProductForm } from "./form/ProductForm";
 import { Category, PagingProduct, Product } from "./model";
 import { ValidationError } from "./model/ValidationError";
 import { PagingCategory } from "./model/PagingCategory";
+import { CategoryForm } from "./form/CategoryForm";
 
 export type getPagingProductsAction = {
   type: "GET_PAGING_PRODUCTS";
@@ -112,6 +113,28 @@ export type doneSetCategoryPagingQuery = {
   query: CategoryPagingQuery;
 };
 
+export type insertCategoryAction = {
+  type: "INSERT_CATEGORY",
+  form: CategoryForm
+}
+
+export type insertedCategory = {
+  type: "INSERT_CATEGORY";
+  category: Category;
+  message?: string;
+}
+
+export type updateCategoryAction = {
+  type: "UPDATE_CATEGORY",
+  form: CategoryForm,
+  id: string
+}
+
+export type updatedCategory = {
+  type: "UPDATED_CATEGORY";
+  category: Category;
+  message?: string;
+}
 
 export type internalErrorGot = {
   type: "INTERNAL_ERROR_GOT";

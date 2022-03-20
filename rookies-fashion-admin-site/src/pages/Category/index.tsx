@@ -12,6 +12,8 @@ import {
   getCategoryById,
   setCategoryPagingQuery,
   setProductPagingQuery,
+  insertCategory,
+  updateCategory,
 } from "../../actions";
 import { Category } from "../../types/model";
 
@@ -22,6 +24,11 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DetailModal from "../../components/DetailModal";
 import ProductPagingQuery from "../../types/form/ProductPagingQuery";
+import InsertModal from "../../components/InsertModal";
+import { CategoryForm } from "../../types/form/CategoryForm";
+import { ShowNotification } from "../../helpers";
+import { ValidationError } from "../../types/model/ValidationError";
+import EditModal from "../../components/EditModal";
 const CategoryPage: React.FC<any> = (props) => {
   const {
     getPagingCategories,
@@ -33,10 +40,14 @@ const CategoryPage: React.FC<any> = (props) => {
     setCategoryPagingQuery,
     categoryPagingQuery,
     setProductPagingQuery,
-    productPagingQuery,
+    updateCategory,
+    validationErrors,
+    insertCategory,
   } = props;
-
+  console.log(props);
   const [modalShow, setModalShow] = useState(false);
+  const [insertModalShow, setInsertModalShow] = useState(false);
+  const [editModalShow, setEditModalShow] = useState(false);
   const [onChanging, setOnChanging] = useState(true);
   const [loading, setLoading] = useState(false);
   const [currentCategoryClicked, setCurrentCategoryClicked] = useState("");
@@ -55,6 +66,7 @@ const CategoryPage: React.FC<any> = (props) => {
     if (actionType !== Actions.DONE_SET_CATEGORY_PAGING_QUERY)
       setCategoryPagingQuery(pagingForm);
   }, [pagingForm]);
+
   useEffect(() => {
     if (onChanging) {
       setLoading(true);
@@ -67,16 +79,49 @@ const CategoryPage: React.FC<any> = (props) => {
     if (currentCategoryClicked) getCategoryById(currentCategoryClicked);
   }, [currentCategoryClicked]);
 
+  useEffect(() => {
+    switch (actionType) {
+      case Actions.BAD_REQUEST_GOT:
+        validationErrors?.forEach((err: ValidationError) =>
+          ShowNotification(err.ErrorMessage, err.Field, "danger")
+        );
+        break;
+      case Actions.INSERTED_PRODUCT:
+        // ShowNotification(message, "Success", "success");
+        break;
+      case Actions.UPDATED_CATEGORY:
+        setOnChanging(true);
+        // ShowNotification(message, "Success", "success");
+        break;
+      default:
+        break;
+    }
+  }, [actionType]);
+
   if (loading && actionType === Actions.GOT_PAGING_CATEGORIES)
     setLoading(false);
-  console.log(props);
+
   const showModal = (id: string) => {
     setModalShow(true);
     setCurrentCategoryClicked(id);
   };
+
   const hideModel = () => {
     setModalShow(false);
     setCurrentCategoryClicked("");
+  };
+
+  const hideInsertModel = () => {
+    setInsertModalShow(false);
+  };
+
+  const showEditModal = (id: number) => {
+    getCategoryById(id);
+    setEditModalShow(true);
+  };
+
+  const hideEditModel = () => {
+    setEditModalShow(false);
   };
 
   const handlePageChange = (page: number) => {
@@ -106,6 +151,17 @@ const CategoryPage: React.FC<any> = (props) => {
     };
     setProductPagingQuery(query);
   };
+
+  const confirmInsert = (form: CategoryForm) => {
+    insertCategory(form);
+    hideInsertModel()
+  };
+
+  const confirmEdit = (id: string, form: CategoryForm) => {
+    updateCategory(id, form);
+    hideEditModel()
+  };
+
   const columns = [
     {
       id: SortType.NAME,
@@ -114,7 +170,7 @@ const CategoryPage: React.FC<any> = (props) => {
       cell: (row: Category) => <span>{row.Name}</span>,
     },
     {
-      name: "Parent",
+      name: "Is Parent",
       cell: (row: Category) => (
         <span style={{ fontSize: "32px" }}>
           {row.IsParent ? (
@@ -126,11 +182,23 @@ const CategoryPage: React.FC<any> = (props) => {
       ),
     },
     {
+      name: "Parent",
+      cell: (row: Category) => (
+        <span>
+          {row.IsParent?"":row.Parent.Name}
+        </span>
+      ),
+    },
+    {
       name: "Action",
       cell: (row: Category) => (
         <span>
           <div className="text-end">
-            <button type="button" className="btn btn-outline-info">
+            <button
+              type="button"
+              onClick={() => showEditModal(row.CategoryId)}
+              className="btn btn-outline-info"
+            >
               <i className="fa-solid fa-pen"></i>
             </button>
             <button
@@ -157,7 +225,10 @@ const CategoryPage: React.FC<any> = (props) => {
     <div>
       <div className="page-title">
         <h3>Categories</h3>
-        <Button variant="outline-primary">
+        <Button
+          variant="outline-primary"
+          onClick={() => setInsertModalShow(true)}
+        >
           <i className="fa-solid fa-plus"></i> Add
         </Button>
       </div>
@@ -203,6 +274,17 @@ const CategoryPage: React.FC<any> = (props) => {
       ) : (
         <></>
       )}
+      <InsertModal
+        show={insertModalShow}
+        onHide={hideInsertModel}
+        confirmInsert={confirmInsert}
+      />
+      <EditModal
+        category={category}
+        show={editModalShow}
+        onHide={hideEditModel}
+        confirmEdit={confirmEdit}
+      />
     </div>
   );
 };
@@ -217,6 +299,8 @@ export default connect(mapDispatchToProps, {
   getCategoryById,
   setCategoryPagingQuery,
   setProductPagingQuery,
+  insertCategory,
+  updateCategory,
 })(CategoryPage);
 
 const customStyles = {

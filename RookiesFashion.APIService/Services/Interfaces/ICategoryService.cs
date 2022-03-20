@@ -9,6 +9,7 @@ public interface ICategoryService
 {
     Task<ServiceResponse> GetCategories();
     Task<ServiceResponse> GetCategoryById(int categoryId);
+    Task<ServiceResponse> GetParentCategories();
     Task<ServiceResponse> InsertCategory(Category category);
     Task<ServiceResponse> UpdateCategory(Category category);
     Task<ServiceResponse> DeleteCategory(int categoryId);

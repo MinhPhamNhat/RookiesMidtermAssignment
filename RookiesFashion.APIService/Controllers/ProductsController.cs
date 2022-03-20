@@ -80,7 +80,7 @@ namespace RookiesFashion.APIService.Controllers
                 }
 
                 var product = _mapper.Map<Product>(formProduct);
-                Console.WriteLine("TAGGG " + id + JsonConvert.SerializeObject(product));
+
                 ServiceResponse serResp = await _productService.UpdateProduct(product);
                 return MyApiHelper.RequestResultParser(serResp, HttpContext);
             }
@@ -173,11 +173,12 @@ namespace RookiesFashion.APIService.Controllers
         private ProductFormDTO ProductFormDTOBinder(IFormCollection formCollection, List<IFormFile> files)
         {
             ProductFormDTO productFormDTO = new ProductFormDTO();
-            productFormDTO.ProductId = int.Parse(formCollection["ProductId"].First());
-            productFormDTO.CategoryId = int.Parse(formCollection["CategoryId"].First());
+            Console.WriteLine(JsonConvert.SerializeObject(formCollection));
+            productFormDTO.ProductId = formCollection.ContainsKey("ProductId") ? int.Parse(formCollection["ProductId"].First()) : null;
+            productFormDTO.CategoryId = int.TryParse(formCollection["CategoryId"].First(), out int category) ? category : null;
             productFormDTO.Description = formCollection["Description"].First();
             productFormDTO.Name = formCollection["Name"].First();
-            productFormDTO.Price = int.Parse(formCollection["Price"].First());
+            productFormDTO.Price = int.TryParse(formCollection["Price"].First(), out int price) ? price : null;
             productFormDTO.ColorIds = formCollection["ColorIds[]"].Select(_ => int.Parse(_)).ToList();
             productFormDTO.SizeIds = formCollection["SizeIds[]"].Select(_ => int.Parse(_)).ToList();
             productFormDTO.Files = files;
