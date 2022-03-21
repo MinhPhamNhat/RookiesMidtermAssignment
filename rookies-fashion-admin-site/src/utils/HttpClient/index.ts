@@ -108,4 +108,16 @@ class HttpClient {
   }
 }
 
+const responeParse = (resp: any) => {
+  switch(resp.status){
+    case 400:
+      return {
+        code: resp.status,
+        message: resp.data.Message,
+        data: resp.data.Data as Array<ValidationError>,
+      };
+
+  }
+}
+
 export default new HttpClient();

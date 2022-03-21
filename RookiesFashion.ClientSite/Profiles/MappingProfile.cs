@@ -18,8 +18,6 @@ public class MappingProfile : Profile
         CreateMap<Color, ColorVM>();
         CreateMap<Size, SizeVM>();
         CreateMap<User, UserVM>();
-        CreateMap<Role, RoleVM>();
-        CreateMap<User, RoleVM>();
         CreateMap<Rating, RatingVM>();
         CreateMap<Account, AccountVM>();
         CreateMap<PagedModelDto<Product>, PagedResponseVM<ProductVM>>();

@@ -15,26 +15,118 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = d:\Computer Sience\Rookies Batch 4\Midterm Project\RookiesFashion\RookiesMidtermAssignment\RookiesFashion.APIService
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Accounts/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcQ3JlYXRlLmNzaHRtbA==
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Accounts/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcRGVsZXRlLmNzaHRtbA==
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Accounts/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcRGV0YWlscy5jc2h0bWw=
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Accounts/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcRWRpdC5jc2h0bWw=
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Accounts/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcSW5kZXguY3NodG1s
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Account/LoggedOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dnZWRPdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Consent/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc2VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Device/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFN1Y2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Device/UserCodeCapture.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFVzZXJDb2RlQ2FwdHVyZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Device/UserCodeConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFVzZXJDb2RlQ29uZmlybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Diagnostics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc3RpY3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Grants/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/Redirect.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGlyZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_Nav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_ScopeListItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY29wZUxpc3RJdGVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/Shared/_ValidationSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Computer Sience/Rookies Batch 4/Midterm Project/RookiesFashion/RookiesMidtermAssignment/RookiesFashion.APIService/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

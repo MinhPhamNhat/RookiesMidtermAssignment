@@ -55,6 +55,10 @@
             "CloudinaryDotNet": {
               "target": "Package",
               "version": "[1.17.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
+              "target": "Package",
+              "version": "[6.0.3, )"
             }
           },
           "imports": [
