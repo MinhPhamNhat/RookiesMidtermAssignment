@@ -12,7 +12,10 @@
         <div class="card-subtitle mb-2 text-muted">
             $@Model.Price
         </div>
-        <div class="card-text">@Model.Description</div>
+
+        <div class="card-text">
+            @Html.Raw(Model.Description)
+        </div>
         <a href="/Products/Detail/@Model.ProductId" class="card-link">Detail</a>
     </div>
 </div>

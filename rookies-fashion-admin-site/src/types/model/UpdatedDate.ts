@@ -1,6 +1,6 @@
 import { Product } from ".";
 
-export type UpdatedDates = {
+export type UpdatedDate = {
     UpdatedDateId: number,
     ProductId: number,
     Product: Product,

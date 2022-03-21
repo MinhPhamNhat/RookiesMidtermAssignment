@@ -146,8 +146,10 @@
                     }
                     <ul class="pagination">
                         <li class="page-item">
-                            <a asp-page="/Products/Collection" asp-route-sortOrder="@Model.baseQuery.SortOrder"
-                                asp-route-page="@(Model.baseQuery.Page - 1)" asp-route-rating="@Model.baseQuery.Rating"
+                            <a asp-page="/Products/Collection" 
+                                asp-route-pageIndex="@(Model.baseQuery.Page-1)"
+                                asp-route-sortOrder="@Model.baseQuery.SortOrder"
+                                asp-route-rating="@Model.baseQuery.Rating"
                                 asp-route-categoryId="@Model.baseQuery.CategoryId"
                                 asp-route-search="@Model.baseQuery.Search" class="btn btn-primary @prevDisabled">
                                 Previous
@@ -167,7 +169,8 @@
                             </li>
                         }
                         <li class="page-item">
-                            <a asp-page="/Products/Collection" asp-route-pageIndex="@(Model.baseQuery.Page+1)"
+                            <a asp-page="/Products/Collection" 
+                                asp-route-pageIndex="@(Model.baseQuery.Page+1)"
                                 asp-route-sortOrder="@Model.baseQuery.SortOrder"
                                 asp-route-rating="@Model.baseQuery.Rating"
                                 asp-route-categoryId="@Model.baseQuery.CategoryId"

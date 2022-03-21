@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Extension;
+using RookiesFashion.APIService.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Constants;
+using RookiesFashion.SharedRepo.DTO;
 using RookiesFashion.SharedRepo.Extensions;
 
 namespace RookiesFashion.APIService.Services
@@ -23,15 +25,19 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var categories = _context.Categories
-                .Include(c=>c.Products).ThenInclude(p=>p.Thumbnail)
-                .Include(c=>c.Parent).ToList();
+                var categories = _context.Categories.Where(c => !c.IsDeleted && c.IsParent).ToList();
+                var output = new List<Category>();
+                foreach (var category in categories)
+                {
+                    output.Add(category);
+                    output.AddRange(category.Children.Where(c => !c.IsDeleted));
+                }
 
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
                     Message = "Successfully Get Categories",
-                    Data = categories
+                    Data = output
                 };
             }
             catch (Exception ex)
@@ -49,7 +55,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var category = _context.Categories.Find(categoryId);
+                var category = _context.Categories.Where(c => !c.IsDeleted).First(c => c.CategoryId == categoryId);
 
                 if (category != null)
                     return new ServiceResponse()
@@ -83,7 +89,7 @@ namespace RookiesFashion.APIService.Services
             {
                 _context.Categories.Add(category);
                 _context.SaveChanges();
-                
+
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.DATA_CREATED,
@@ -109,7 +115,7 @@ namespace RookiesFashion.APIService.Services
             {
                 _context.Entry(category).State = EntityState.Modified;
                 _context.SaveChanges();
-                
+
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -134,7 +140,7 @@ namespace RookiesFashion.APIService.Services
             try
             {
                 var category = _context.Categories.Find(categoryId);
-                
+
                 if (category != null)
                     return new ServiceResponse()
                     {
@@ -164,23 +170,54 @@ namespace RookiesFashion.APIService.Services
             return _context.Categories.Any(e => e.CategoryId == categoryId);
         }
 
-        // protected virtual void Dispose(bool disposing)
-        // {
-        //     if (!this.disposed)
-        //     {
-        //         if (disposing)
-        //         {
-        //             _context.Dispose();
-        //         }
-        //     }
-        //     this.disposed = true;
-        // }
+        public async Task<ServiceResponse> GetPagedCategoryFilter(CategoryBaseQueryCriteriaDto baseQueryCriteria, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var categories = _context.Categories.Where(c => !c.IsDeleted).AsQueryable();
+                categories = FilterHelper.CategoryFilter(categories, baseQueryCriteria);
+                var pagedProducts = await categories.PaginateAsync(baseQueryCriteria, cancellationToken);
 
-        // public void Dispose()
-        // {
-        //     Dispose(true);
-        //     GC.SuppressFinalize(this);
-        // }
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Products",
+                    Data = pagedProducts
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex
+                };
+            }
+        }
 
+        public async Task<ServiceResponse> GetParentCategories()
+        {
+            try
+            {
+                var categories = _context.Categories.Where(c => !c.IsDeleted && c.IsParent).ToList();
+
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Categories",
+                    Data = categories
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex.InnerException
+                };
+            }
+        }
     }
 }

@@ -219,6 +219,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsParent")
                         .HasColumnType("bit");
 
@@ -239,6 +242,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 1,
                             Description = "Topwear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Topwear"
                         },
@@ -246,6 +250,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 2,
                             Description = "T-Shirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "T-Shirts",
                             ParentCategoryId = 1
@@ -254,6 +259,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 3,
                             Description = "Casual Shirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Casual Shirts",
                             ParentCategoryId = 1
@@ -262,6 +268,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 4,
                             Description = "Formal Shirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Formal Shirts",
                             ParentCategoryId = 1
@@ -270,6 +277,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 5,
                             Description = "Sweatshirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sweatshirts",
                             ParentCategoryId = 1
@@ -278,6 +286,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 6,
                             Description = "Sweaters",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sweaters",
                             ParentCategoryId = 1
@@ -286,6 +295,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 7,
                             Description = "Jackets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Jackets",
                             ParentCategoryId = 1
@@ -294,6 +304,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 8,
                             Description = "Blazers & Coats",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Blazers & Coats",
                             ParentCategoryId = 1
@@ -302,6 +313,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 9,
                             Description = "Suits",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Suits",
                             ParentCategoryId = 1
@@ -310,6 +322,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 10,
                             Description = "Rain Jackets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Rain Jackets",
                             ParentCategoryId = 1
@@ -318,6 +331,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 11,
                             Description = "Indian & Festive Wear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Indian & Festive Wear"
                         },
@@ -325,6 +339,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 12,
                             Description = "Kurtas & Kurta Sets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Kurtas & Kurta Sets",
                             ParentCategoryId = 11
@@ -333,6 +348,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 13,
                             Description = "Sherwanis",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sherwanis",
                             ParentCategoryId = 11
@@ -341,6 +357,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 14,
                             Description = "Nehru Jackets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Nehru Jackets",
                             ParentCategoryId = 11
@@ -349,6 +366,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 15,
                             Description = "Dhotis",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Dhotis",
                             ParentCategoryId = 11
@@ -357,6 +375,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 16,
                             Description = "Bottomwear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Bottomwear"
                         },
@@ -364,6 +383,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 17,
                             Description = "Jeans",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Jeans",
                             ParentCategoryId = 16
@@ -372,6 +392,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 18,
                             Description = "Casual Trousers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Casual Trousers",
                             ParentCategoryId = 16
@@ -380,6 +401,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 19,
                             Description = "Formal Trousers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Formal Trousers",
                             ParentCategoryId = 16
@@ -388,6 +410,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 20,
                             Description = "Shorts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Shorts",
                             ParentCategoryId = 16
@@ -396,6 +419,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 21,
                             Description = "Track Pants & Joggers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Track Pants & Joggers",
                             ParentCategoryId = 16
@@ -404,6 +428,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 22,
                             Description = "Innerwear & Sleepwear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Innerwear & Sleepwear"
                         },
@@ -411,6 +436,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 23,
                             Description = "Briefs & Trunks",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Briefs & Trunks",
                             ParentCategoryId = 22
@@ -419,6 +445,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 24,
                             Description = "Boxers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Boxers",
                             ParentCategoryId = 22
@@ -427,6 +454,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 25,
                             Description = "Vests",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Vests",
                             ParentCategoryId = 22
@@ -435,6 +463,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 26,
                             Description = "Sleepwear & Loungewear",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sleepwear & Loungewear",
                             ParentCategoryId = 22
@@ -443,6 +472,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 27,
                             Description = "Thermals",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Thermals",
                             ParentCategoryId = 22
@@ -451,6 +481,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 28,
                             Description = "Plus Size",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Plus Size"
                         },
@@ -458,6 +489,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 29,
                             Description = "Footwear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Footwear"
                         },
@@ -465,6 +497,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 30,
                             Description = "Casual Shoes",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Casual Shoes",
                             ParentCategoryId = 29
@@ -473,6 +506,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 31,
                             Description = "Sports Shoes",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sports Shoes",
                             ParentCategoryId = 29
@@ -481,6 +515,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 32,
                             Description = "Formal Shoes",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Formal Shoes",
                             ParentCategoryId = 29
@@ -489,6 +524,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 33,
                             Description = "Sneakers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sneakers",
                             ParentCategoryId = 29
@@ -497,6 +533,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 34,
                             Description = "Sandals & Floaters",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sandals & Floaters",
                             ParentCategoryId = 29
@@ -505,6 +542,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 35,
                             Description = "Flip Flops",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Flip Flops",
                             ParentCategoryId = 29
@@ -513,6 +551,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 36,
                             Description = "Socks",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Socks",
                             ParentCategoryId = 29
@@ -521,6 +560,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 37,
                             Description = "Personal Care & Grooming",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Personal Care & Grooming"
                         },
@@ -528,6 +568,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 38,
                             Description = "Sunglasses & Frames",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Sunglasses & Frames"
                         },
@@ -535,6 +576,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 39,
                             Description = "Watches",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Watches"
                         },
@@ -542,6 +584,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 40,
                             Description = "Sports & Active Wear",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Sports & Active Wear"
                         },
@@ -549,6 +592,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 41,
                             Description = "Sports Shoes",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sports Shoes",
                             ParentCategoryId = 40
@@ -557,6 +601,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 42,
                             Description = "Sports Sandals",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sports Sandals",
                             ParentCategoryId = 40
@@ -565,6 +610,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 43,
                             Description = "Active T-Shirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Active T-Shirts",
                             ParentCategoryId = 40
@@ -573,6 +619,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 44,
                             Description = "Track Pants & Shorts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Track Pants & Shorts",
                             ParentCategoryId = 40
@@ -581,6 +628,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 45,
                             Description = "Tracksuits",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Tracksuits",
                             ParentCategoryId = 40
@@ -589,6 +637,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 46,
                             Description = "Jackets & Sweatshirts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Jackets & Sweatshirts",
                             ParentCategoryId = 40
@@ -597,6 +646,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 47,
                             Description = "Sports Accessories",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Sports Accessories",
                             ParentCategoryId = 40
@@ -605,6 +655,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 48,
                             Description = "Swimwear",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Swimwear",
                             ParentCategoryId = 40
@@ -613,6 +664,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 49,
                             Description = "Gadgets",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Gadgets"
                         },
@@ -620,6 +672,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 50,
                             Description = "Smart Wearables",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Smart Wearables",
                             ParentCategoryId = 49
@@ -628,6 +681,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 51,
                             Description = "Fitness Gadgets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Fitness Gadgets",
                             ParentCategoryId = 49
@@ -636,6 +690,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 52,
                             Description = "Headphones",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Headphones",
                             ParentCategoryId = 49
@@ -644,6 +699,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 53,
                             Description = "Speakers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Speakers",
                             ParentCategoryId = 49
@@ -652,6 +708,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 54,
                             Description = "Fashion Accessories",
+                            IsDeleted = false,
                             IsParent = true,
                             Name = "Fashion Accessories"
                         },
@@ -659,6 +716,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 55,
                             Description = "Wallets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Wallets",
                             ParentCategoryId = 54
@@ -667,6 +725,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 56,
                             Description = "Belts",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Belts",
                             ParentCategoryId = 54
@@ -675,6 +734,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 57,
                             Description = "Perfumes & Body Mists",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Perfumes & Body Mists",
                             ParentCategoryId = 54
@@ -683,6 +743,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 58,
                             Description = "Trimmers",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Trimmers",
                             ParentCategoryId = 54
@@ -691,6 +752,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 59,
                             Description = "Deodorants",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Deodorants",
                             ParentCategoryId = 54
@@ -699,6 +761,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 60,
                             Description = "Ties, Cufflinks & Pocket Squares",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Ties, Cufflinks & Pocket Squares",
                             ParentCategoryId = 54
@@ -707,6 +770,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 61,
                             Description = "Accessory Gift Sets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Accessory Gift Sets",
                             ParentCategoryId = 54
@@ -715,6 +779,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 62,
                             Description = "Caps & Hats",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Caps & Hats",
                             ParentCategoryId = 54
@@ -723,6 +788,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 63,
                             Description = "Mufflers, Scarves & Gloves",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Mufflers, Scarves & Gloves",
                             ParentCategoryId = 54
@@ -731,6 +797,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 64,
                             Description = "Phone Cases",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Phone Cases",
                             ParentCategoryId = 54
@@ -739,6 +806,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 65,
                             Description = "Rings & Wristwear",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Rings & Wristwear",
                             ParentCategoryId = 54
@@ -747,6 +815,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             CategoryId = 66,
                             Description = "Helmets",
+                            IsDeleted = false,
                             IsParent = false,
                             Name = "Helmets",
                             ParentCategoryId = 54
@@ -911,6 +980,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -928,8 +1000,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6202),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6505),
                             Description = "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
+                            IsDeleted = false,
                             Name = "Unisex Baby Long Sleeve Bodysuits Set",
                             Price = 35.0
                         },
@@ -937,8 +1010,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6204),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6507),
                             Description = "Long Sleeve 3D Printed Black Cat Sweatshirt",
+                            IsDeleted = false,
                             Name = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             Price = 55.0
                         },
@@ -946,8 +1020,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6206),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6508),
                             Description = "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
+                            IsDeleted = false,
                             Name = "Dreamville Street Wear Sweatshirt",
                             Price = 55.0
                         },
@@ -955,8 +1030,9 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6207),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6510),
                             Description = "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
+                            IsDeleted = false,
                             Name = "Walnut Wooden Watch",
                             Price = 98.0
                         });
@@ -998,7 +1074,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 1,
                             Comment = "Nice one, i love this product",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6738),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7138),
                             ProductId = 1,
                             RatingVal = 4,
                             UserRatingUserId = 1
@@ -1007,7 +1083,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 2,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6741),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7140),
                             ProductId = 1,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1016,7 +1092,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 3,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6742),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7141),
                             ProductId = 2,
                             RatingVal = 3,
                             UserRatingUserId = 1
@@ -1025,7 +1101,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 4,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7142),
                             ProductId = 2,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1034,7 +1110,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 5,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6743),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7143),
                             ProductId = 2,
                             RatingVal = 5,
                             UserRatingUserId = 1
@@ -1043,7 +1119,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 6,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6744),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7202),
                             ProductId = 2,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1052,7 +1128,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 7,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7203),
                             ProductId = 3,
                             RatingVal = 2,
                             UserRatingUserId = 1
@@ -1061,7 +1137,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 8,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6745),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7204),
                             ProductId = 3,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1070,7 +1146,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 9,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6746),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7205),
                             ProductId = 5,
                             RatingVal = 3,
                             UserRatingUserId = 1
@@ -1079,7 +1155,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 10,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7206),
                             ProductId = 5,
                             RatingVal = 4,
                             UserRatingUserId = 2
@@ -1088,7 +1164,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 11,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6747),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7206),
                             ProductId = 2,
                             RatingVal = 5,
                             UserRatingUserId = 1
@@ -1097,7 +1173,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 12,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6748),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7207),
                             ProductId = 1,
                             RatingVal = 3,
                             UserRatingUserId = 2
@@ -1106,7 +1182,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 13,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6749),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7208),
                             ProductId = 5,
                             RatingVal = 2,
                             UserRatingUserId = 1
@@ -1115,7 +1191,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 14,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6750),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7208),
                             ProductId = 1,
                             RatingVal = 5,
                             UserRatingUserId = 2
@@ -1124,7 +1200,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 15,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7209),
                             ProductId = 5,
                             RatingVal = 4,
                             UserRatingUserId = 1
@@ -1133,7 +1209,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 16,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 8, 11, 48, 5, 289, DateTimeKind.Local).AddTicks(6751),
+                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7210),
                             ProductId = 3,
                             RatingVal = 3,
                             UserRatingUserId = 2

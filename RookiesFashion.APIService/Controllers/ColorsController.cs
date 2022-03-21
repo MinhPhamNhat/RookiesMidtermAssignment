@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Models;
+using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.Helpers;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -16,17 +19,19 @@ namespace RookiesFashion.APIService.Controllers
     public class ColorsController : ControllerBase
     {
         private readonly RookiesFashionContext _context;
-
-        public ColorsController(RookiesFashionContext context)
+        private readonly IColorService _colorService;
+        public ColorsController(RookiesFashionContext context, IColorService colorService)
         {
+            _colorService = colorService;
             _context = context;
         }
 
         // GET: api/Colors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Color>>> GetColors()
+        public async Task<ActionResult> GetColors()
         {
-            return await _context.Colors.ToListAsync();
+            ServiceResponse serResp = await _colorService.GetColors();
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
         // GET: api/Colors/5

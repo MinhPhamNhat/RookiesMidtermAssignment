@@ -7,6 +7,7 @@ using RookiesFashion.SharedRepo.Extension;
 using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using RookiesFashion.APIService.Data.Mapping;
+using RookiesFashion.SharedRepo.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,11 @@ builder.Services.AddControllers()
         {
             options.InvalidModelStateResponseFactory = actionContext =>
             {
-                return new BadRequestObjectResult(new ValidationResultModel(actionContext.ModelState));
+                var validationResult = new ValidationResultModel(actionContext.ModelState);
+                return new BadRequestObjectResult(new ResponseObject(){
+                    Data = validationResult.Errors,
+                    Message = validationResult.Message
+                });
             };
         }).AddNewtonsoftJson(options =>
         {

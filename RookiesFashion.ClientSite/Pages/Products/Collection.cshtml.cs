@@ -41,7 +41,8 @@ public class CollectionPageModel : PageModel
             Limit = int.Parse(_config[RequirementConstants.DEFAULT_LIMIT])
         };
         var productResp = await _productService.GetProductsByQuery(baseQuery);
-        var pagedProducts = MyResponseMapper.MapJson<PagedModelDTO<Product>>((JsonElement)productResp.Data);
+
+        var pagedProducts = MyResponseMapper.MapJson<PagedModelDto<Product>>((JsonElement)productResp.Data);
         pagedResponse = _mapper.Map<PagedResponseVM<ProductVM>>(pagedProducts);
 
         var categoryResp = await _categoryService.GetCategories();

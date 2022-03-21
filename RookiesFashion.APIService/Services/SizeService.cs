@@ -3,6 +3,7 @@ using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
+using RookiesFashion.SharedRepo.Constants;
 
 namespace RookiesFashion.APIService.Services
 {
@@ -23,9 +24,28 @@ namespace RookiesFashion.APIService.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponse> GetSizes()
+        public async Task<ServiceResponse> GetSizes()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categories = _context.Sizes.ToList();
+
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Sizes",
+                    Data = categories
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex.InnerException
+                };
+            }
         }
 
         public List<Size> GetSizesFromRange(List<int> sizeIds)

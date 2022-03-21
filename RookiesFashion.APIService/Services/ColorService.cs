@@ -51,9 +51,28 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
-        public Task<ServiceResponse> GetColors()
+        public async Task<ServiceResponse> GetColors()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categories = _context.Colors.ToList();
+
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.SUCCESS,
+                    Message = "Successfully Get Colors",
+                    Data = categories
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex.InnerException
+                };
+            }
         }
 
         public List<Color> GetColorsFromRange(List<int> colorIds)

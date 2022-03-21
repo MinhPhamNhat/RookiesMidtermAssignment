@@ -22,14 +22,15 @@ namespace RookiesFashion.APIService.Models
         public string? Description { get; set; }
         public double? Price { get; set; }
         public int? CategoryId { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual Category? Category { get; set; }
         public virtual List<Rating>? Ratings { get; set; }
-        public double AvgRating { get => Math.Round(Ratings.Aggregate<Rating, double>(0, (x, y) => x + ((double)y.RatingVal / Ratings.Count())), 1); }
+        public double? AvgRating { get => (Ratings == null || Ratings.Count() <= 0) ? 0 : Math.Round(Ratings.Select(r => r.RatingVal).Average(), 1); }
         public virtual IEnumerable<UpdatedDate>? UpdatedDates { get; set; }
-        public virtual IEnumerable<Image>? Thumbnail { get; set; }
-        public virtual IEnumerable<Color>? Colors { get; set; }
-        public virtual IEnumerable<Size>? Sizes { get; set; }
+        public virtual ICollection<Image>? Thumbnail { get; set; }
+        public virtual ICollection<Color>? Colors { get; set; }
+        public virtual ICollection<Size>? Sizes { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

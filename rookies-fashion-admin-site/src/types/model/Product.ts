@@ -4,7 +4,7 @@ import {
   Image,
   Color,
   Size,
-  UpdatedDates,
+  UpdatedDate,
 } from ".";
 
 export type Product = {
@@ -13,12 +13,12 @@ export type Product = {
   Description: string;
   Price: number;
   CategoryId: number;
-  CreatedDate: Date;
+  CreatedDate: string;
   Category: Category;
   Ratings: Array<Rating>;
   AvgRating: number;
   Thumbnail: Array<Image>;
-  UpdatedDates: UpdatedDates | undefined;
+  UpdatedDates: Array<UpdatedDate> | undefined;
   Colors: Array<Color>;
   Sizes: Array<Size>;
 }

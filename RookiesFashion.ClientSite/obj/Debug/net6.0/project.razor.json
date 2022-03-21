@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\RookiesFashion.ClientSite.csproj",
+  "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\RookiesFashion.ClientSite.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16362,83 +16362,83 @@
   "RootNamespace": "RookiesFashion.ClientSite",
   "Documents": [
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Detail.cshtml",
-      "TargetPath": "Pages\\Home\\Detail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Collection.cshtml",
-      "TargetPath": "Pages\\Products\\Collection.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
-      "TargetPath": "Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Upload.cshtml",
-      "TargetPath": "Pages\\Home\\Upload.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\_ViewStart.cshtml",
-      "TargetPath": "Pages\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Detail.cshtml",
-      "TargetPath": "Pages\\Products\\Detail.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Privacy.cshtml",
-      "TargetPath": "Pages\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\_Layout.cshtml",
-      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Login\\Index.cshtml",
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Login\\Index.cshtml",
       "TargetPath": "Pages\\Login\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\_ProductItem.cshtml",
-      "TargetPath": "Pages\\Home\\_ProductItem.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Index.cshtml",
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\RatingComponent\\Default.cshtml",
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Upload.cshtml",
+      "TargetPath": "Pages\\Home\\Upload.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Detail.cshtml",
+      "TargetPath": "Pages\\Products\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\RatingComponent\\Default.cshtml",
       "TargetPath": "Pages\\Shared\\Components\\RatingComponent\\Default.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Views\\Shared\\Components\\ProductItem\\_Default.cshtml",
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Views\\Shared\\Components\\ProductItem\\_Default.cshtml",
       "TargetPath": "Views\\Shared\\Components\\ProductItem\\_Default.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
+      "TargetPath": "Pages\\Shared\\Components\\ProductItem\\Default.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Privacy.cshtml",
+      "TargetPath": "Pages\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\_ProductItem.cshtml",
+      "TargetPath": "Pages\\Home\\_ProductItem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Shared\\_Layout.cshtml",
+      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Home\\Detail.cshtml",
+      "TargetPath": "Pages\\Home\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.ClientSite\\Pages\\Products\\Collection.cshtml",
+      "TargetPath": "Pages\\Products\\Collection.cshtml",
       "FileKind": "mvc"
     }
   ],

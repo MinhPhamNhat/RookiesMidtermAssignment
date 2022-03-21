@@ -22,6 +22,6 @@ public class MappingProfile : Profile
         CreateMap<User, RoleVM>();
         CreateMap<Rating, RatingVM>();
         CreateMap<Account, AccountVM>();
-        CreateMap<PagedModelDTO<Product>, PagedResponseVM<ProductVM>>();
+        CreateMap<PagedModelDto<Product>, PagedResponseVM<ProductVM>>();
     }
 }

@@ -1,4 +1,5 @@
 import { Response } from "../../types/model";
+import { ValidationError } from "../../types/model/ValidationError";
 import axios from "./base";
 
 function getToken() {
@@ -40,10 +41,10 @@ class HttpClient {
     return response;
   }
 
-  async post(endpoint: string, data?: object): Promise<Response> {
+  async post(endpoint: string, formData?: any): Promise<Response> {
     this.token = getToken();
     const response = await axios
-      .post(`${endpoint}`, data)
+      .post(`${endpoint}`, formData)
       .then((res: any) => {
         return {
           code: res.status,
@@ -52,19 +53,20 @@ class HttpClient {
         };
       })
       .catch((err: any) => {
+        console.log(err.response)
         return {
           code: err.response.status,
-          message: err.response.data.message,
-          data: undefined,
+          message: err.response.data.Message,
+          data: err.response.data.Data as Array<ValidationError>,
         };
       });
     return response;
   }
 
-  async put(endpoint: string, data?: object): Promise<Response> {
+  async put(endpoint: string, formData?: any): Promise<Response> {
     this.token = getToken();
     const response = await axios
-      .put(`${endpoint}`, data, {})
+      .put(`${endpoint}`, formData)
       .then((res: any) => {
         return {
           code: res.status,
@@ -75,8 +77,8 @@ class HttpClient {
       .catch((err: any) => {
         return {
           code: err.response.status,
-          message: err.response.data.message,
-          data: undefined,
+          message: err.response.data.Message,
+          data: err.response.data.Data as Array<ValidationError>,
         };
       });
     return response;

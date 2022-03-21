@@ -8,9 +8,11 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import reducers from "./reducers";
-
+import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import sagaSagaLaydyGaga from "./sagas";
+import { ReactNotifications } from "react-notifications-component";
+import SideBar from "./components/Sidebar";
 const sagaMiddleWare = createSagaMiddleware();
 
 const store = createStore(
@@ -20,8 +22,25 @@ const store = createStore(
 sagaMiddleWare.run(sagaSagaLaydyGaga);
 ReactDOM.render(
   <React.StrictMode>
+    <ReactNotifications />
     <Provider store={store}>
-      <MyRoutes />
+      <Router>
+        <div className="main-wrapper">
+          <div
+            className="sidebar-warrper"
+            ref={(element) => {
+              if (element?.parentElement)
+                element.parentElement.style.paddingLeft =
+                  element?.clientWidth + "px";
+            }}
+          >
+            <SideBar />
+          </div>
+          <div className="body-warrper">
+            <MyRoutes />
+          </div>
+        </div>
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

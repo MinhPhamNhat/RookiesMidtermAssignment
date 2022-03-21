@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {}
+    "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {}
   },
   "projects": {
-    "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
+    "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
+        "projectUniqueName": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
         "projectName": "RookiesFashion.SharedRepo",
-        "projectPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Rookies Batch 4\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\obj\\",
+        "projectPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\RookiesFashion.SharedRepo.csproj",
+        "packagesPath": "C:\\Users\\minhn\\.nuget\\packages\\",
+        "outputPath": "D:\\Computer Sience\\Rookies Batch 4\\Midterm Project\\RookiesFashion\\RookiesMidtermAssignment\\RookiesFashion.SharedRepo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\minhn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

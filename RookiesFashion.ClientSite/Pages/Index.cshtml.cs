@@ -27,7 +27,7 @@ public class IndexModel : PageModel
     public async Task OnGetAsync()
     {
         var productResp = await _productService.GetProducts();
-        var pagedProducts = MyResponseMapper.MapJson<PagedModelDTO<Product>>((JsonElement)productResp.Data);
+        var pagedProducts = MyResponseMapper.MapJson<PagedModelDto<Product>>((JsonElement)productResp.Data);
         products = _mapper.Map<PagedResponseVM<ProductVM>>(pagedProducts).Items.ToList();
     }
 
