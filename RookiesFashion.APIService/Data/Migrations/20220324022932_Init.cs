@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RookiesFashion.APIService.Migrations
+namespace RookiesFashion.APIService.Data.Migrations
 {
     public partial class Init : Migration
     {
@@ -399,48 +399,48 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "CategoryId", "Description", "IsDeleted", "IsParent", "Name", "ParentCategoryId" },
                 values: new object[,]
                 {
-                    { 2, "T-Shirts", false, true, "T-Shirts", 1 },
-                    { 3, "Casual Shirts", false, true, "Casual Shirts", 1 },
-                    { 4, "Formal Shirts", false, true, "Formal Shirts", 1 },
-                    { 5, "Sweatshirts", false, true, "Sweatshirts", 1 },
-                    { 6, "Sweaters", false, true, "Sweaters", 1 },
-                    { 7, "Jackets", false, true, "Jackets", 1 },
-                    { 8, "Blazers & Coats", false, true, "Blazers & Coats", 1 },
-                    { 9, "Suits", false, true, "Suits", 1 },
-                    { 10, "Rain Jackets", false, true, "Rain Jackets", 1 },
-                    { 12, "Kurtas & Kurta Sets", false, true, "Kurtas & Kurta Sets", 11 },
-                    { 13, "Sherwanis", false, true, "Sherwanis", 11 },
-                    { 14, "Nehru Jackets", false, true, "Nehru Jackets", 11 },
-                    { 15, "Dhotis", false, true, "Dhotis", 11 },
-                    { 17, "Jeans", false, true, "Jeans", 16 },
-                    { 18, "Casual Trousers", false, true, "Casual Trousers", 16 },
-                    { 19, "Formal Trousers", false, true, "Formal Trousers", 16 },
-                    { 20, "Shorts", false, true, "Shorts", 16 },
-                    { 21, "Track Pants & Joggers", false, true, "Track Pants & Joggers", 16 },
-                    { 23, "Briefs & Trunks", false, true, "Briefs & Trunks", 22 },
-                    { 24, "Boxers", false, true, "Boxers", 22 },
-                    { 25, "Vests", false, true, "Vests", 22 },
-                    { 26, "Sleepwear & Loungewear", false, true, "Sleepwear & Loungewear", 22 },
-                    { 27, "Thermals", false, true, "Thermals", 22 },
-                    { 30, "Casual Shoes", false, true, "Casual Shoes", 29 },
-                    { 31, "Sports Shoes", false, true, "Sports Shoes", 29 },
-                    { 32, "Formal Shoes", false, true, "Formal Shoes", 29 },
-                    { 33, "Sneakers", false, true, "Sneakers", 29 },
-                    { 34, "Sandals & Floaters", false, true, "Sandals & Floaters", 29 },
-                    { 35, "Flip Flops", false, true, "Flip Flops", 29 },
-                    { 36, "Socks", false, true, "Socks", 29 },
-                    { 41, "Sports Shoes", false, true, "Sports Shoes", 40 },
-                    { 42, "Sports Sandals", false, true, "Sports Sandals", 40 },
-                    { 43, "Active T-Shirts", false, true, "Active T-Shirts", 40 },
-                    { 44, "Track Pants & Shorts", false, true, "Track Pants & Shorts", 40 },
-                    { 45, "Tracksuits", false, true, "Tracksuits", 40 },
-                    { 46, "Jackets & Sweatshirts", false, true, "Jackets & Sweatshirts", 40 },
-                    { 47, "Sports Accessories", false, true, "Sports Accessories", 40 },
-                    { 48, "Swimwear", false, true, "Swimwear", 40 },
-                    { 50, "Smart Wearables", false, true, "Smart Wearables", 49 },
-                    { 51, "Fitness Gadgets", false, true, "Fitness Gadgets", 49 },
-                    { 52, "Headphones", false, true, "Headphones", 49 },
-                    { 53, "Speakers", false, true, "Speakers", 49 }
+                    { 2, "T-Shirts", false, false, "T-Shirts", 1 },
+                    { 3, "Casual Shirts", false, false, "Casual Shirts", 1 },
+                    { 4, "Formal Shirts", false, false, "Formal Shirts", 1 },
+                    { 5, "Sweatshirts", false, false, "Sweatshirts", 1 },
+                    { 6, "Sweaters", false, false, "Sweaters", 1 },
+                    { 7, "Jackets", false, false, "Jackets", 1 },
+                    { 8, "Blazers & Coats", false, false, "Blazers & Coats", 1 },
+                    { 9, "Suits", false, false, "Suits", 1 },
+                    { 10, "Rain Jackets", false, false, "Rain Jackets", 1 },
+                    { 12, "Kurtas & Kurta Sets", false, false, "Kurtas & Kurta Sets", 11 },
+                    { 13, "Sherwanis", false, false, "Sherwanis", 11 },
+                    { 14, "Nehru Jackets", false, false, "Nehru Jackets", 11 },
+                    { 15, "Dhotis", false, false, "Dhotis", 11 },
+                    { 17, "Jeans", false, false, "Jeans", 16 },
+                    { 18, "Casual Trousers", false, false, "Casual Trousers", 16 },
+                    { 19, "Formal Trousers", false, false, "Formal Trousers", 16 },
+                    { 20, "Shorts", false, false, "Shorts", 16 },
+                    { 21, "Track Pants & Joggers", false, false, "Track Pants & Joggers", 16 },
+                    { 23, "Briefs & Trunks", false, false, "Briefs & Trunks", 22 },
+                    { 24, "Boxers", false, false, "Boxers", 22 },
+                    { 25, "Vests", false, false, "Vests", 22 },
+                    { 26, "Sleepwear & Loungewear", false, false, "Sleepwear & Loungewear", 22 },
+                    { 27, "Thermals", false, false, "Thermals", 22 },
+                    { 30, "Casual Shoes", false, false, "Casual Shoes", 29 },
+                    { 31, "Sports Shoes", false, false, "Sports Shoes", 29 },
+                    { 32, "Formal Shoes", false, false, "Formal Shoes", 29 },
+                    { 33, "Sneakers", false, false, "Sneakers", 29 },
+                    { 34, "Sandals & Floaters", false, false, "Sandals & Floaters", 29 },
+                    { 35, "Flip Flops", false, false, "Flip Flops", 29 },
+                    { 36, "Socks", false, false, "Socks", 29 },
+                    { 41, "Sports Shoes", false, false, "Sports Shoes", 40 },
+                    { 42, "Sports Sandals", false, false, "Sports Sandals", 40 },
+                    { 43, "Active T-Shirts", false, false, "Active T-Shirts", 40 },
+                    { 44, "Track Pants & Shorts", false, false, "Track Pants & Shorts", 40 },
+                    { 45, "Tracksuits", false, false, "Tracksuits", 40 },
+                    { 46, "Jackets & Sweatshirts", false, false, "Jackets & Sweatshirts", 40 },
+                    { 47, "Sports Accessories", false, false, "Sports Accessories", 40 },
+                    { 48, "Swimwear", false, false, "Swimwear", 40 },
+                    { 50, "Smart Wearables", false, false, "Smart Wearables", 49 },
+                    { 51, "Fitness Gadgets", false, false, "Fitness Gadgets", 49 },
+                    { 52, "Headphones", false, false, "Headphones", 49 },
+                    { 53, "Speakers", false, false, "Speakers", 49 }
                 });
 
             migrationBuilder.InsertData(
@@ -448,18 +448,18 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "CategoryId", "Description", "IsDeleted", "IsParent", "Name", "ParentCategoryId" },
                 values: new object[,]
                 {
-                    { 55, "Wallets", false, true, "Wallets", 54 },
-                    { 56, "Belts", false, true, "Belts", 54 },
-                    { 57, "Perfumes & Body Mists", false, true, "Perfumes & Body Mists", 54 },
-                    { 58, "Trimmers", false, true, "Trimmers", 54 },
-                    { 59, "Deodorants", false, true, "Deodorants", 54 },
-                    { 60, "Ties, Cufflinks & Pocket Squares", false, true, "Ties, Cufflinks & Pocket Squares", 54 },
-                    { 61, "Accessory Gift Sets", false, true, "Accessory Gift Sets", 54 },
-                    { 62, "Caps & Hats", false, true, "Caps & Hats", 54 },
-                    { 63, "Mufflers, Scarves & Gloves", false, true, "Mufflers, Scarves & Gloves", 54 },
-                    { 64, "Phone Cases", false, true, "Phone Cases", 54 },
-                    { 65, "Rings & Wristwear", false, true, "Rings & Wristwear", 54 },
-                    { 66, "Helmets", false, true, "Helmets", 54 }
+                    { 55, "Wallets", false, false, "Wallets", 54 },
+                    { 56, "Belts", false, false, "Belts", 54 },
+                    { 57, "Perfumes & Body Mists", false, false, "Perfumes & Body Mists", 54 },
+                    { 58, "Trimmers", false, false, "Trimmers", 54 },
+                    { 59, "Deodorants", false, false, "Deodorants", 54 },
+                    { 60, "Ties, Cufflinks & Pocket Squares", false, false, "Ties, Cufflinks & Pocket Squares", 54 },
+                    { 61, "Accessory Gift Sets", false, false, "Accessory Gift Sets", 54 },
+                    { 62, "Caps & Hats", false, false, "Caps & Hats", 54 },
+                    { 63, "Mufflers, Scarves & Gloves", false, false, "Mufflers, Scarves & Gloves", 54 },
+                    { 64, "Phone Cases", false, false, "Phone Cases", 54 },
+                    { 65, "Rings & Wristwear", false, false, "Rings & Wristwear", 54 },
+                    { 66, "Helmets", false, false, "Helmets", 54 }
                 });
 
             migrationBuilder.InsertData(
@@ -477,8 +477,8 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "ProductId", "CategoryId", "CreatedDate", "Description", "IsDeleted", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(4431), "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..", false, "Unisex Baby Long Sleeve Bodysuits Set", 35.0 },
-                    { 2, 1, new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(4433), "Long Sleeve 3D Printed Black Cat Sweatshirt", false, "Long Sleeve 3D Printed Black Cat Sweatshirt", 55.0 }
+                    { 1, 1, new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6281), "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..", false, "Unisex Baby Long Sleeve Bodysuits Set", 35.0 },
+                    { 2, 1, new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6284), "Long Sleeve 3D Printed Black Cat Sweatshirt", false, "Long Sleeve 3D Printed Black Cat Sweatshirt", 55.0 }
                 });
 
             migrationBuilder.InsertData(
@@ -510,8 +510,8 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "ProductId", "CategoryId", "CreatedDate", "Description", "IsDeleted", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 3, 3, new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(4434), "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.", false, "Dreamville Street Wear Sweatshirt", 55.0 },
-                    { 5, 2, new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(4436), "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ", false, "Walnut Wooden Watch", 98.0 }
+                    { 3, 3, new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6286), "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.", false, "Dreamville Street Wear Sweatshirt", 55.0 },
+                    { 5, 2, new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6288), "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ", false, "Walnut Wooden Watch", 98.0 }
                 });
 
             migrationBuilder.InsertData(
@@ -532,15 +532,15 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "RatingId", "Comment", "CreatedDate", "ProductId", "RatingVal", "UserRating" },
                 values: new object[,]
                 {
-                    { 1, "Nice one, i love this product", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5061), 1, 4, "user1" },
-                    { 2, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5063), 1, 4, "user2" },
-                    { 3, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5064), 2, 3, "user1" },
-                    { 4, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5065), 2, 3, "user2" },
-                    { 5, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5066), 2, 5, "user1" },
-                    { 6, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5066), 2, 4, "user2" },
-                    { 11, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5070), 2, 5, "user1" },
-                    { 12, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5071), 1, 3, "user2" },
-                    { 14, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5072), 1, 5, "user2" }
+                    { 1, "Nice one, i love this product", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6992), 1, 4, "user1" },
+                    { 2, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6995), 1, 4, "user2" },
+                    { 3, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6996), 2, 3, "user1" },
+                    { 4, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6996), 2, 3, "user2" },
+                    { 5, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6997), 2, 5, "user1" },
+                    { 6, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6999), 2, 4, "user2" },
+                    { 11, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7003), 2, 5, "user1" },
+                    { 12, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7004), 1, 3, "user2" },
+                    { 14, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7005), 1, 5, "user2" }
                 });
 
             migrationBuilder.InsertData(
@@ -585,13 +585,13 @@ namespace RookiesFashion.APIService.Migrations
                 columns: new[] { "RatingId", "Comment", "CreatedDate", "ProductId", "RatingVal", "UserRating" },
                 values: new object[,]
                 {
-                    { 7, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5067), 3, 2, "user1" },
-                    { 8, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5068), 3, 3, "user2" },
-                    { 9, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5069), 5, 3, "user1" },
-                    { 10, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5069), 5, 4, "user2" },
-                    { 13, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5071), 5, 2, "user1" },
-                    { 15, "The watch make me feel very elegant", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5073), 5, 4, "user1" },
-                    { 16, "Very beautiful and affordable price", new DateTime(2022, 3, 21, 23, 27, 38, 455, DateTimeKind.Local).AddTicks(5074), 3, 3, "user2" }
+                    { 7, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7000), 3, 2, "user1" },
+                    { 8, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7001), 3, 3, "user2" },
+                    { 9, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7002), 5, 3, "user1" },
+                    { 10, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7003), 5, 4, "user2" },
+                    { 13, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7005), 5, 2, "user1" },
+                    { 15, "The watch make me feel very elegant", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7006), 5, 4, "user1" },
+                    { 16, "Very beautiful and affordable price", new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7007), 3, 3, "user2" }
                 });
 
             migrationBuilder.CreateIndex(

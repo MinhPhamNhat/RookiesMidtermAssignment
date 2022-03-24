@@ -8,20 +8,19 @@
     <div id="breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="/">Sản phẩm</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@Model.product.Name</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.product.Product.Name</li>
             </ol>
         </nav>
     </div>
     <div class="RF-detail-container">
         <div class="RF-image-detail">
             <div class="xzoom-container">
-                <img class="xzoom thumbails" src="@Model.product.Thumbnail.First().Url"
-                    xoriginal="@Model.product.Thumbnail.First().Url" title="@Model.product.Thumbnail.First().ImageName"
+                <img class="xzoom thumbails" src="@Model.product?.Product.Thumbnail?.First().Url"
+                    xoriginal="@Model.product?.Product.Thumbnail?.First().Url" title="@Model.product?.Product.Thumbnail?.First().ImageName"
                     width="900">
                 <div class="xzoom-thumbs">
-                    @foreach (var image in Model.product.Thumbnail)
+                    @foreach (var image in Model.product?.Product.Thumbnail)
                     {
                         <a href="@image.Url"><img class="xzoom-gallery xactive" width="80" src="@image.Url"
                             title="@image.ImageName"></a>
@@ -30,20 +29,20 @@
             </div>
         </div>
         <div class="RF-infor-detail">
-            <div id="name">@Model.product.Name</div>
+            <div id="name">@Model.product.Product.Name</div>
             <div id="rating">
                 <div class="asddd">
                     <div class="rating-stars">
                         @{
-                            ratingStars(Model.product.AvgRating);
+                            ratingStars(Model.product.Product.AvgRating);
                         }
                     </div>
                     <div class="rating-value">
-                        @Model.product.AvgRating/5
+                        @Model.product.Product.AvgRating/5
                     </div>
                 </div>
                 <a class="rating-reviews" href="#RATING_SECTION">
-                    <span id="numbers">@Model.product.Ratings.Count()</span>
+                    <span id="numbers">@Model.product.CountRating.Sum()</span>
                     <span> reviews</span>
                 </a>
             </div>
@@ -51,7 +50,7 @@
             <div id="color">
                 <div class="title">Clolor</div>
                 <div class="warpper">
-                    @foreach (var item in Model.product.Colors)
+                    @foreach (var item in Model.product.Product.Colors)
                     {
                         <div id="item" data-id="{{this._id}}" data-productid="{{../data._id}}"><img id="image"
                             src="@item.Thumbnail.Url"><span>@item.Name</span></div>
@@ -61,7 +60,7 @@
             <div id="size">
                 <div class="title">Size</div>
                 <div class="warpper">
-                    @foreach (var item in Model.product.Sizes)
+                    @foreach (var item in Model.product.Product.Sizes)
                     {
                         <div id="item" data-id="{{this._id}}" data-productid="{{data._id}}"><span>@item.Name</span></div>
                     }
@@ -80,12 +79,12 @@
                 <div id="price">
                     <div class="warpper">
                         <div id="value">
-                            <span id="true"><span id="currency">$</span> @Model.product.Price</span>
+                            <span id="true"><span id="currency">$</span> @Model.product.Product.Price</span>
                         </div>
                     </div>
                 </div>
                 <div id="add-cart">
-                    <button data-productid="@Model.product.ProductId"><i class="fas fa-cart-plus"></i> Add to
+                    <button data-productid="@Model.product.Product.ProductId"><i class="fas fa-cart-plus"></i> Add to
                         cart</button>
                 </div>
             </div>
@@ -98,7 +97,7 @@
             <div id="description">
                 <div class="title">Description</div>
                 <div class="warpper">
-                    @Html.Raw(Model.product.Description)
+                    @Html.Raw(Model.product.Product.Description)
                 </div>
             </div>
         </div>
@@ -107,35 +106,49 @@
     <a id="RATING_SECTION"></a>
     <div class="row">
         <div class="col-6 ">
+            @if(User.Identity.IsAuthenticated){
+                <form method="post">
+                    <select asp-for="Rating.RatingVal">
+                        <option selected>Select a rating</option>
+                        <option value="5">Excellent</option>
+                        <option value="4">Good</option>
+                        <option value="3">Average</option>
+                        <option value="2">Terible</option>
+                        <option value="1">Poor</option>
+                    </select>
+                    <input asp-for="Rating.Comment" />
+                    <input hidden asp-for="Rating.ProductId" value="@Model.product.Product.ProductId" />
+                    <input type="submit" />
+                </form>
+            }
 
         </div>
         <div class="col-3">
             <div class="rating-block">
                 <h4>Average user rating</h4>
-                <h2 class="bold padding-bottom-7">@Model.product.AvgRating <small>/ 5</small></h2>
+                <h2 class="bold padding-bottom-7">@Model.product.Product.AvgRating <small>/ 5</small></h2>
                 @{
-                    ratingStars(@Model.product.AvgRating);
+                    ratingStars(@Model.product.Product.AvgRating);
                 }
             </div>
         </div>
         <div class="col-3">
             <h4>Rating breakdown</h4>
-            @for (var i = 5; i >= 1; i--)
+            @for (var i = 4; i >= 0; i--)
             {
-
                 <div class="rating-bar">
                     <div class="pull-left">
-                        <div style="height:9px; margin:5px 0;">@i <span><i class="fas fa-star"></i></span></div>
+                        <div style="height:9px; margin:5px 0;">@(i+1) <span><i class="fas fa-star"></i></span></div>
                     </div>
                     <div class="rating-progress">
                         <div class="progress" style="height:9px; margin:8px 0;">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@i"
-                            aria-valuemin="0" aria-valuemax="5" style="width: @(Model.product.CalPercentage(i))%">
-                                <span class="sr-only">@(Model.product.CalPercentage(i))%</span>
+                            aria-valuemin="0" aria-valuemax="5" style="width: @(Model.product.CountPercentage[i])%">
+                                <span class="sr-only">@(Model.product.CountPercentage[i])%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="pull-right">@(Model.product.CountRating(i))</div>
+                    <div class="pull-right">@(Model.product.CountRating[i])</div>
                 </div>
             }
         </div>
@@ -144,11 +157,42 @@
     <div class="row">
         <hr />
         <div class="review-block">
-            @foreach (var rating in Model.product.Ratings)
+            @foreach (var rating in Model.product.PagedRating.Items)
             {
                 @await Component.InvokeAsync("RatingComponent", rating)
             }
         </div>
+        @{
+            var prevDisabled = !(Model.product.PagedRating.CurrentPage > 1 )? "disabled" : "";
+            var nextDisabled = !(Model.product.PagedRating.CurrentPage < Model.product.PagedRating.TotalPages )? "disabled" : "";
+        }
+        <ul class="pagination">
+            <li class="page-item">
+                <a  asp-page="/Products/Detail" 
+                    asp-route-pageIndex="@(Model.query.Page-1)"
+                    class="btn btn-primary @prevDisabled">
+                    Previous
+                </a>
+            </li>
+            @foreach (var item in Model.product.PagedRating.PageRange)
+            {
+                var isActive = @Model.product.PagedRating.CurrentPage == item ? "active" : "";
+                <li class="page-item @isActive">
+                    <a  asp-page="/Products/Detail" 
+                        asp-route-pageIndex="@item"
+                         class="btn btn-primary">
+                        @item
+                    </a>
+                </li>
+            }
+            <li class="page-item">
+                <a  asp-page="/Products/Detail" 
+                    asp-route-pageIndex="@(Model.query.Page+1)"
+                    class="btn btn-primary @nextDisabled">
+                    Next
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 @section scripts {

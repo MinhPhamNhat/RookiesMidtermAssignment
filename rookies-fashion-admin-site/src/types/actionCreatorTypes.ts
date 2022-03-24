@@ -11,6 +11,12 @@ import {
     setCategoryPagingQueryAction,
     insertCategoryAction,
     updateCategoryAction,
+    storeUserAction,
+    storeUserErrorAction,
+    loginRedirectAction,
+    loginRedirectCallbackAction,
+    deleteCategoryAction,
+    getUsersAction,
   } from "./ActionTypes";
   import ProductPagingQuery from "./form/ProductPagingQuery";
   import CategoryPagingQuery from "./form/CategoryPagingQuery";
@@ -28,4 +34,10 @@ import { CategoryForm } from "./form/CategoryForm";
   export type setCategoryPagingQueryCreator = (query: CategoryPagingQuery) => setCategoryPagingQueryAction;
   export type insertCategoryCreator = (form: CategoryForm) => insertCategoryAction;
   export type updateCategoryCreator = (id: string, form: CategoryForm) => updateCategoryAction;
+  export type deleteCategoryCreator = (id: string) => deleteCategoryAction;
+  export type storeUserCreator = (user: any) => storeUserAction;
+  export type storeUserErrorCreator = () => storeUserErrorAction;
+  export type loginRedirectCreator = () => loginRedirectAction;
+  export type loginRedirectCalbackCreator = () => loginRedirectCallbackAction;
+  export type getUsersCreator = () => getUsersAction;
   

@@ -15,6 +15,7 @@ public static class Config
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
+                
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
@@ -59,8 +60,6 @@ public static class Config
                     },
 
                     AlwaysIncludeUserClaimsInIdToken = true
-                    
-
                 },
 
                 new Client
@@ -72,9 +71,9 @@ public static class Config
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"https://localhost:44372/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"https://localhost:44372/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"https://localhost:44372" },
+                    RedirectUris =           { $"https://localhost:7188/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"https://localhost:7188/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"https://localhost:7188" },
 
                     AllowedScopes = new List<string>
                     {
@@ -119,8 +118,8 @@ public static class Config
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "rookieshop.api",
+                        "rookiesfashion.api",
                     }
-                }
+                },
         };
 }

@@ -10,8 +10,6 @@ namespace RookiesFashion.ClientSite.ViewModels
         public int RatingVal { get; set; }
         public string? Comment { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public int RatingProductId { get; set; }
-        public ProductVM? Product { get; set; }
         public string? UserRating { get; set; }
 
     }

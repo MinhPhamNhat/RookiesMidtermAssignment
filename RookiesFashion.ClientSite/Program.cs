@@ -1,6 +1,6 @@
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Rookie.CustomerSite.Extensions.ServiceCollection;
 using RookiesFashion.ClientSite.Profiles;
 using RookiesFashion.ClientSite.Services;
 using RookiesFashion.ClientSite.Services.Interfaces;
@@ -17,8 +17,8 @@ builder.Services.AddAuthentication(options =>
     .AddOpenIdConnect("oidc", options =>
     {
         options.Authority = "https://localhost:7188";
-        // options.RequireHttpsMetadata = false;
-        // options.GetClaimsFromUserInfoEndpoint = true;
+        options.RequireHttpsMetadata = false;
+        options.GetClaimsFromUserInfoEndpoint = true;
 
         options.ClientId = "mvc";
         options.ClientSecret = "secret";
@@ -37,12 +37,15 @@ builder.Services.AddAuthentication(options =>
             RoleClaimType = "role",
         };
     });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddCustomHttpClient(builder.Configuration);
 builder.Services.AddRazorPages();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
+builder.Services.AddScoped<IHttpClientService, HttpClientService>();
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     {
         cfg.AddProfile(new MappingProfile(provider.GetService<ICloudinaryService>()));

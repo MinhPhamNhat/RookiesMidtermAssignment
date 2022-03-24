@@ -1,19 +1,17 @@
 #nullable disable
-using System.Net;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Models.DTO;
 using RookiesFashion.APIService.Services.Interfaces;
-using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.SharedRepo.Extension;
 using RookiesFashion.SharedRepo.Extensions;
-using RookiesFashion.SharedRepo.Helpers;
 using RookiesFashion.SharedRepo.DTO;
+using Microsoft.AspNetCore.Authorization;
+using RookiesFashion.SharedRepo.Constants;
+using Microsoft.AspNetCore.Identity;
 
 namespace RookiesFashion.APIService.Controllers
 {
@@ -21,19 +19,20 @@ namespace RookiesFashion.APIService.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-
         private readonly IProductService _productService;
         private readonly IColorService _colorService;
         private readonly ISizeService _sizeService;
         private readonly ICategoryService _categoryService;
         private readonly IConfiguration _config;
+        private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
         public ProductsController(
             IProductService productService,
             IColorService colorService,
             ISizeService sizeService,
             ICategoryService categoryService,
-            IMapper mapper,
+            IMapper mapper, 
+            UserManager<User> userManager,
             IConfiguration config)
         {
             _productService = productService;
@@ -41,6 +40,7 @@ namespace RookiesFashion.APIService.Controllers
             _sizeService = sizeService;
             _categoryService = categoryService;
             _mapper = mapper;
+            _userManager = userManager;
             _config = config;
         }
 
@@ -48,7 +48,6 @@ namespace RookiesFashion.APIService.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProducts([FromQuery] ProductBaseQueryCriteriaDto baseQuery, CancellationToken cancellationToken)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(baseQuery));
             ServiceResponse serResp = await _productService.GetPagedProductFilter(baseQuery, cancellationToken);
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
@@ -61,8 +60,17 @@ namespace RookiesFashion.APIService.Controllers
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
 
+        // GET: api/Product/5
+        [HttpGet("Detail/{id}")]
+        public async Task<ActionResult> GetProductClientDetail(int id, [FromQuery] RatingBaseQueryCriteriaDto baseQueryCriteriaDto, CancellationToken cancellationToken)
+        {
+            ServiceResponse serResp = await _productService.GetProductWithPagingRating(id, baseQueryCriteriaDto, cancellationToken);
+            return MyApiHelper.RequestResultParser(serResp, HttpContext);
+        }
+
         // PUT: api/Product/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPut("{id}")]
         public async Task<ActionResult> PutProduct(int id, [FromForm] List<IFormFile> Files, [FromForm] IFormCollection formCollection)
         {
@@ -89,6 +97,7 @@ namespace RookiesFashion.APIService.Controllers
 
         // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<ActionResult> PostProduct([FromForm] List<IFormFile> Files, [FromForm] IFormCollection formCollection)
         {

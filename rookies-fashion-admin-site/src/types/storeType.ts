@@ -15,6 +15,7 @@ export type StoreType = {
 	validationErrors?: Array<ValidationError>;
 	productPagingQuery?: ProductPagingQuery;
 	categoryPagingQuery?: CategoryPagingQuery;
+	user?: any;
 	message?: string;
 	actionType?: string;
 	statusCode?: number;

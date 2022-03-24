@@ -43,13 +43,14 @@ const ProductEdit: React.FC<any> = (props: any) => {
           ShowNotification(err.ErrorMessage, err.Field, "danger")
         );
         break;
-      case Actions.INSERTED_PRODUCT:
+      case Actions.UPDATED_PRODUCT:
         ShowNotification(message, "Success", "success");
         break;
       default:
         break;
     }
   }, [actionType]);
+  
   useEffect(() => {
     if (getProductTrigger) {
       getProductById(id);
@@ -64,6 +65,7 @@ const ProductEdit: React.FC<any> = (props: any) => {
       SizeIds: product?.Sizes.map((c: Size) => c.SizeId),
     });
   }
+
   const formSubmit = async () => {
     var formData = serialize(form);
     form?.Files?.forEach((f) => formData.append("Files", f, f.name));

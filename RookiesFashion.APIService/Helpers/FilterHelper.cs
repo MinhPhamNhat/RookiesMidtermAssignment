@@ -101,4 +101,14 @@ public static class FilterHelper
                 return categoryQuery;
         }
     }
+
+    public static IQueryable<Rating> RatingFilter(
+        IQueryable<Rating> ratingQuery,
+        RatingBaseQueryCriteriaDto baseQueryCriteriaDto)
+    {
+        if (baseQueryCriteriaDto.Rating != null && baseQueryCriteriaDto.Rating >= 0 && baseQueryCriteriaDto.Rating <= 5)
+            ratingQuery = ratingQuery.Where(r => r.RatingVal >= baseQueryCriteriaDto.Rating);
+       
+        return ratingQuery;
+    }
 }

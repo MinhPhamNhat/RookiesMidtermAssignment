@@ -21,15 +21,34 @@ import {
   internalErrorGot,
   setCategoryPagingQueryAction,
   setProductPagingQueryAction,
+  storeUserAction,
   updateCategoryAction,
   updatedCategory,
   updatedProduct,
   updateProductAction,
+  doneStoreUser,
+  storeUserErrorAction,
+  doneStoreUserError,
+  loginRedirectAction,
+  doneLoginRedirect,
+  loginRedirectCallbackAction,
+  doneLoginRedirectCallback,
+  deleteCategoryAction,
+  deletedCategory,
+  gotUsers,
 } from "../types/ActionTypes";
 import { Actions } from "../constants";
-import { categoryService, productService } from "../services";
+import { categoryService, productService, userService } from "../services";
+import AuthService from "../services/auth.service"
 import { Response } from "../types/model";
-import ProductPagingQuery from "../types/form/ProductPagingQuery";
+import { 
+  loginRequest, 
+  getMeRequest, 
+  logoutRequest, 
+  loginCallbackRequest, 
+  logoutCallbackRequest 
+} from './requests';
+import { setAuthHeader } from "../utils/HttpClient/base";
 // watchers
 
 function* sagaSagaLaydyGaga(): Generator<StrictEffect> {
@@ -51,6 +70,13 @@ function* sagaSagaLaydyGaga(): Generator<StrictEffect> {
   );
   yield takeEvery(Actions.INSERT_CATEGORY, insertCategoryWorker);
   yield takeEvery(Actions.UPDATE_CATEGORY, updateCategoryWorker);
+  yield takeEvery(Actions.DELETE_CATEGORY, deleteCategoryWorker);
+  yield takeEvery(Actions.STORE_USER, storeUserWorker);
+  yield takeEvery(Actions.STORE_USER_ERROR, storeUserErrorWorker);
+  yield takeEvery(Actions.LOGIN_REDIRECT, loginRedirectWorker);
+  yield takeEvery(Actions.LOGIN_REDIRECT_CALLBACK, loginRedirectCallbackWorker);
+  yield takeEvery(Actions.GET_USERS, getUsersWorker);
+  
 }
 
 // workers
@@ -238,6 +264,7 @@ function* getPagingCategoriesdWorker({ query }: getPagingCategoriesAction) {
       categoryService.getPagingCategories,
       query
     );
+    console.log(response)
     var data: any = null;
     switch (response.code) {
       case 200:
@@ -388,6 +415,107 @@ function* updateCategoryWorker({ id, form }: updateCategoryAction) {
         break;
     }
   } catch (err) {}
+  // update our redux store by dispatching a new action
+}
+
+function* deleteCategoryWorker({id}: deleteCategoryAction){
+  try {
+    const response: Response = yield call(categoryService.deleteCategory, id);
+    var data: any = null;
+    switch (response.code) {
+      case 201:
+        (data as deletedCategory) = {
+          type: "DELETED_CATEGORY",
+          message: response.message,
+        };
+        yield put(data);
+        break;
+      case 400:
+        (data as badRequestGot) = {
+          type: "BAD_REQUEST_GOT",
+          validationErrors: response.data,
+          message: response.message,
+        };
+        yield put(data);
+        break;
+      case 500:
+        (data as internalErrorGot) = {
+          type: "INTERNAL_ERROR_GOT",
+          message: response.message,
+        };
+        yield put(data);
+        break;
+    }
+  } catch (err) {}
+  // update our redux store by dispatching a new action
+}
+
+function* getUsersWorker(){
+  try {
+    const response: Response = yield call(userService.getUsers);
+    var data: any = null;
+    switch (response.code) {
+      case 200:
+        (data as gotUsers) = {
+          type: "GOT_USERS",
+          message: response.message,
+          user: response.data
+        };
+        yield put(data);
+        break;
+      case 400:
+        (data as badRequestGot) = {
+          type: "BAD_REQUEST_GOT",
+          validationErrors: response.data,
+          message: response.message,
+        };
+        yield put(data);
+        break;
+      case 500:
+        (data as internalErrorGot) = {
+          type: "INTERNAL_ERROR_GOT",
+          message: response.message,
+        };
+        yield put(data);
+        break;
+    }
+  } catch (err) {}
+  // update our redux store by dispatching a new action
+}
+
+function* storeUserWorker({ user }: storeUserAction) {
+  console.log(user)
+  setAuthHeader(user.access_token)
+  var data = {
+    type:"DONE_STORE_USER",
+  } as doneStoreUser
+  yield put(data)
+  // update our redux store by dispatching a new action
+}
+
+function* storeUserErrorWorker({  }: storeUserErrorAction) {
+  var data = {
+    type:"DONE_STORE_USER_ERROR",
+  } as doneStoreUserError
+  yield put(data)
+  // update our redux store by dispatching a new action
+}
+
+function* loginRedirectWorker({  }: loginRedirectAction) {
+  yield call(loginRequest);
+  var data = {
+    type:"DONE_LOGIN_REDIRECT",
+  } as doneLoginRedirect
+  yield put(data)
+  // update our redux store by dispatching a new action
+}
+
+function* loginRedirectCallbackWorker({  }: loginRedirectCallbackAction) {
+  yield call(loginCallbackRequest);
+  var data = {
+    type:"DONE_LOGIN_REDIRECT_CALLBACK",
+  } as doneLoginRedirectCallback
+  yield put(data)
   // update our redux store by dispatching a new action
 }
 export default sagaSagaLaydyGaga;

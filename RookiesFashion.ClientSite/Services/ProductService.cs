@@ -6,9 +6,8 @@ using RookiesFashion.ClientSite.Services;
 using Newtonsoft.Json;
 using System.Text;
 using RookiesFashion.SharedRepo.Helpers;
-using RookiesFashion.SharedRepo.Helpers;
-using RookiesFashion.ClientSite.Helpers;
 using RookiesFashion.ClientSite.ViewModels;
+using RookiesFashion.SharedRepo.DTO;
 
 namespace RookiesFashion.ClientSite.Services
 {
@@ -16,16 +15,19 @@ namespace RookiesFashion.ClientSite.Services
     {
 
         private readonly IConfiguration _config;
-        public ProductService(IConfiguration config)
+        private readonly IHttpClientService _httpClientService;
+        public ProductService(IConfiguration config, IHttpClientService httpClientService)
         {
             _config = config;
+            _httpClientService = httpClientService;
         }
 
         public async Task<ServiceResponse> GetProducts()
         {
             try
             {
-                var resp = await HttpClientHelper.Get($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}");
+                
+                var resp = await _httpClientService.GetAsync($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}");
                 return resp;
             }
             catch (Exception ex)
@@ -39,11 +41,12 @@ namespace RookiesFashion.ClientSite.Services
             }
         }
 
-        public async Task<ServiceResponse> GetProductById(int productId)
+        public async Task<ServiceResponse> GetProductById(int productId, RatingBaseQueryCriteriaDto query)
         {
             try
             {
-                var resp = await HttpClientHelper.Get($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}/{productId}");
+                var uri = QueryHelper.parseQuery($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}/Detail/{productId}", query);
+                var resp = await _httpClientService.GetAsync(uri);
                 return resp;
             }
             catch (Exception ex)
@@ -75,7 +78,7 @@ namespace RookiesFashion.ClientSite.Services
                         formData.Add(imgData, "Files", file.FileName);
                     }
                     formData.Add(new StringContent(JsonConvert.SerializeObject(dataModel), Encoding.UTF8));
-                    resp = await HttpClientHelper.Post($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}", formData);
+                    resp = await _httpClientService.PostAsync($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}", formData);
                 }
                 return resp;
             }
@@ -91,13 +94,12 @@ namespace RookiesFashion.ClientSite.Services
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponse> GetProductsByQuery(BaseQueryCriteriaVM query)
+        public async Task<ServiceResponse> GetProductsByQuery(ProductBaseQueryCriteriaDto query)
         {
             try
             {
                 var uri = QueryHelper.parseQuery($"{_config["Host:api"]}{EndpointConstants.PRODUCTS}", query);
-                Console.WriteLine(uri);
-                var resp = await HttpClientHelper.Get(uri);
+                var resp = await _httpClientService.GetAsync(uri);
                 return resp;                
             }
             catch (Exception ex)

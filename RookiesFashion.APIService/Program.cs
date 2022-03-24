@@ -15,12 +15,16 @@ using RookiesFashion.APIService.Data;
 using RookiesFashion.SharedRepo.Constants;
 using Microsoft.AspNetCore.Authorization;
 using RookiesFashion.APIService.Data.Extensions;
+using Microsoft.IdentityModel.Tokens;
+using RookiesFashion.APIService.IdentityServer;
+using RookiesFashion.SharedRepo.Security.Authorization.Requirements;
+using RookiesFashion.SharedRepo.Security.Authorization.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews()
+builder.Services.AddControllers()
 .ConfigureApiBehaviorOptions(options =>
 {
     options.InvalidModelStateResponseFactory = actionContext =>
@@ -37,28 +41,13 @@ builder.Services.AddControllersWithViews()
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
 });
-builder.Services.AddAuthentication()
-.AddLocalApi("Bearer", options =>
-{
-    options.ExpectedScope = "rookiesfashion.api";
-});
-
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy(SecurityConstants.BEARER_POLICY, policy =>
-    {
-        policy.AddAuthenticationSchemes("Bearer");
-        policy.RequireAuthenticatedUser();
-    });
-});
-builder.Services.AddIdentity<User, IdentityRole>()
+builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
 .AddEntityFrameworkStores<RookiesFashionContext>()
 .AddDefaultTokenProviders();
 builder.Services.ConfigureApplicationCookie(config =>
-            {
-                config.Cookie.Name = "IdentityServer.Cookie";
-                config.LoginPath = "/Auth/Login";
-            });
+    {
+        config.LoginPath = "/Auth/Login";
+    });
 
 builder.Services.Configure<IdentityOptions>(options =>
             {
@@ -75,28 +64,45 @@ builder.Services.AddIdentityServer()
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<User>()
+                .AddProfileService<CustomProfileService>()
                 .AddDeveloperSigningCredential();
+
+builder.Services.AddAuthentication()
+                .AddLocalApi(SecurityConstants.BEARER_POLICY, option =>
+                {
+                    option.ExpectedScope = "rookiesfashion.api";
+                });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(SecurityConstants.BEARER_POLICY, policy =>
+    {
+        policy.AddAuthenticationSchemes("Bearer");
+        policy.RequireAuthenticatedUser();
+    });
+
+    options.AddPolicy(SecurityConstants.ADMIN_ROLE_POLICY, policy =>
+        policy.Requirements.Add(new AdminRoleRequirement()));
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RookiesFashionContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("RookiesFashion_Connection_String")).UseLazyLoadingProxies(), ServiceLifetime.Scoped);
-
+builder.Services.AddSingleton<IAuthorizationHandler, AdminRoleHandler>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IColorService, ColorService>();
 builder.Services.AddScoped<ISizeService, SizeService>();
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     {
         cfg.AddProfile(new MappingProfile(provider.GetService<ICloudinaryService>(), provider.GetService<ISizeService>(), provider.GetService<IColorService>()));
     }).CreateMapper());
-
-
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowOrigins",
@@ -106,6 +112,7 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
+        
 });
 
 builder.Services.AddRazorPages();
@@ -118,12 +125,19 @@ app.UseCors("AllowOrigins");
 app.UseRouting();
 
 app.UseIdentityServer();
+app.UseAuthentication();
 app.UseAuthorization();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.OAuthClientId("swagger");
+        c.OAuthClientSecret("secret");
+        c.OAuthUsePkce();
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rookie Shop API V1");
+    });
 }
 
 app.UseEndpoints(endpoints =>

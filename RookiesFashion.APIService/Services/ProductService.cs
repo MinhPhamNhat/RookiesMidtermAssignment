@@ -7,6 +7,7 @@ using RookiesFashion.APIService.Services.Interfaces;
 using RookiesFashion.SharedRepo.Extensions;
 using RookiesFashion.SharedRepo.DTO;
 using RookiesFashion.APIService.Helpers;
+using RookiesFashion.APIService.Models.DTO;
 
 namespace RookiesFashion.APIService.Services
 {
@@ -24,7 +25,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var products = _context.Products.Where(p=>!p.IsDeleted).ToList();
+                var products = _context.Products.Where(p => !p.IsDeleted).ToList();
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,
@@ -47,7 +48,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.Where(p=>!p.IsDeleted)
+                var product = _context.Products.Where(p => !p.IsDeleted)
                 .FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
@@ -153,7 +154,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var product = _context.Products.Where(p=>!p.IsDeleted).FirstOrDefault(p => p.ProductId == productId);
+                var product = _context.Products.Where(p => !p.IsDeleted).FirstOrDefault(p => p.ProductId == productId);
 
                 if (product != null)
                 {
@@ -196,7 +197,7 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var products = _context.Products.Where(p=>!p.IsDeleted).AsQueryable();
+                var products = _context.Products.Where(p => !p.IsDeleted).AsQueryable();
                 products = FilterHelper.ProductFilter(products, baseQueryCriteria);
                 var pagedProducts = await products.PaginateAsync(baseQueryCriteria, cancellationToken);
                 return new ServiceResponse()
@@ -217,5 +218,51 @@ namespace RookiesFashion.APIService.Services
             }
         }
 
+        public async Task<ServiceResponse> GetProductWithPagingRating(int productId, RatingBaseQueryCriteriaDto baseQuery, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var product = _context.Products.Where(p => !p.IsDeleted).First(p => p.ProductId == productId);
+                if (product != null)
+                {
+                    var tempRatings = _context.Ratings.Where(r => r.ProductId == productId).AsQueryable();
+                    var ratings = FilterHelper.RatingFilter(tempRatings, baseQuery);
+                    var pagedRatings = await ratings.PaginateAsync(baseQuery, cancellationToken);
+
+                    List<int> countRating = new List<int>();
+                    List<double> countPercentage = new List<double>();
+                    for(var i = 1; i <= 5; i++){
+                        var ratingVal = tempRatings.Where(r => r.RatingVal == i);
+                        var count = ratingVal.Count();
+                        countRating.Add(count);
+                        var percentage = (double)count/tempRatings.Count()*100;
+                        countPercentage.Add(percentage);
+                    } 
+
+                    var productDetailwithRating = new ProductDetailDTO { Product = product, PagedRating = pagedRatings, CountRating = countRating, CountPercentage = countPercentage };
+                    return new ServiceResponse()
+                    {
+                        Code = ServiceResponseConstants.SUCCESS,
+                        Message = "Successfully Get Products",
+                        Data = productDetailwithRating
+                    };
+                }
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.OBJECT_NOT_FOUND,
+                    Message = "Product not found",
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new ServiceResponse()
+                {
+                    Code = ServiceResponseConstants.ERROR,
+                    Message = ex.Message,
+                    RespException = ex
+                };
+            }
+        }
     }
 }

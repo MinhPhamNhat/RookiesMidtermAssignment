@@ -38,6 +38,12 @@ class CategoryService {
     const response = await HttpClient.put(endpoint, form);
     return response;
   }
+
+  async deleteCategory(id: string) {
+    const endpoint = Endpoints.CATEGORIES+ `/${id}`;
+    const response = await HttpClient.delete(endpoint);
+    return response;
+  }
 }
 
 export default new CategoryService();

@@ -2,6 +2,7 @@ using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
 using RookiesFashion.ClientSite.Models;
 using RookiesFashion.ClientSite.Services.Interfaces;
 using RookiesFashion.ClientSite.ViewModels;
@@ -26,12 +27,12 @@ public class CollectionPageModel : PageModel
 
     [BindProperty(SupportsGet = true)]
     public List<ProductVM> products { get; set; }
-    public BaseQueryCriteriaVM baseQuery { get; set; }
+    public ProductBaseQueryCriteriaDto baseQuery { get; set; }
     public PagedResponseVM<ProductVM> pagedResponse { get; set; }
     public List<CategoryVM> categories { get; set; }
-    public async Task OnGet(string? sortOrder, string? searchKeyword, int? categoryId, int? rating, int? pageIndex)
+    public async Task OnGet(ProductSortConstants? sortOrder, string? searchKeyword, int? categoryId, int? rating, int? pageIndex)
     {
-        baseQuery = new BaseQueryCriteriaVM()
+        baseQuery = new ProductBaseQueryCriteriaDto()
         {
             SortOrder = sortOrder,
             Search = searchKeyword,
@@ -47,10 +48,6 @@ public class CollectionPageModel : PageModel
 
         var categoryResp = await _categoryService.GetCategories();
         categories = MyResponseMapper.MapJsonToList<CategoryVM>((JsonElement)categoryResp.Data);
-
-        Console.WriteLine("Next " + pagedResponse.HasNextPage);
-        Console.WriteLine("Page "+baseQuery.Page);
-        Console.WriteLine("Previous "+pagedResponse.HasPreviousPage);
     }
 
     public async Task<IActionResult> OnGetWithFilterAsync()

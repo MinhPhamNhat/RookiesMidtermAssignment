@@ -32,6 +32,7 @@ public class MappingProfile : Profile
                             src => src.ParentCategoryId <= 0))
         .ForMember(dest => dest.ParentCategoryId,
                         act => act.MapFrom(
-                            src => src.ParentCategoryId <= 0 ? null : src.ParentCategoryId)); ;
+                            src => src.ParentCategoryId <= 0 ? null : src.ParentCategoryId));
+        CreateMap<RatingFormDTO, Rating>();
     }
 }

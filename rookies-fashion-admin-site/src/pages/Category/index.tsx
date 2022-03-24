@@ -14,6 +14,7 @@ import {
   setProductPagingQuery,
   insertCategory,
   updateCategory,
+  deleteCategory,
 } from "../../actions";
 import { Category } from "../../types/model";
 
@@ -26,7 +27,7 @@ import DetailModal from "../../components/DetailModal";
 import ProductPagingQuery from "../../types/form/ProductPagingQuery";
 import InsertModal from "../../components/InsertModal";
 import { CategoryForm } from "../../types/form/CategoryForm";
-import { ShowNotification } from "../../helpers";
+import { ShowDialog, ShowNotification } from "../../helpers";
 import { ValidationError } from "../../types/model/ValidationError";
 import EditModal from "../../components/EditModal";
 const CategoryPage: React.FC<any> = (props) => {
@@ -43,8 +44,9 @@ const CategoryPage: React.FC<any> = (props) => {
     updateCategory,
     validationErrors,
     insertCategory,
+    deleteCategory,
   } = props;
-  console.log(props);
+  
   const [modalShow, setModalShow] = useState(false);
   const [insertModalShow, setInsertModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
@@ -81,17 +83,8 @@ const CategoryPage: React.FC<any> = (props) => {
 
   useEffect(() => {
     switch (actionType) {
-      case Actions.BAD_REQUEST_GOT:
-        validationErrors?.forEach((err: ValidationError) =>
-          ShowNotification(err.ErrorMessage, err.Field, "danger")
-        );
-        break;
-      case Actions.INSERTED_PRODUCT:
-        // ShowNotification(message, "Success", "success");
-        break;
       case Actions.UPDATED_CATEGORY:
         setOnChanging(true);
-        // ShowNotification(message, "Success", "success");
         break;
       default:
         break;
@@ -154,12 +147,17 @@ const CategoryPage: React.FC<any> = (props) => {
 
   const confirmInsert = (form: CategoryForm) => {
     insertCategory(form);
-    hideInsertModel()
+    hideInsertModel();
   };
 
   const confirmEdit = (id: string, form: CategoryForm) => {
     updateCategory(id, form);
-    hideEditModel()
+    hideEditModel();
+  };
+
+  const confirmDelete = (id: number) => {
+    setOnChanging(true);
+    deleteCategory(id);
   };
 
   const columns = [
@@ -184,9 +182,7 @@ const CategoryPage: React.FC<any> = (props) => {
     {
       name: "Parent",
       cell: (row: Category) => (
-        <span>
-          {row.IsParent?"":row.Parent.Name}
-        </span>
+        <span>{row.IsParent ? "" : row.Parent.Name}</span>
       ),
     },
     {
@@ -203,7 +199,11 @@ const CategoryPage: React.FC<any> = (props) => {
             </button>
             <button
               type="button"
-              onClick={() => {}}
+              onClick={() => 
+                ShowDialog("Are you sure", <p>You wanna delete this</p>, () =>
+                  confirmDelete(row.CategoryId)
+                )
+              }
               className="btn btn-outline-danger"
             >
               <i className="fa-solid fa-trash"></i>
@@ -301,6 +301,7 @@ export default connect(mapDispatchToProps, {
   setProductPagingQuery,
   insertCategory,
   updateCategory,
+  deleteCategory,
 })(CategoryPage);
 
 const customStyles = {

@@ -32,13 +32,12 @@
                                 asp-action="Collection">Collection</a>
                         </li>
                     </ul>
-
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @User.Identity.ToString()
+                        var userEmail = User.Claims.Where(c=>c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"))?.First()?.Value;
                         <ul class="navbar-nav flex-end">
                             <li class="nav-item">
-                                <a class="nav-link text-dark">@User.Identity.Name</a>
+                                <a class="nav-link text-dark">@userEmail</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Account" asp-action="SignOut">Logout</a>

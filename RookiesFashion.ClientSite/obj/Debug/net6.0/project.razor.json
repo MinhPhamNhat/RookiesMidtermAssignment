@@ -14296,7 +14296,7 @@
           {
             "Kind": "MVC.ViewComponent",
             "Name": "rating",
-            "TypeName": "RookiesFashion.ClientSite.ViewModels.RatingVM",
+            "TypeName": "RookiesFashion.ClientSite.Models.Rating",
             "Metadata": {
               "Common.PropertyName": "rating"
             }
