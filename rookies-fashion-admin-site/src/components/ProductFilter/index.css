@@ -1,0 +1,17 @@
+.table-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.filter-section {
+  display: flex;
+  flex-direction: row;
+}
+.filter-section .filter-select{
+    width: 100%;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}

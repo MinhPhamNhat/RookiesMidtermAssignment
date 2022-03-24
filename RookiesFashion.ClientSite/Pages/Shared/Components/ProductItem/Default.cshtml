@@ -1,0 +1,21 @@
+@using RookiesFashion.ClientSite.ViewModels;
+@model ProductVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="card">
+    <div class="card-img-top">
+        <a href="/Products/Detail/@Model.ProductId"><img src="@Model.Thumbnail.First().Url" alt=""></a>
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+            <h4>@Model.Name</h4>
+        </div>
+        <div class="card-subtitle mb-2 text-muted">
+            $@Model.Price
+        </div>
+
+        <div class="card-text">
+            @Html.Raw(Model.Description)
+        </div>
+        <a href="/Products/Detail/@Model.ProductId" class="card-link">Detail</a>
+    </div>
+</div>

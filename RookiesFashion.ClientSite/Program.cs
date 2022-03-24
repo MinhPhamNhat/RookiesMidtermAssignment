@@ -1,8 +1,55 @@
+using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using Rookie.CustomerSite.Extensions.ServiceCollection;
+using RookiesFashion.ClientSite.Profiles;
+using RookiesFashion.ClientSite.Services;
+using RookiesFashion.ClientSite.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("Cookies")
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.Authority = "https://localhost:7188";
+        options.RequireHttpsMetadata = false;
+        options.GetClaimsFromUserInfoEndpoint = true;
 
+        options.ClientId = "mvc";
+        options.ClientSecret = "secret";
+        options.ResponseType = "code";
+
+        options.SaveTokens = true;
+
+        options.Scope.Add("openid");
+        options.Scope.Add("profile");
+        options.Scope.Add("email");
+        options.Scope.Add("rookiesfashion.api");
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            NameClaimType = "name",
+            RoleClaimType = "role",
+        };
+    });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddCustomHttpClient(builder.Configuration);
+builder.Services.AddRazorPages();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
+builder.Services.AddScoped<IHttpClientService, HttpClientService>();
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
+    {
+        cfg.AddProfile(new MappingProfile(provider.GetService<ICloudinaryService>()));
+    }).CreateMapper());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,10 +65,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapRazorPages();
 app.Run();

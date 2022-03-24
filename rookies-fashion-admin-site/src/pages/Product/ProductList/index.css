@@ -1,0 +1,17 @@
+.page-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.table-action {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.box-body table td{
+    padding: 10px;
+}
+.table-filter{
+    display: flex;
+    flex-direction: column;
+}

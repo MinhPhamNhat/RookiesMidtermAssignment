@@ -1,6 +1,10 @@
 html {
   font-size: 14px;
 }
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 
 @media (min-width: 768px) {
   html {
@@ -15,4 +19,14 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.navbar-nav .dropdown * {
+  color: black;
+}
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

@@ -1,0 +1,15 @@
+
+  .review-block-name{
+      font-weight: bold;
+      margin:10px 0;
+  }
+  .review-block-rate{
+      margin-bottom:15px;
+  }
+  .review-block-rate span{
+      font-size: 12px;
+  }
+  .review-block-title{
+      font-weight:700;
+      margin-bottom:10px;
+  }
