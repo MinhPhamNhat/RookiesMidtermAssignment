@@ -1,7 +1,6 @@
 import ProductPagingQuery from "./form/ProductPagingQuery";
 import CategoryPagingQuery from "./form/CategoryPagingQuery";
-import { ProductForm } from "./form/ProductForm";
-import { Category, PagingProduct, Product } from "./model";
+import { Category, PagingProduct, Product, User } from "./model";
 import { ValidationError } from "./model/ValidationError";
 import { PagingCategory } from "./model/PagingCategory";
 import { CategoryForm } from "./form/CategoryForm";
@@ -136,6 +135,27 @@ export type updatedCategory = {
   message?: string;
 }
 
+export type deleteCategoryAction = {
+  type: "DELETE_CATEGORY",
+  id: string
+}
+
+export type deletedCategory = {
+  type: "DELETED_CATEGORY";
+  message?: string;
+}
+
+export type getUsersAction = {
+  type: "GET_USERS";
+};
+
+export type gotUsers = {
+  type: "GOT_USERS";
+  user: User,
+  message?: string;
+};
+
+
 export type internalErrorGot = {
   type: "INTERNAL_ERROR_GOT";
   message?: string;
@@ -145,4 +165,38 @@ export type badRequestGot = {
   type: "BAD_REQUEST_GOT";
   validationErrors: Array<ValidationError>;
   message?: string;
+};
+
+export type storeUserAction = {
+  type: "STORE_USER";
+  user: any;
+};
+
+export type doneStoreUser = {
+  type: "DONE_STORE_USER";
+};
+
+export type storeUserErrorAction = {
+  type: "STORE_USER_ERROR";
+};
+
+export type doneStoreUserError = {
+  type: "DONE_STORE_USER_ERROR";
+};
+
+export type loginRedirectAction = {
+  type: "LOGIN_REDIRECT";
+};
+
+export type doneLoginRedirect = {
+  type: "DONE_LOGIN_REDIRECT";
+};
+
+export type loginRedirectCallbackAction = {
+  type: "LOGIN_REDIRECT_CALLBACK";
+};
+
+export type doneLoginRedirectCallback = {
+  type: "DONE_LOGIN_REDIRECT_CALLBACK";
+  user: any;
 };

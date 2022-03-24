@@ -99,6 +99,139 @@ namespace RookiesFashion.APIService.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("ProductSize", b =>
                 {
                     b.Property<int>("ProductsProductId")
@@ -189,23 +322,6 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasKey("Username");
 
                     b.ToTable("Account");
-
-                    b.HasData(
-                        new
-                        {
-                            Username = "ADMIN",
-                            Password = "ADMIN"
-                        },
-                        new
-                        {
-                            Username = "User1",
-                            Password = "rookies_user1"
-                        },
-                        new
-                        {
-                            Username = "User2",
-                            Password = "rookies_user2"
-                        });
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>
@@ -1000,7 +1116,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6505),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6281),
                             Description = "Kids grow up so fast. Your little one may still be an infant, but we're sure they're crying for something stylish, comfortable, and eco-friendly. Well, you can satisfy their \"demands\" with this practical, organic Unisex..",
                             IsDeleted = false,
                             Name = "Unisex Baby Long Sleeve Bodysuits Set",
@@ -1010,7 +1126,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6507),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6284),
                             Description = "Long Sleeve 3D Printed Black Cat Sweatshirt",
                             IsDeleted = false,
                             Name = "Long Sleeve 3D Printed Black Cat Sweatshirt",
@@ -1020,7 +1136,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 3,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6508),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6286),
                             Description = "Look like the super star that you are while rocking this unisex Dreamville Street Wear Sweatshirt! It was made just for you.",
                             IsDeleted = false,
                             Name = "Dreamville Street Wear Sweatshirt",
@@ -1030,7 +1146,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             ProductId = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(6510),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6288),
                             Description = "Get the perfect wooden watch for yourself or a loved one - including a unique engraving in the back! This classic piece will match any outfit. NOTE: This watch is only available in the United States. ",
                             IsDeleted = false,
                             Name = "Walnut Wooden Watch",
@@ -1058,14 +1174,13 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.Property<int>("RatingVal")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserRatingUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserRating")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RatingId");
 
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("UserRatingUserId");
 
                     b.ToTable("Rating");
 
@@ -1074,171 +1189,145 @@ namespace RookiesFashion.APIService.Data.Migrations
                         {
                             RatingId = 1,
                             Comment = "Nice one, i love this product",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7138),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6992),
                             ProductId = 1,
                             RatingVal = 4,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 2,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7140),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6995),
                             ProductId = 1,
                             RatingVal = 4,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 3,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7141),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6996),
                             ProductId = 2,
                             RatingVal = 3,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 4,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7142),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6996),
                             ProductId = 2,
                             RatingVal = 3,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 5,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7143),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6997),
                             ProductId = 2,
                             RatingVal = 5,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 6,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7202),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(6999),
                             ProductId = 2,
                             RatingVal = 4,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 7,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7203),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7000),
                             ProductId = 3,
                             RatingVal = 2,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 8,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7204),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7001),
                             ProductId = 3,
                             RatingVal = 3,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 9,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7205),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7002),
                             ProductId = 5,
                             RatingVal = 3,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 10,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7206),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7003),
                             ProductId = 5,
                             RatingVal = 4,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 11,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7206),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7003),
                             ProductId = 2,
                             RatingVal = 5,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 12,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7207),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7004),
                             ProductId = 1,
                             RatingVal = 3,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 13,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7208),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7005),
                             ProductId = 5,
                             RatingVal = 2,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 14,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7208),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7005),
                             ProductId = 1,
                             RatingVal = 5,
-                            UserRatingUserId = 2
+                            UserRating = "user2"
                         },
                         new
                         {
                             RatingId = 15,
                             Comment = "The watch make me feel very elegant",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7209),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7006),
                             ProductId = 5,
                             RatingVal = 4,
-                            UserRatingUserId = 1
+                            UserRating = "user1"
                         },
                         new
                         {
                             RatingId = 16,
                             Comment = "Very beautiful and affordable price",
-                            CreatedDate = new DateTime(2022, 3, 19, 16, 10, 55, 569, DateTimeKind.Local).AddTicks(7210),
+                            CreatedDate = new DateTime(2022, 3, 24, 9, 29, 32, 651, DateTimeKind.Local).AddTicks(7007),
                             ProductId = 3,
                             RatingVal = 3,
-                            UserRatingUserId = 2
-                        });
-                });
-
-            modelBuilder.Entity("RookiesFashion.APIService.Models.Role", b =>
-                {
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("Role");
-
-                    b.HasData(
-                        new
-                        {
-                            RoleId = 0,
-                            Description = "Administrator"
-                        },
-                        new
-                        {
-                            RoleId = 1,
-                            Description = "User"
+                            UserRating = "user2"
                         });
                 });
 
@@ -1299,52 +1388,71 @@ namespace RookiesFashion.APIService.Data.Migrations
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdentityUsername")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("UserId");
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.HasIndex("IdentityUsername");
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("RoleId");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("User");
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            IdentityUsername = "ADMIN",
-                            Name = "ADMIN",
-                            RoleId = 0
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            IdentityUsername = "User1",
-                            Name = "Rookies User 1",
-                            RoleId = 1
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            IdentityUsername = "User2",
-                            Name = "Rookies User 2",
-                            RoleId = 1
-                        });
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("ColorProduct", b =>
@@ -1358,6 +1466,57 @@ namespace RookiesFashion.APIService.Data.Migrations
                     b.HasOne("RookiesFashion.APIService.Models.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("RookiesFashion.APIService.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("RookiesFashion.APIService.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RookiesFashion.APIService.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("RookiesFashion.APIService.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1423,15 +1582,7 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RookiesFashion.APIService.Models.User", "UserRating")
-                        .WithMany()
-                        .HasForeignKey("UserRatingUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Product");
-
-                    b.Navigation("UserRating");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.UpdatedDate", b =>
@@ -1441,23 +1592,6 @@ namespace RookiesFashion.APIService.Data.Migrations
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("RookiesFashion.APIService.Models.User", b =>
-                {
-                    b.HasOne("RookiesFashion.APIService.Models.Account", "Identity")
-                        .WithMany()
-                        .HasForeignKey("IdentityUsername");
-
-                    b.HasOne("RookiesFashion.APIService.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Identity");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("RookiesFashion.APIService.Models.Category", b =>

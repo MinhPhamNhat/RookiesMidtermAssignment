@@ -8,62 +8,6 @@ public static class ModelBuilderExtensions
 {
     public static void Seed(this ModelBuilder modelBuilder)
     {
-
-        modelBuilder.Entity<Role>().HasData(
-            new Role()
-            {
-                RoleId = RoleConstants.ADMIN_ROLE,
-                Description = "Administrator"
-            },
-            new Role()
-            {
-                RoleId = RoleConstants.USER_ROLE,
-                Description = "User"
-            }
-        );
-
-        modelBuilder.Entity<Account>().HasData(
-            new Account()
-            {
-                Username = "ADMIN",
-                Password = "ADMIN"
-            },
-            new Account()
-            {
-                Username = "User1",
-                Password = "rookies_user1"
-            },
-            new Account()
-            {
-                Username = "User2",
-                Password = "rookies_user2"
-            }
-        );
-
-        modelBuilder.Entity<User>().HasData(
-            new User()
-            {
-                UserId = 1,
-                Name = "ADMIN",
-                RoleId = RoleConstants.ADMIN_ROLE,
-                IdentityUsername = "ADMIN"
-            },
-            new User()
-            {
-                UserId = 2,
-                Name = "Rookies User 1",
-                RoleId = RoleConstants.USER_ROLE,
-                IdentityUsername = "User1"
-            },
-            new User()
-            {
-                UserId = 3,
-                Name = "Rookies User 2",
-                RoleId = RoleConstants.USER_ROLE,
-                IdentityUsername = "User2"
-            }
-        );
-
         modelBuilder.Entity<Category>().HasData(
             new Category()
             {
@@ -625,112 +569,112 @@ public static class ModelBuilderExtensions
                 ProductId = 1,
                 Comment = "Nice one, i love this product",
                 RatingVal = 4,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 2,
                 ProductId = 1,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 4,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 3,
                 ProductId = 2,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 3,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 4,
                 ProductId = 2,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 3,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 5,
                 ProductId = 2,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 5,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 6,
                 ProductId = 2,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 4,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 7,
                 ProductId = 3,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 2,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 8,
                 ProductId = 3,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 3,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 9,
                 ProductId = 5,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 3,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 10,
                 ProductId = 5,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 4,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 11,
                 ProductId = 2,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 5,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 12,
                 ProductId = 1,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 3,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 13,
                 ProductId = 5,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 2,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 14,
                 ProductId = 1,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 5,
-                UserRatingUserId = 2
+                UserRating = "user2"
             },
             new Rating(){
                 RatingId = 15,
                 ProductId = 5,
                 Comment = "The watch make me feel very elegant",
                 RatingVal = 4,
-                UserRatingUserId = 1
+                UserRating = "user1"
             },
             new Rating(){
                 RatingId = 16,
                 ProductId = 3,
                 Comment = "Very beautiful and affordable price",
                 RatingVal = 3,
-                UserRatingUserId = 2
+                UserRating = "user2"
             }
         );
     }

@@ -11,7 +11,14 @@ import {
   setProductPagingQueryCreator,
   insertCategoryCreator,
   updateCategoryCreator,
+  storeUserCreator,
+  storeUserErrorCreator,
+  loginRedirectCreator,
+  loginRedirectCalbackCreator,
+  deleteCategoryCreator,
+  getUsersCreator,
 } from "../types/ActionCreatorTypes";
+import { getUsersAction } from "../types/ActionTypes";
 import { CategoryForm } from "../types/form/CategoryForm";
 import CategoryPagingQuery from "../types/form/CategoryPagingQuery";
 import ProductPagingQuery from "../types/form/ProductPagingQuery";
@@ -113,3 +120,43 @@ export const updateCategory: updateCategoryCreator = (
     form,
   };
 };
+export const deleteCategory: deleteCategoryCreator = (
+  id: string
+) => {
+  return {
+    type: "DELETE_CATEGORY",
+    id,
+  };
+};
+
+export const getUsers: getUsersCreator = () => {
+  return {
+    type: "GET_USERS",
+  };
+};
+
+export const storeUser: storeUserCreator = (user: any) => {
+  return {
+    type: "STORE_USER",
+    user,
+  };
+};
+
+export const storeUserError: storeUserErrorCreator = () => {
+  return {
+    type: "STORE_USER_ERROR",
+  };
+};
+
+export const loginRedirect: loginRedirectCreator = () => {
+  return {
+    type: "LOGIN_REDIRECT",
+  };
+};
+
+export const loginRedirectCalback: loginRedirectCalbackCreator = () => {
+  return {
+    type: "LOGIN_REDIRECT_CALLBACK",
+  };
+};
+

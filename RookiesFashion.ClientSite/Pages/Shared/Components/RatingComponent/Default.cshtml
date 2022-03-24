@@ -1,9 +1,9 @@
-@using RookiesFashion.ClientSite.ViewModels;
-@model RatingVM;
+@using RookiesFashion.ClientSite.Models;
+@model Rating;
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <div class="row">
     <div class="col-sm-3">
-        <div class="review-block-name"><a href="#">@Model.UserRating.Name</a></div>
+        <div class="review-block-name"><a href="#">@Model.UserRating</a></div>
         <div class="review-block-date">January 29, 2016<br />1 day ago</div>
     </div>
     <div class="col-sm-9">

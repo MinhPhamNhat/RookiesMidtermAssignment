@@ -8,8 +8,10 @@ export const ShowDialog = (
 ) => {
   confirmAlert({
     customUI: ({ onClose }) => {
-      return ( <ConfirmDialog title={title} component={component} onConfirm={onAccepted} onCancel={onClose}/>
-      );
+      return ( <ConfirmDialog title={title} component={component} onConfirm={() => {
+        onAccepted()
+        onClose()
+      }} onCancel={onClose}/> );
     },
   });
 };

@@ -8,8 +8,6 @@ namespace RookiesFashion.ClientSite.Models
     {
         public int UserId { get; set; }
         public string? Name { get; set; }
-        public RoleConstants RoleId { get; set; }
-        public Role? Role { get; set; }
         public string? IdentityUsername { get; set; }
         public Account? Identity { get; set; }
 

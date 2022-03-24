@@ -15,7 +15,7 @@ namespace RookiesFashion.APIService.Models
 
         public bool IsDeleted { get; set; } = false;
         public string? Description { get; set; }
-        public bool IsParent { get; set; } = true;
+        public bool IsParent { get; set; }
 
         public int? ParentCategoryId { get; set; }
         public virtual Category? Parent { get; set; }

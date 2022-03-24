@@ -139,13 +139,18 @@ namespace RookiesFashion.APIService.Services
         {
             try
             {
-                var category = _context.Categories.Find(categoryId);
+                var category = _context.Categories.Where(p => !p.IsDeleted && p.CategoryId == categoryId).First();
 
                 if (category != null)
+                {
+                    category.IsDeleted = true;
+                    _context.Entry(category).State = EntityState.Modified;
+                    _context.SaveChanges();
                     return new ServiceResponse()
                     {
                         Code = ServiceResponseConstants.SUCCESS,
                     };
+                }
                 else
                     return new ServiceResponse()
                     {

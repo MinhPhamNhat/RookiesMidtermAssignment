@@ -11,8 +11,6 @@ namespace RookiesFashion.ClientSite.Models
         public string? Comment { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public int RatingProductId { get; set; }
-        public Product? Product { get; set; }
-        public int RatingUserId { get; set; }
-        public User? UserRating { get; set; }
+        public string? UserRating { get; set; }
     }
 }

@@ -22,7 +22,7 @@ public class AccountService : IAccountService
                     a.Password.Equals(form.Password));
             if (checkAccount)
             {
-                User user = _context.Users.Where(u => u.Identity.Username.Equals(form.Username)).First();
+                User user = _context.Users.Where(u => u.UserName.Equals(form.Username)).First();
                 return new ServiceResponse()
                 {
                     Code = ServiceResponseConstants.SUCCESS,

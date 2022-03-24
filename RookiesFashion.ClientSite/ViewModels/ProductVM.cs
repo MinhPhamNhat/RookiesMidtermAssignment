@@ -12,11 +12,11 @@ public class ProductVM
     public double? Price { get; set; }
     public int? CategoryId { get; set; }
     public CategoryVM? Category { get; set; }
-    public IEnumerable<ImageVM>? Thumbnail { get; set; }
+    public ICollection<ImageVM>? Thumbnail { get; set; }
     public List<RatingVM>? Ratings { get; set; }
     public double AvgRating { get; set; }
-    public IEnumerable<ColorVM>? Colors { get; set; }
-    public IEnumerable<SizeVM>? Sizes { get; set; }
+    public ICollection<ColorVM>? Colors { get; set; }
+    public ICollection<SizeVM>? Sizes { get; set; }
 
     
 }

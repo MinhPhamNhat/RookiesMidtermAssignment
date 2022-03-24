@@ -8,9 +8,8 @@
     <div id="breadcrumb">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Áo thun</li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active"><a href="/Products/Collection">Collection</a></li>
             </ol>
         </nav>
     </div>
@@ -90,28 +89,7 @@
                             <!-- Section: Avg. Customer Review -->
                         </section>
                         <hr>
-                        <button type="submit" asp-route="Product/Collection"
-                            class="btn btn-primary collection-search">Search</button>
-                </form>
-            </div>
-            <div class="col-9 RF-collection-products-wrapper">
-                <div class="RF-collection-product-sort">
-                    <div class="RF-sort-section">
-                        <label for="RF-form-sort">Sắp xếp</label>
-                        <select name="sort" id="RF-form-sort">
-                            <option value="any">
-                                Tất cả</option>
-                            <option value="price-desc">
-                                Tên từ a đến z</option>
-                            <option value="price-asc">
-                                Tên từ a đến z</option>
-                            <option value="rating-desc">
-                                Đánh giá từ cao đến thấp</option>
-                            <option value="rating-asc">
-                                Đánh giá từ thấp đến cao</option>
-                        </select>
-                    </div>
-                    <div class="RF-sort-section">
+                        <div class="RF-sort-section">
                         <label for="RF-form-sort">Danh mục</label>
                         <select name="CategoryId" id="RF-form-sort">
                             <option>Tất cả
@@ -130,6 +108,14 @@
 
                         </select>
                     </div>
+                        <hr>
+                        <button type="submit" asp-route="Product/Collection"
+                            class="btn btn-primary collection-search">Search</button>
+                </form>
+            </div>
+            <div class="col-9 RF-collection-products-wrapper">
+                <div class="RF-collection-product-sort">
+                    
                 </div>
                 <div class="RF-products-container">
                     <div class="card-container pt-5 pb-5">

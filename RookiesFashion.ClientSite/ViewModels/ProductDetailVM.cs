@@ -1,9 +1,13 @@
+using RookiesFashion.ClientSite.Models;
 using RookiesFashion.ClientSite.ViewModels;
+using RookiesFashion.SharedRepo.DTO;
 
 namespace RookiesFashion.ClientSite.ViewModels;
-public class ProductDetailVM : ProductVM
+public class ProductDetailVM 
 {
-    public int CountRating(int val) => Ratings.Where(r=>r.RatingVal == val).Count(); 
+    public ProductVM Product { get; set; }
+    public PagedResponseVM<Rating> PagedRating { get; set; }
+    public List<int> CountRating { get; set; }
 
-    public double CalPercentage(int val) => (double)CountRating(val)/Ratings.Count()*100;
+    public List<double> CountPercentage { get; set; }
 }

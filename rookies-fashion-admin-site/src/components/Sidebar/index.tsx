@@ -15,42 +15,34 @@ import { Link, BrowserRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { PageRoutes } from "../../constants";
-const SideBar = () => {
+import { connect } from "react-redux";
+import { loginRedirect, loginRedirectCalback } from "../../actions";
+const SideBar: React.FC<any> = (props) => {
+  const { loginRedirect, loginRedirectCallback } = props;
   return (
     <ProSidebar breakPoint="md">
       <SidebarHeader>
-        <div className="sidebar-header">
-          Rookies Fashion
-        </div>
+        <div className="sidebar-header">Rookies Fashion</div>
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem
             icon={<FontAwesomeIcon icon={faHome} />}
-            suffix={<span className="badge red">50</span>}
           >
             <Link to={PageRoutes.PRODUCT_LIST}>Products</Link>
           </MenuItem>
           <MenuItem
             icon={<FontAwesomeIcon icon={faHome} />}
-            suffix={<span className="badge red">10</span>}
           >
-             <Link to={PageRoutes.CATEGORY_LIST}>Categories</Link>
+            <Link to={PageRoutes.CATEGORY_LIST}>Categories</Link>
           </MenuItem>
           <MenuItem
             icon={<FontAwesomeIcon icon={faHome} />}
-            suffix={<span className="badge red">10</span>}
           >
-            Users
+            
+            <Link to={PageRoutes.USER}>Users</Link>
+            
           </MenuItem>
-          <SubMenu
-            prefix={<span className="badge gray">2</span>}
-            title="Properties"
-            icon={<FontAwesomeIcon icon={faHome} />}
-          >
-            <MenuItem>Colors</MenuItem>
-            <MenuItem>Sizes</MenuItem>
-          </SubMenu>
         </Menu>
       </SidebarContent>
 
@@ -61,26 +53,19 @@ const SideBar = () => {
             padding: "20px 24px",
           }}
         >
-          <a
-            href="https://github.com/azouaoui-med/react-pro-sidebar"
-            target="_blank"
-            className="sidebar-btn"
-            rel="noopener noreferrer"
-          >
-            <span
-              style={{
-                whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
-                overflow: "hidden",
-              }}
-            >
-              Source
-            </span>
-          </a>
+          {/* <a onClick={() => loginRedirect()}>Login</a> */}
         </div>
       </SidebarFooter>
     </ProSidebar>
   );
 };
 
-export default SideBar;
+const mapDispatchToProps = (state: any) => {
+  return {
+    ...state.authReducer,
+  };
+};
+export default connect(mapDispatchToProps, {
+  loginRedirect,
+  loginRedirectCalback,
+})(SideBar);

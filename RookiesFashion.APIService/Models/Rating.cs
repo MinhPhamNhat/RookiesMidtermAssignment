@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 using RookiesFashion.APIService.Models;
 
 namespace RookiesFashion.APIService.Models
@@ -18,10 +19,9 @@ namespace RookiesFashion.APIService.Models
 
         [Required]
         public int ProductId { get; set; }
+        [JsonIgnore]
         public virtual Product? Product { get; set; }
         [Required]
-
-        public int UserRatingUserId { get; set; }
-        public virtual User? UserRating { get; set; }
+        public string? UserRating { get; set; }
     }
 }

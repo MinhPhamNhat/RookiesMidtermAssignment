@@ -7,12 +7,8 @@ namespace RookiesFashion.ClientSite.ViewModels
 {
     public class UserVM
     {
-        public int UserId { get; set; }
+        public string Id { get; set; }
         public string? Name { get; set; }
-        public RoleConstants RoleId { get; set; }
-        public RoleVM? Role { get; set; }
-        public string? IdentityUsername { get; set; }
-        public AccountVM? Identity { get; set; }
-
+        public string? Username { get; set; }   
     }
 }

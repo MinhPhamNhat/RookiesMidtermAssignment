@@ -11,6 +11,7 @@ using RookiesFashion.APIService.Data.Context;
 using RookiesFashion.APIService.Models;
 using RookiesFashion.APIService.Models.DTO;
 using RookiesFashion.APIService.Services.Interfaces;
+using RookiesFashion.SharedRepo.Constants;
 using RookiesFashion.SharedRepo.Extensions;
 using RookiesFashion.SharedRepo.Helpers;
 
@@ -31,21 +32,17 @@ namespace RookiesFashion.APIService.Controllers
 
         // GET: api/Accounts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
+        public async Task<ActionResult> GetUsers()
         {
-            return await _context.Accounts.ToListAsync();
-        }
-
-        // POST: api/Accounts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        [Route("Login")]
-        public async Task<ActionResult> PostAccount([FromForm] LoginFormDTO loginForm)
-        {
-            Console.WriteLine(JsonConvert.SerializeObject(loginForm));
-            ServiceResponse serResp = await _accountService.CheckLogin(loginForm);
+            var users = _context.Users.ToList();
+            ServiceResponse serResp = new ServiceResponse{
+                Message = "Successfully get users",
+                Code = ServiceResponseConstants.SUCCESS,
+                Data = users
+            };
             return MyApiHelper.RequestResultParser(serResp, HttpContext);
         }
+
 
     }
 }

@@ -109,8 +109,7 @@ const ProductList: React.FC<any> = (props) => {
               onChanging={onChanging}
               setOnChanging={setOnChanging}
               loading={loading}
-              setLoading={setLoading}
-            />
+              setLoading={setLoading} />
           </Col>
           <Col xl={10} lg={9}>
             <ProductTable
@@ -122,8 +121,7 @@ const ProductList: React.FC<any> = (props) => {
               setOnChanging={setOnChanging}
               loading={loading}
               setLoading={setLoading}
-              onDeleteAccepted={onDeleteAccepted}
-            />
+              onDeleteAccepted={onDeleteAccepted} />
           </Col>
         </Row>
       </Container>
